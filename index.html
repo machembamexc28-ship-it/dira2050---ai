@@ -146,7 +146,50 @@
       display: none;
       line-height: 1.6;
     }
+.quick-questions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
 
+.quick-questions button {
+  background: #f1f7f4;
+  color: #006b3c;
+  border: 1px solid #cfe3d8;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.quick-questions button:hover {
+  transform: translateY(-2px);
+  background: #e4f2eb;
+}
+
+.chat-box input:focus {
+  border-color: #006b3c;
+  box-shadow: 0 0 0 3px rgba(0, 107, 60, 0.08);
+}
+
+#response {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
     footer {
       text-align: center;
       padding: 30px 15px;
