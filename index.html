@@ -336,8 +336,10 @@ const q = question
 
 let bestMatch = null;
 let bestScore = 0;
+
 console.log("SWALI:", q);
 console.log("DATA:", dira2050Data.keyGoals);
+
 dira2050Data.keyGoals.forEach(item => {
 
   let score = 0;
@@ -347,12 +349,12 @@ dira2050Data.keyGoals.forEach(item => {
     const k = keyword
       .toLowerCase()
       .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
 
     if (q.includes(k)) {
-      score += k.length;
+      score += 10;
     }
-
   });
 
   if (score > bestScore) {
@@ -361,6 +363,9 @@ dira2050Data.keyGoals.forEach(item => {
   }
 
 });
+
+console.log("BEST MATCH:", bestMatch);
+console.log("BEST SCORE:", bestScore);
 
   response.style.display = "block";
 
