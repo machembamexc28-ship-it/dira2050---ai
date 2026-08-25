@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dira2050 AI Assistant 🇹🇿</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7f9;
+      color: #17202a;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #006b3c, #008c55);
+      color: white;
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    .flag {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 25px auto;
+      padding: 0 18px;
+    }
+
+    .welcome {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    .welcome h2 {
+      color: #006b3c;
+      margin-bottom: 10px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .feature {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 20px 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    .feature .icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .feature h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .feature p {
+      font-size: 12px;
+      color: #667;
+    }
+
+    .assistant {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      margin-top: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .assistant h2 {
+      color: #006b3c;
+      margin-bottom: 8px;
+    }
+
+    .assistant p {
+      color: #667;
+      margin-bottom: 15px;
+    }
+
+    .chat-box {
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-box input {
+      flex: 1;
+      padding: 14px;
+      border: 1px solid #ccd3d8;
+      border-radius: 12px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .chat-box button {
+      background: #006b3c;
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .chat-box button:hover {
+      background: #004d2b;
+    }
+
+    #response {
+      margin-top: 18px;
+      padding: 15px;
+      background: #eef8f2;
+      border-radius: 12px;
+      display: none;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: #667;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="flag">🇹🇿</div>
+    <h1>Dira2050 AI Assistant</h1>
+    <p>Msaidizi wako wa kuelewa na kushiriki katika Dira ya Maendeleo 2050</p>
+  </header>
+
+  <main class="container">
+
+    <section class="welcome">
+      <h2>Karibu kwenye Dira2050 AI Assistant</h2>
+
+      <p>
+        Mfumo huu unalenga kumsaidia Mtanzania kuelewa Dira 2050,
+        kupata fursa, kujifunza, kuibua mawazo na kuchukua hatua
+        kuelekea Tanzania tunayoitaka mwaka 2050.
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <div class="icon">🤖</div>
+          <h3>AI Assistant</h3>
+          <p>Uliza maswali kuhusu Dira 2050.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">📚</div>
+          <h3>Knowledge Base</h3>
+          <p>Jifunze kuhusu Dira 2050.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">🎯</div>
+          <h3>Fursa</h3>
+          <p>Gundua fursa na hatua za kuchukua.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">💡</div>
+          <h3>Innovation</h3>
+          <p>Badili mawazo kuwa suluhisho.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="assistant">
+
+      <h2>🤖 Muulize Dira2050 AI</h2>
+
+      <p>
+        Andika swali lako hapa chini.
+      </p>
+
+      <div class="chat-box">
+        <input
+          type="text"
+          id="question"
+          placeholder="Mfano: Dira 2050 inalenga nini?"
+        >
+
+        <button onclick="askAssistant()">
+          Uliza
+        </button>
+      </div>
+
+      <div id="response"></div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    🇹🇿 Dira2050 AI Assistant — Tanzania ya 2050 inaanza na hatua za leo.
+  </footer>
+
+  <script>
+    function askAssistant() {
+
+      const question =
+        document.getElementById("question").value.trim();
+
+      const response =
+        document.getElementById("response");
+
+      if (question === "") {
+        response.style.display = "block";
+        response.innerHTML =
+          "⚠️ Tafadhali andika swali kwanza.";
+        return;
+      }
+
+      response.style.display = "block";
+
+      response.innerHTML =
+        "🤖 <strong>Dira2050 AI:</strong><br><br>" +
+        "Nimepokea swali lako: <strong>" +
+        question +
+        "</strong><br><br>" +
+        "Mfumo wa AI utaunganishwa hapa katika hatua inayofuata. 🇹🇿";
+    }
+  </script>
+
+</body>
+</html>
