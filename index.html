@@ -250,96 +250,73 @@ function askAssistant() {
     return;
   }
 
-  const q = question.toLowerCase();
+  const q = question
+    .toLowerCase()
+    .replace(/[?.,!]/g, "");
 
-  let answer =
-    "🤖 <strong>Dira2050 AI:</strong><br><br>" +
-    "Asante kwa swali lako. Kwa sasa nina taarifa za msingi kuhusu Dira 2050. " +
-    "Jaribu kuuliza kuhusu uchumi, elimu, vijana, afya, teknolojia, ubunifu au fursa.";
+  let bestMatch = null;
+  let bestScore = 0;
 
-  if (q.includes("dira 2050") || q.includes("inalenga nini")) {
+  dira2050Data.keyGoals.forEach(item => {
 
-    answer =
-      "🤖 <strong>Dira2050 AI:</strong><br><br>" +
-      dira2050Data.introduction;
-  }
+    let score = 0;
 
-  else if (q.includes("vijana")) {
+    item.keywords.forEach(keyword => {
 
-    const item =
-      dira2050Data.areas.find(area =>
-        area.name.toLowerCase() === "vijana"
-      );
+      if (q.includes(keyword.toLowerCase())) {
+        score++;
+      }
 
-    answer =
-      "👥 <strong>Vijana na Dira 2050</strong><br><br>" +
-      item.description;
-  }
+    });
 
-  else if (
-    q.includes("teknolojia") ||
-    q.includes("ubunifu") ||
-    q.includes("sayansi")
-  ) {
+    if (score > bestScore) {
+      bestScore = score;
+      bestMatch = item;
+    }
 
-    const item =
-      dira2050Data.areas.find(area =>
-        area.name.toLowerCase().includes("sayansi")
-      );
-
-    answer =
-      "💡 <strong>Sayansi, Teknolojia na Ubunifu</strong><br><br>" +
-      item.description;
-  }
-
-  else if (
-    q.includes("elimu") ||
-    q.includes("ujuzi")
-  ) {
-
-    const item =
-      dira2050Data.areas.find(area =>
-        area.name.toLowerCase().includes("elimu")
-      );
-
-    answer =
-      "🎓 <strong>Elimu na Ujuzi</strong><br><br>" +
-      item.description;
-  }
-
-  else if (
-    q.includes("afya") ||
-    q.includes("ustawi")
-  ) {
-
-    const item =
-      dira2050Data.areas.find(area =>
-        area.name.toLowerCase().includes("afya")
-      );
-
-    answer =
-      "🏥 <strong>Afya na Ustawi</strong><br><br>" +
-      item.description;
-  }
-
-  else if (
-    q.includes("fursa") ||
-    q.includes("biashara") ||
-    q.includes("uwekezaji")
-  ) {
-
-    const item =
-      dira2050Data.areas.find(area =>
-        area.name.toLowerCase().includes("fursa")
-      );
-
-    answer =
-      "🚀 <strong>Fursa</strong><br><br>" +
-      item.description;
-  }
+  });
 
   response.style.display = "block";
-  response.innerHTML = answer;
+
+  if (bestMatch) {
+
+    response.innerHTML =
+      bestMatch.icon +
+      " <strong>Dira2050 AI — " +
+      bestMatch.category +
+      "</strong><br><br>" +
+
+      bestMatch.content +
+
+      "<br><br>" +
+
+      "<small>📚 Chanzo: " +
+      dira2050Data.officialSource +
+      "</small>";
+
+  } else {
+
+    response.innerHTML =
+      "🤖 <strong>Dira2050 AI:</strong><br><br>" +
+
+      "Sijaweza kupata taarifa inayolingana moja kwa moja " +
+      "na swali lako kwenye Knowledge Base yangu kwa sasa." +
+
+      "<br><br>" +
+
+      "Jaribu kuuliza kuhusu:<br>" +
+
+      "🎓 Elimu na ujuzi<br>" +
+      "👥 Vijana<br>" +
+      "💡 Teknolojia na ubunifu<br>" +
+      "💰 Uchumi<br>" +
+      "🏭 Viwanda<br>" +
+      "🏥 Afya<br>" +
+      "🌱 Mazingira<br>" +
+      "⚖️ Haki na usawa<br>" +
+      "🚀 Fursa";
+
+  }
 }
   </script>
 
