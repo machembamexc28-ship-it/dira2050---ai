@@ -204,29 +204,61 @@
       </div>
     </section>
 
-    <section class="assistant">
+<section class="assistant">
 
-      <h2>🤖 Muulize Dira2050 AI</h2>
+  <h2>🤖 Dira2050 AI Assistant</h2>
 
-      <p>
-        Andika swali lako hapa chini.
-      </p>
+  <p>
+    Uliza swali kuhusu Dira 2050. Nitakusaidia kulielewa
+    kwa kutumia Knowledge Base yetu.
+  </p>
 
-      <div class="chat-box">
-        <input
-          type="text"
-          id="question"
-          placeholder="Mfano: Dira 2050 inalenga nini?"
-        >
+  <div class="quick-questions">
 
-        <button onclick="askAssistant()">
-          Uliza
-        </button>
-      </div>
+    <button onclick="setQuestion('Dira 2050 inalenga nini?')">
+      🎯 Dira 2050 inalenga nini?
+    </button>
 
-      <div id="response"></div>
+    <button onclick="setQuestion('Vijana wana nafasi gani katika Dira 2050?')">
+      👥 Vijana
+    </button>
 
-    </section>
+    <button onclick="setQuestion('Teknolojia ina nafasi gani katika Dira 2050?')">
+      💡 Teknolojia
+    </button>
+
+    <button onclick="setQuestion('Dira 2050 inasemaje kuhusu elimu na ujuzi?')">
+      🎓 Elimu & Ujuzi
+    </button>
+
+    <button onclick="setQuestion('Dira 2050 inasemaje kuhusu mazingira?')">
+      🌱 Mazingira
+    </button>
+
+    <button onclick="setQuestion('Tanzania inalenga uchumi wa aina gani?')">
+      💰 Uchumi
+    </button>
+
+  </div>
+
+  <div class="chat-box">
+
+    <input
+      type="text"
+      id="question"
+      placeholder="Andika swali lako hapa..."
+      onkeydown="if(event.key === 'Enter') askAssistant()"
+    >
+
+    <button onclick="askAssistant()">
+      Uliza ➤
+    </button>
+
+  </div>
+
+  <div id="response"></div>
+
+</section>
 
   </main>
 
