@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="sw">
-  <script src="data.js"></script>
 <head>
+  <script src="data.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -311,6 +311,7 @@
   </footer>
 
   <script>
+
 function askAssistant() {
 
   const question =
@@ -394,7 +395,20 @@ function askAssistant() {
 
   }
 }
-  </script>
+
+
+function setQuestion(text) {
+
+  document.getElementById("question").value = text;
+
+  askAssistant();
+
+}
+
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
