@@ -327,31 +327,39 @@ function askAssistant() {
     return;
   }
 
-  const q = question
-    .toLowerCase()
-    .replace(/[?.,!]/g, "");
+const q = question
+  .toLowerCase()
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "")
+  .replace(/[?.,!]/g, "")
+  .trim();
 
-  let bestMatch = null;
-  let bestScore = 0;
+let bestMatch = null;
+let bestScore = 0;
 
-  dira2050Data.keyGoals.forEach(item => {
+dira2050Data.keyGoals.forEach(item => {
 
-    let score = 0;
+  let score = 0;
 
-    item.keywords.forEach(keyword => {
+  item.keywords.forEach(keyword => {
 
-      if (q.includes(keyword.toLowerCase())) {
-        score++;
-      }
+    const k = keyword
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
 
-    });
-
-    if (score > bestScore) {
-      bestScore = score;
-      bestMatch = item;
+    if (q.includes(k)) {
+      score += k.length;
     }
 
   });
+
+  if (score > bestScore) {
+    bestScore = score;
+    bestMatch = item;
+  }
+
+});
 
   response.style.display = "block";
 
