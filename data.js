@@ -1,58 +1,191 @@
 const dira2050Data = {
-  title: "Dira ya Maendeleo ya Taifa 2050",
+
+  title: "Dira ya Taifa ya Maendeleo 2050",
+
+  vision:
+    "Taifa Jumuishi Lenye Ustawi, Haki na Linalojitegemea.",
 
   introduction:
-    "Dira 2050 inaweka mwelekeo wa Tanzania kuelekea taifa lenye maendeleo jumuishi, uchumi shindani, ustawi wa wananchi na matumizi bora ya sayansi, teknolojia na ubunifu.",
+    "Dira ya Taifa ya Maendeleo 2050 inaweka mwelekeo wa Tanzania kuelekea taifa lenye ustawi, usawa na uwezo wa kujitegemea. Inalenga maendeleo ya watu yanayochochewa na uchumi imara, wenye ushindani na kipato cha juu.",
 
-  areas: [
+  officialSource:
+    "Dira ya Taifa ya Maendeleo 2050 - Tume ya Taifa ya Mipango",
+
+  sourceUrl:
+    "https://www.planning.go.tz/uploads/documents/sw-1752762713-DIRA%20YA%20TAIFA%20YA%20MAENDELEO%202050.pdf",
+
+  keyGoals: [
+
     {
-      name: "Uchumi",
+      id: "uchumi",
+      category: "Uchumi",
       icon: "💰",
-      description:
-        "Kujenga uchumi imara, shindani na unaozalisha fursa kwa wananchi."
+      keywords: [
+        "uchumi",
+        "kipato",
+        "uchumi shindani",
+        "biashara",
+        "uwekezaji"
+      ],
+      content:
+        "Tanzania inalenga kuwa na uchumi jumuishi, shindani na unaostahimili misukosuko, unaoinua viwango vya maisha ya wananchi na kupunguza umasikini."
     },
 
     {
-      name: "Elimu na Ujuzi",
+      id: "viwanda",
+      category: "Viwanda",
+      icon: "🏭",
+      keywords: [
+        "viwanda",
+        "uchumi wa viwanda",
+        "uzalishaji",
+        "manufacturing"
+      ],
+      content:
+        "Tanzania inalenga kuwa kitovu cha viwanda katika ukanda wa Mashariki na Kusini mwa Afrika na kuongeza uzalishaji wenye thamani."
+    },
+
+    {
+      id: "elimu",
+      category: "Elimu na Ujuzi",
       icon: "🎓",
-      description:
-        "Kukuza elimu, maarifa, ujuzi na uwezo wa vijana kushiriki katika maendeleo."
+      keywords: [
+        "elimu",
+        "ujuzi",
+        "maarifa",
+        "wanafunzi",
+        "skills"
+      ],
+      content:
+        "Dira 2050 inalenga kuwa na wananchi wenye maarifa na ujuzi unaohitajika katika karne ya 21 ili waweze kushiriki kikamilifu katika shughuli za maendeleo."
     },
 
     {
-      name: "Sayansi, Teknolojia na Ubunifu",
-      icon: "💡",
-      description:
-        "Kutumia sayansi, teknolojia na ubunifu kutatua changamoto na kuongeza uzalishaji."
-    },
-
-    {
-      name: "Afya na Ustawi",
-      icon: "🏥",
-      description:
-        "Kuwekeza katika afya, ustawi na ubora wa maisha ya wananchi."
-    },
-
-    {
-      name: "Vijana",
+      id: "vijana",
+      category: "Vijana",
       icon: "👥",
-      description:
-        "Kuwawezesha vijana kushiriki katika uchumi, ajira, biashara na ubunifu."
+      keywords: [
+        "vijana",
+        "ajira",
+        "youth",
+        "kazi",
+        "nguvu kazi"
+      ],
+      content:
+        "Dira 2050 inatambua umuhimu wa vijana katika maendeleo ya kijamii na kiuchumi na inaweka msisitizo katika kuwawezesha vijana kutumia uwezo wao katika maendeleo ya taifa."
     },
 
     {
-      name: "Fursa",
-      icon: "🚀",
-      description:
-        "Kuchochea fursa za uwekezaji, biashara, ajira na ujasiriamali."
+      id: "teknolojia",
+      category: "Sayansi, Teknolojia na Ubunifu",
+      icon: "💡",
+      keywords: [
+        "teknolojia",
+        "sayansi",
+        "ubunifu",
+        "innovation",
+        "digital",
+        "AI"
+      ],
+      content:
+        "Sayansi, teknolojia na ubunifu ni muhimu katika kuongeza tija, kujenga ujuzi, kutatua changamoto na kuchochea maendeleo ya Tanzania kuelekea 2050."
+    },
+
+    {
+      id: "afya",
+      category: "Afya na Ustawi",
+      icon: "🏥",
+      keywords: [
+        "afya",
+        "ustawi",
+        "hospitali",
+        "huduma za afya"
+      ],
+      content:
+        "Dira 2050 inalenga kuboresha ustawi na ubora wa maisha ya wananchi kama sehemu ya maendeleo ya watu."
+    },
+
+    {
+      id: "mazingira",
+      category: "Mazingira",
+      icon: "🌱",
+      keywords: [
+        "mazingira",
+        "tabianchi",
+        "mabadiliko ya tabianchi",
+        "uhifadhi"
+      ],
+      content:
+        "Dira 2050 inasisitiza jamii inayothamini na kuhifadhi mazingira na maendeleo endelevu kwa vizazi vya sasa na vijavyo."
+    },
+
+    {
+      id: "miji",
+      category: "Miji na Maendeleo",
+      icon: "🏙️",
+      keywords: [
+        "miji",
+        "urban",
+        "mipango miji",
+        "vijijini"
+      ],
+      content:
+        "Ukuaji wa miji unahitaji mipango madhubuti, jumuishi na shirikishi inayowiana kati ya maendeleo ya mijini na vijijini huku ikizingatia uhifadhi wa mazingira."
+    },
+
+    {
+      id: "usawa",
+      category: "Haki na Usawa",
+      icon: "⚖️",
+      keywords: [
+        "haki",
+        "usawa",
+        "usawa wa kijinsia",
+        "ulemavu",
+        "binadamu"
+      ],
+      content:
+        "Dira 2050 inaweka msisitizo katika haki za binadamu, usawa wa kijinsia, kuwawezesha vijana na watu wenye ulemavu, pamoja na ustawi kwa wote."
+    },
+
+    {
+      id: "ujitegemezi",
+      category: "Ujitegemezi",
+      icon: "🇹🇿",
+      keywords: [
+        "ujitegemezi",
+        "kujitegemea",
+        "taifa",
+        "Tanzania"
+      ],
+      content:
+        "Dira 2050 inalenga kujenga Tanzania yenye uwezo wa kujitegemea, ustahimilivu na uwezo wa kukabiliana na mabadiliko ya ndani na ya kimataifa."
     }
+
   ],
 
   sampleQuestions: [
+
     "Dira 2050 inalenga nini?",
+
+    "Maono ya Tanzania ya 2050 ni yapi?",
+
     "Vijana wana nafasi gani katika Dira 2050?",
-    "Sayansi na teknolojia vina nafasi gani?",
-    "Ninawezaje kushiriki katika Dira 2050?",
-    "Ni fursa zipi zinaweza kunisaidia kuelekea 2050?"
+
+    "Elimu na ujuzi vina umuhimu gani?",
+
+    "Teknolojia ina nafasi gani katika Dira 2050?",
+
+    "Dira 2050 inasemaje kuhusu viwanda?",
+
+    "Tanzania inalenga uchumi wa aina gani?",
+
+    "Dira 2050 inasemaje kuhusu mazingira?",
+
+    "Dira 2050 inasemaje kuhusu haki na usawa?",
+
+    "Mimi kama kijana ninawezaje kushiriki katika Dira 2050?"
+
   ]
+
 };
