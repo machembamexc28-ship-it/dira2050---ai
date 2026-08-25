@@ -366,18 +366,29 @@ dira2050Data.keyGoals.forEach(item => {
 
 console.log("BEST MATCH:", bestMatch);
 console.log("BEST SCORE:", bestScore);
-if (!bestMatch && (
-  q.includes("inalenga nini") ||
-  q.includes("maono") ||
-  q.includes("dira 2050") ||
-  q.includes("tanzania ya 2050")
-)) {
-  bestMatch = {
-    category: "Maono ya Dira 2050",
-    icon: "🇹🇿",
-    content: dira2050Data.introduction
-  };
+if (!bestMatch) {
+
+  if (
+    q.includes("inalenga nini") ||
+    q.includes("dira2050") ||
+    q.includes("dira 2050") ||
+    q.includes("maono") ||
+    q.includes("tanzania ya 2050")
+  ) {
+
+    bestMatch = {
+      category: "Maono na Mwelekeo wa Dira 2050",
+      icon: "🇹🇿",
+      content:
+        dira2050Data.vision +
+        "<br><br>" +
+        dira2050Data.introduction
+    };
+
+  }
+
 }
+  console.log("AFTER FALLBACK:", bestMatch);
   response.style.display = "block";
 
   if (bestMatch) {
