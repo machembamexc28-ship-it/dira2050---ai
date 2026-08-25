@@ -235,30 +235,112 @@
   </footer>
 
   <script>
-    function askAssistant() {
+function askAssistant() {
 
-      const question =
-        document.getElementById("question").value.trim();
+  const question =
+    document.getElementById("question").value.trim();
 
-      const response =
-        document.getElementById("response");
+  const response =
+    document.getElementById("response");
 
-      if (question === "") {
-        response.style.display = "block";
-        response.innerHTML =
-          "⚠️ Tafadhali andika swali kwanza.";
-        return;
-      }
+  if (question === "") {
+    response.style.display = "block";
+    response.innerHTML =
+      "⚠️ Tafadhali andika swali kwanza.";
+    return;
+  }
 
-      response.style.display = "block";
+  const q = question.toLowerCase();
 
-      response.innerHTML =
-        "🤖 <strong>Dira2050 AI:</strong><br><br>" +
-        "Nimepokea swali lako: <strong>" +
-        question +
-        "</strong><br><br>" +
-        "Mfumo wa AI utaunganishwa hapa katika hatua inayofuata. 🇹🇿";
-    }
+  let answer =
+    "🤖 <strong>Dira2050 AI:</strong><br><br>" +
+    "Asante kwa swali lako. Kwa sasa nina taarifa za msingi kuhusu Dira 2050. " +
+    "Jaribu kuuliza kuhusu uchumi, elimu, vijana, afya, teknolojia, ubunifu au fursa.";
+
+  if (q.includes("dira 2050") || q.includes("inalenga nini")) {
+
+    answer =
+      "🤖 <strong>Dira2050 AI:</strong><br><br>" +
+      dira2050Data.introduction;
+  }
+
+  else if (q.includes("vijana")) {
+
+    const item =
+      dira2050Data.areas.find(area =>
+        area.name.toLowerCase() === "vijana"
+      );
+
+    answer =
+      "👥 <strong>Vijana na Dira 2050</strong><br><br>" +
+      item.description;
+  }
+
+  else if (
+    q.includes("teknolojia") ||
+    q.includes("ubunifu") ||
+    q.includes("sayansi")
+  ) {
+
+    const item =
+      dira2050Data.areas.find(area =>
+        area.name.toLowerCase().includes("sayansi")
+      );
+
+    answer =
+      "💡 <strong>Sayansi, Teknolojia na Ubunifu</strong><br><br>" +
+      item.description;
+  }
+
+  else if (
+    q.includes("elimu") ||
+    q.includes("ujuzi")
+  ) {
+
+    const item =
+      dira2050Data.areas.find(area =>
+        area.name.toLowerCase().includes("elimu")
+      );
+
+    answer =
+      "🎓 <strong>Elimu na Ujuzi</strong><br><br>" +
+      item.description;
+  }
+
+  else if (
+    q.includes("afya") ||
+    q.includes("ustawi")
+  ) {
+
+    const item =
+      dira2050Data.areas.find(area =>
+        area.name.toLowerCase().includes("afya")
+      );
+
+    answer =
+      "🏥 <strong>Afya na Ustawi</strong><br><br>" +
+      item.description;
+  }
+
+  else if (
+    q.includes("fursa") ||
+    q.includes("biashara") ||
+    q.includes("uwekezaji")
+  ) {
+
+    const item =
+      dira2050Data.areas.find(area =>
+        area.name.toLowerCase().includes("fursa")
+      );
+
+    answer =
+      "🚀 <strong>Fursa</strong><br><br>" +
+      item.description;
+  }
+
+  response.style.display = "block";
+  response.innerHTML = answer;
+}
   </script>
 
 </body>
