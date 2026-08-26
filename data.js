@@ -60,21 +60,36 @@ const dira2050Data = {
         "Dira 2050 inalenga kuwa na wananchi wenye maarifa na ujuzi unaohitajika katika karne ya 21 ili waweze kushiriki kikamilifu katika shughuli za maendeleo."
     },
 
-    {
-      id: "vijana",
-      category: "Vijana",
-      icon: "👥",
-      keywords: [
-        "vijana",
-        "ajira",
-        "youth",
-        "kazi",
-        "nguvu kazi"
-      ],
-      content:
-        "Dira 2050 inatambua umuhimu wa vijana katika maendeleo ya kijamii na kiuchumi na inaweka msisitizo katika kuwawezesha vijana kutumia uwezo wao katika maendeleo ya taifa."
-    },
+{
+  id: "vijana",
+  category: "Vijana",
+  icon: "👥",
 
+  keywords: [
+    "vijana",
+    "kijana",
+    "ajira",
+    "kazi",
+    "youth",
+    "nguvu kazi",
+    "uwezeshaji"
+  ],
+
+  questions: [
+    "vijana wana nafasi gani",
+    "vijana wananufaika vipi",
+    "mimi kama kijana nifanye nini",
+    "vijana wanawezaje kushiriki",
+    "fursa kwa vijana",
+    "vijana wanawezaje kuchangia"
+  ],
+
+  content:
+    "Dira 2050 inatambua umuhimu wa vijana katika maendeleo ya kijamii na kiuchumi na inaweka msisitizo katika kuwawezesha vijana kutumia uwezo wao katika maendeleo ya taifa.",
+
+  action:
+    "Kijana anaweza kushiriki katika Dira 2050 kwa kujenga ujuzi, kutumia teknolojia na ubunifu, kuanzisha au kukuza shughuli za kiuchumi, na kushiriki katika shughuli za maendeleo ya jamii na taifa."
+},
     {
       id: "teknolojia",
       category: "Sayansi, Teknolojia na Ubunifu",
