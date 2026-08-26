@@ -310,8 +310,11 @@
     🇹🇿 Dira2050 AI Assistant — Tanzania ya 2050 inaanza na hatua za leo.
   </footer>
 
-  <script>
-console.log(dira2050Data);
+<script>
+
+console.log("Dira2050 AI imeanza...");
+console.log("DATA:", dira2050Data);
+
 function askAssistant() {
 
   const question =
@@ -321,13 +324,19 @@ function askAssistant() {
     document.getElementById("response");
 
   if (question === "") {
+
     response.style.display = "block";
+
     response.innerHTML =
       "⚠️ Tafadhali andika swali kwanza.";
+
     return;
   }
 
-  // Safisha swali
+  // ==========================================
+  // SAFISHA SWALI
+  // ==========================================
+
   const q = question
     .toLowerCase()
     .normalize("NFD")
@@ -336,16 +345,17 @@ function askAssistant() {
     .trim();
 
   console.log("SWALI:", q);
-  console.log("DATA:", dira2050Data.keyGoals);
 
   let bestMatch = null;
   let bestScore = 0;
+
 
   // ==========================================
   // 1. MASWALI YA JUMLA KUHUSU DIRA 2050
   // ==========================================
 
   const generalQuestions = [
+
     "dira 2050 inalenga nini",
     "lengo la dira 2050",
     "malengo ya dira 2050",
@@ -355,102 +365,154 @@ function askAssistant() {
     "maono ya tanzania 2050",
     "maono ya dira 2050",
     "dira 2050 ni nini"
+
   ];
 
   const isGeneralQuestion =
     generalQuestions.some(text => q.includes(text));
 
+
   if (isGeneralQuestion) {
 
     bestMatch = {
-      category: "Maono na Lengo Kuu la Dira 2050",
-      icon: "🇹🇿",
+
+      category:
+        "Maono na Lengo Kuu la Dira 2050",
+
+      icon:
+        "🇹🇿",
+
       content:
         dira2050Data.introduction +
-        "<br><br><strong>Maono:</strong><br>" +
+        "<br><br>" +
+        "<strong>Maono:</strong><br>" +
         dira2050Data.vision
+
     };
 
     bestScore = 100;
+
   }
 
+
   // ==========================================
-  // 2. SEARCH KWENYE KNOWLEDGE BASE
+  // 2. SEARCH KNOWLEDGE BASE
   // ==========================================
 
-if (!bestMatch) {
+  if (!bestMatch) {
 
-  dira2050Data.keyGoals.forEach(item => {
+    dira2050Data.keyGoals.forEach(item => {
 
-    let score = 0;
+      let score = 0;
 
-    // Tafuta kwa keywords
-    item.keywords.forEach(keyword => {
 
-      const k = keyword
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .trim();
+      // --------------------------------------
+      // KEYWORDS
+      // --------------------------------------
 
-      if (q.includes(k)) {
-        score += 10;
+      if (item.keywords) {
+
+        item.keywords.forEach(keyword => {
+
+          const k = keyword
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .trim();
+
+          if (q.includes(k)) {
+
+            score += 10;
+
+          }
+
+        });
+
+      }
+
+
+      // --------------------------------------
+      // SAMPLE QUESTIONS
+      // --------------------------------------
+
+      if (item.questions) {
+
+        item.questions.forEach(exampleQuestion => {
+
+          const example = exampleQuestion
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[?.,!]/g, "")
+            .trim();
+
+
+          if (q.includes(example)) {
+
+            score += 30;
+
+          }
+
+        });
+
+      }
+
+
+      // --------------------------------------
+      // CHAGUA BEST MATCH
+      // --------------------------------------
+
+      if (score > bestScore) {
+
+        bestScore = score;
+        bestMatch = item;
+
       }
 
     });
 
-// Tafuta keywords zinazohusiana na swali
-item.keywords.forEach(keyword => {
-
-  const k = keyword
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .trim();
-
-  // Neno likipatikana kwenye swali
-  if (q.includes(k)) {
-    score += 10;
   }
 
-  // Kama keyword ni ndefu na sehemu yake imepatikana
-  const words = k.split(" ");
-
-  words.forEach(word => {
-
-    if (word.length >= 4 && q.includes(word)) {
-      score += 3;
-    }
-
-  });
-
-});
-
-if (score > bestScore) {
-  bestScore = score;
-  bestMatch = item;
-}
-
-});
 
   console.log("BEST MATCH:", bestMatch);
   console.log("BEST SCORE:", bestScore);
 
+
   // ==========================================
-  // 3. ONESHA JIBU
+  // 3. ONESHA RESPONSE
   // ==========================================
 
   response.style.display = "block";
 
+
   if (bestMatch) {
 
+    let extraContent = "";
+
+
+    // Kama kuna action kwenye data
+    if (bestMatch.action) {
+
+      extraContent =
+        "<br><br>" +
+        "<strong>🚀 Hatua unaweza kuchukua:</strong><br>" +
+        bestMatch.action;
+
+    }
+
+
     response.innerHTML =
+
       bestMatch.icon +
       " <strong>Dira2050 AI — " +
       bestMatch.category +
-      "</strong><br><br>" +
+      "</strong>" +
+
+      "<br><br>" +
 
       bestMatch.content +
+
+      extraContent +
 
       "<br><br>" +
 
@@ -458,9 +520,13 @@ if (score > bestScore) {
       dira2050Data.officialSource +
       "</small>";
 
-  } else {
+  }
+
+
+  else {
 
     response.innerHTML =
+
       "🤖 <strong>Dira2050 AI:</strong><br><br>" +
 
       "Sijaweza kupata taarifa inayolingana moja kwa moja " +
@@ -482,12 +548,20 @@ if (score > bestScore) {
       "🏙️ Miji na maendeleo";
 
   }
+
 }
 
 
+// ==========================================
+// QUICK QUESTIONS
+// ==========================================
+
 function setQuestion(text) {
 
-  document.getElementById("question").value = text;
+  const question =
+    document.getElementById("question");
+
+  question.value = text;
 
   askAssistant();
 
