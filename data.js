@@ -31,36 +31,7 @@ const dira2050Data = {
         "Tanzania inalenga kuwa na uchumi jumuishi, shindani na unaostahimili misukosuko, unaoinua viwango vya maisha ya wananchi na kupunguza umasikini."
     },
 
-    {
-      id: "viwanda",
-      category: "Viwanda",
-      icon: "🏭",
-      keywords: [
-        "viwanda",
-        "uchumi wa viwanda",
-        "uzalishaji",
-        "manufacturing"
-      ],
-      content:
-        "Tanzania inalenga kuwa kitovu cha viwanda katika ukanda wa Mashariki na Kusini mwa Afrika na kuongeza uzalishaji wenye thamani."
-    },
-
-    {
-      id: "elimu",
-      category: "Elimu na Ujuzi",
-      icon: "🎓",
-      keywords: [
-        "elimu",
-        "ujuzi",
-        "maarifa",
-        "wanafunzi",
-        "skills"
-      ],
-      content:
-        "Dira 2050 inalenga kuwa na wananchi wenye maarifa na ujuzi unaohitajika katika karne ya 21 ili waweze kushiriki kikamilifu katika shughuli za maendeleo."
-    },
-
-{
+ {
   id: "vijana",
   category: "Vijana",
   icon: "👥",
@@ -68,21 +39,32 @@ const dira2050Data = {
   keywords: [
     "vijana",
     "kijana",
+    "youth",
     "ajira",
     "kazi",
-    "youth",
     "nguvu kazi",
-    "uwezeshaji"
+    "fursa kwa vijana",
+    "ushiriki wa vijana",
+    "uwezeshaji wa vijana",
+    "maendeleo ya vijana"
   ],
 
   questions: [
     "vijana wana nafasi gani",
     "vijana wananufaika vipi",
-    "mimi kama kijana nifanye nini",
+    "dira 2050 inawahusu vipi vijana",
+    "nifanye nini kama kijana",
+    "kijana anawezaje kushiriki",
     "vijana wanawezaje kushiriki",
-    "fursa kwa vijana",
-    "vijana wanawezaje kuchangia"
+    "fursa gani zipo kwa vijana",
+    "dira 2050 ina fursa gani kwa vijana",
+    "vijana watapata nini",
+    "nafasi ya vijana katika dira 2050"
   ],
+
+  content:
+    "Dira 2050 inatambua umuhimu wa vijana katika maendeleo ya kijamii na kiuchumi na inaweka msisitizo katika kuwawezesha vijana kutumia uwezo wao katika maendeleo ya taifa."
+},
 
   content:
     "Dira 2050 inatambua umuhimu wa vijana katika maendeleo ya kijamii na kiuchumi na inaweka msisitizo katika kuwawezesha vijana kutumia uwezo wao katika maendeleo ya taifa.",
