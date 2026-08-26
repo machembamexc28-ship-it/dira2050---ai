@@ -29,12 +29,6 @@ const dira2050Data = {
         "uwekezaji"
       ],
 
-      questions: [
-        "tanzania inalenga uchumi wa aina gani",
-        "uchumi wa aina gani",
-        "dira 2050 inasemaje kuhusu uchumi"
-      ],
-
       content:
         "Tanzania inalenga kuwa na uchumi jumuishi, shindani na unaostahimili misukosuko, unaoinua viwango vya maisha ya wananchi na kupunguza umasikini."
     },
@@ -89,13 +83,6 @@ const dira2050Data = {
         "innovation",
         "digital",
         "AI"
-      ],
-
-      questions: [
-        "teknolojia ina nafasi gani",
-        "sayansi ina nafasi gani",
-        "ubunifu una nafasi gani",
-        "AI ina nafasi gani"
       ],
 
       content:
