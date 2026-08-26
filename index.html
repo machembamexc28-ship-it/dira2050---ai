@@ -505,39 +505,34 @@ if (!bestMatch) {
 
 
     // Kama kuna action kwenye data
+if (bestMatch) {
+
+    let answer =
+      bestMatch.icon +
+      " <strong>Dira2050 AI — " +
+      bestMatch.category +
+      "</strong><br><br>" +
+
+      bestMatch.content;
+
     if (bestMatch.action) {
 
-      extraContent =
+      answer +=
         "<br><br>" +
         "<strong>🚀 Hatua unaweza kuchukua:</strong><br>" +
         bestMatch.action;
 
     }
 
-
-    response.innerHTML =
-
-      bestMatch.icon +
-      " <strong>Dira2050 AI — " +
-      bestMatch.category +
-      "</strong>" +
-
+    answer +=
       "<br><br>" +
-
-      bestMatch.content +
-
-      extraContent +
-
-      "<br><br>" +
-
       "<small>📚 Chanzo: " +
       dira2050Data.officialSource +
       "</small>";
 
-  }
+    response.innerHTML = answer;
 
-
-  else {
+  } else {
 
     response.innerHTML =
 
