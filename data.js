@@ -234,28 +234,56 @@ action:
 
   ],
 
+  officialDocuments: [
+
+    {
+      id: "dira2050",
+      title: "Dira ya Taifa ya Maendeleo 2050",
+      type: "Dira Kuu",
+      description:
+        "Hati kuu inayoweka maono, mwelekeo na matarajio ya Tanzania kuelekea mwaka 2050.",
+      url:
+        "https://www.planning.go.tz/uploads/documents/sw-1752762713-DIRA%20YA%20TAIFA%20YA%20MAENDELEO%202050.pdf",
+      source:
+        "Tume ya Taifa ya Mipango"
+    },
+
+    {
+      id: "ltpp2050",
+      title: "Mpango Elekezi wa Maendeleo wa Muda Mrefu 2026/27–2050/51",
+      type: "Mpango wa Muda Mrefu",
+      description:
+        "Nyenzo ya utekelezaji inayotafsiri mwelekeo wa Dira 2050 katika mpango wa muda mrefu.",
+      url:
+        "https://planning.go.tz/publications/long-term-perceptive-plan-2026-27-2050-51",
+      source:
+        "Tume ya Taifa ya Mipango"
+    },
+
+    {
+      id: "fydp4",
+      title: "Mpango wa Nne wa Maendeleo wa Taifa wa Miaka Mitano 2026/27–2030/31",
+      type: "Mpango wa Miaka Mitano",
+      description:
+        "Mpango wa kati unaosaidia kuanza kutekeleza Dira 2050 kupitia vipaumbele vya maendeleo.",
+      url:
+        "https://planning.go.tz/",
+      source:
+        "Tume ya Taifa ya Mipango"
+    },
+
+    {
+      id: "annual2026",
+      title: "Mpango wa Maendeleo wa Taifa wa Mwaka 2026/27",
+      type: "Mpango wa Mwaka",
+      description:
+        "Mpango wa mwaka unaoweka hatua za utekelezaji, malengo, matokeo na viashiria vya maendeleo.",
+      url:
+        "https://www.planning.go.tz/uploads/documents/sw-1770720596-APDF_FINAL.pdf",
+      source:
+        "Tume ya Taifa ya Mipango"
+    }
+
+  ],
+
   sampleQuestions: [
-
-    "Dira 2050 inalenga nini?",
-
-    "Maono ya Tanzania ya 2050 ni yapi?",
-
-    "Vijana wana nafasi gani katika Dira 2050?",
-
-    "Elimu na ujuzi vina umuhimu gani?",
-
-    "Teknolojia ina nafasi gani katika Dira 2050?",
-
-    "Dira 2050 inasemaje kuhusu viwanda?",
-
-    "Tanzania inalenga uchumi wa aina gani?",
-
-    "Dira 2050 inasemaje kuhusu mazingira?",
-
-    "Dira 2050 inasemaje kuhusu haki na usawa?",
-
-    "Mimi kama kijana ninawezaje kushiriki katika Dira 2050?"
-
-  ]
-
-};
