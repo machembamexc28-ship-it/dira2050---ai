@@ -285,4 +285,28 @@ action:
 
   ],
 
-  sampleQuestions: [
+   sampleQuestions: [
+
+    "Dira 2050 inalenga nini?",
+
+    "Maono ya Tanzania ya 2050 ni yapi?",
+
+    "Vijana wana nafasi gani katika Dira 2050?",
+
+    "Elimu na ujuzi vina umuhimu gani?",
+
+    "Teknolojia ina nafasi gani katika Dira 2050?",
+
+    "Dira 2050 inasemaje kuhusu viwanda?",
+
+    "Tanzania inalenga uchumi wa aina gani?",
+
+    "Dira 2050 inasemaje kuhusu mazingira?",
+
+    "Dira 2050 inasemaje kuhusu haki na usawa?",
+
+    "Mimi kama kijana ninawezaje kushiriki katika Dira 2050?"
+
+  ]
+
+};
