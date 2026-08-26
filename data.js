@@ -239,49 +239,48 @@ action:
     {
       id: "dira2050",
       title: "Dira ya Taifa ya Maendeleo 2050",
-      type: "Dira Kuu",
       description:
-        "Hati kuu inayoweka maono, mwelekeo na matarajio ya Tanzania kuelekea mwaka 2050.",
+        "Hati kuu inayoweka maono, mwelekeo na malengo ya Tanzania kuelekea mwaka 2050.",
+      year: "2025",
+      type: "PDF",
       url:
-        "https://www.planning.go.tz/uploads/documents/sw-1752762713-DIRA%20YA%20TAIFA%20YA%20MAENDELEO%202050.pdf",
-      source:
-        "Tume ya Taifa ya Mipango"
+        "https://www.planning.go.tz/uploads/documents/sw-1752762713-DIRA%20YA%20TAIFA%20YA%20MAENDELEO%202050.pdf"
     },
 
     {
       id: "ltpp2050",
-      title: "Mpango Elekezi wa Maendeleo wa Muda Mrefu 2026/27–2050/51",
-      type: "Mpango wa Muda Mrefu",
+      title:
+        "Mpango Elekezi wa Maendeleo wa Muda Mrefu 2026/27–2050/51",
       description:
-        "Nyenzo ya utekelezaji inayotafsiri mwelekeo wa Dira 2050 katika mpango wa muda mrefu.",
+        "Mpango wa muda mrefu unaoelekeza utekelezaji wa Dira 2050 katika kipindi cha 2026/27 hadi 2050/51.",
+      year: "2026",
+      type: "PDF",
       url:
-        "https://planning.go.tz/publications/long-term-perceptive-plan-2026-27-2050-51",
-      source:
-        "Tume ya Taifa ya Mipango"
+        "https://www.planning.go.tz/uploads/documents/sw-1770714608-LTTP%20FINAL..pdf"
     },
 
     {
       id: "fydp4",
-      title: "Mpango wa Nne wa Maendeleo wa Taifa wa Miaka Mitano 2026/27–2030/31",
-      type: "Mpango wa Miaka Mitano",
+      title:
+        "Mpango wa Nne wa Maendeleo wa Miaka Mitano 2026/27–2030/31 (FYDP IV)",
       description:
-        "Mpango wa kati unaosaidia kuanza kutekeleza Dira 2050 kupitia vipaumbele vya maendeleo.",
+        "Mpango wa kwanza wa miaka mitano katika utekelezaji wa Dira 2050.",
+      year: "2026",
+      type: "PDF",
       url:
-        "https://planning.go.tz/",
-      source:
-        "Tume ya Taifa ya Mipango"
+        "https://www.planning.go.tz/publications/the-fourth-five-year-development-plan-2026-27-2030-31-fydp-iv"
     },
 
     {
-      id: "annual2026",
-      title: "Mpango wa Maendeleo wa Taifa wa Mwaka 2026/27",
-      type: "Mpango wa Mwaka",
+      id: "national-plan-2026",
+      title:
+        "Mpango wa Maendeleo wa Taifa wa Mwaka 2026/27",
       description:
-        "Mpango wa mwaka unaoweka hatua za utekelezaji, malengo, matokeo na viashiria vya maendeleo.",
+        "Mpango wa mwaka unaosaidia kutafsiri vipaumbele vya Dira 2050 katika utekelezaji wa mwaka 2026/27.",
+      year: "2026",
+      type: "PDF",
       url:
-        "https://www.planning.go.tz/uploads/documents/sw-1770720596-APDF_FINAL.pdf",
-      source:
-        "Tume ya Taifa ya Mipango"
+        "https://www.planning.go.tz/publications/national-development-plans"
     }
 
   ],
