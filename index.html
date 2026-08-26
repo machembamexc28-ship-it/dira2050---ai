@@ -378,38 +378,50 @@ function askAssistant() {
   // 2. SEARCH KWENYE KNOWLEDGE BASE
   // ==========================================
 
-  if (!bestMatch) {
+if (!bestMatch) {
 
-    dira2050Data.keyGoals.forEach(item => {
+  dira2050Data.keyGoals.forEach(item => {
 
-      let score = 0;
+    let score = 0;
 
-item.keywords.forEach(keyword => {
+    // Tafuta kwa keywords
+    item.keywords.forEach(keyword => {
 
-  const k = keyword
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .trim();
+      const k = keyword
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
 
-  if (q.includes(k)) {
-    score += 10;
-  }
+      if (q.includes(k)) {
+        score += 10;
+      }
 
-});
+    });
 
-if (item.questions) {
+    // Tafuta pia kwenye maswali ya mfano ya category
+    if (item.questions) {
 
-  item.questions.forEach(exampleQuestion => {
+      item.questions.forEach(exampleQuestion => {
 
-    const example = exampleQuestion
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .trim();
+        const example = exampleQuestion
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .trim();
 
-    if (q.includes(example)) {
-      score += 30;
+        if (q.includes(example)) {
+          score += 30;
+        }
+
+      });
+
+    }
+
+    // Chagua jibu lenye score kubwa
+    if (score > bestScore) {
+      bestScore = score;
+      bestMatch = item;
     }
 
   });
