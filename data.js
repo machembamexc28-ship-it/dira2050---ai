@@ -20,6 +20,7 @@ const dira2050Data = {
       id: "uchumi",
       category: "Uchumi",
       icon: "💰",
+
       keywords: [
         "uchumi",
         "kipato",
@@ -27,51 +28,60 @@ const dira2050Data = {
         "biashara",
         "uwekezaji"
       ],
+
+      questions: [
+        "tanzania inalenga uchumi wa aina gani",
+        "uchumi wa aina gani",
+        "dira 2050 inasemaje kuhusu uchumi"
+      ],
+
       content:
         "Tanzania inalenga kuwa na uchumi jumuishi, shindani na unaostahimili misukosuko, unaoinua viwango vya maisha ya wananchi na kupunguza umasikini."
     },
 
-{
-  id: "vijana",
-  category: "Vijana",
-  icon: "👥",
+    {
+      id: "vijana",
+      category: "Vijana",
+      icon: "👥",
 
-  keywords: [
-    "vijana",
-    "kijana",
-    "youth",
-    "ajira",
-    "kazi",
-    "nguvu kazi",
-    "fursa kwa vijana",
-    "ushiriki wa vijana",
-    "uwezeshaji wa vijana",
-    "maendeleo ya vijana"
-  ],
+      keywords: [
+        "vijana",
+        "kijana",
+        "youth",
+        "ajira",
+        "kazi",
+        "nguvu kazi",
+        "fursa kwa vijana",
+        "ushiriki wa vijana",
+        "uwezeshaji wa vijana",
+        "maendeleo ya vijana"
+      ],
 
-  questions: [
-    "vijana wana nafasi gani",
-    "vijana wananufaika vipi",
-    "dira 2050 inawahusu vipi vijana",
-    "nifanye nini kama kijana",
-    "kijana anawezaje kushiriki",
-    "vijana wanawezaje kushiriki",
-    "fursa gani zipo kwa vijana",
-    "dira 2050 ina fursa gani kwa vijana",
-    "vijana watapata nini",
-    "nafasi ya vijana katika dira 2050"
-  ],
+      questions: [
+        "vijana wana nafasi gani",
+        "vijana wananufaika vipi",
+        "dira 2050 inawahusu vipi vijana",
+        "nifanye nini kama kijana",
+        "kijana anawezaje kushiriki",
+        "vijana wanawezaje kushiriki",
+        "fursa gani zipo kwa vijana",
+        "dira 2050 ina fursa gani kwa vijana",
+        "vijana watapata nini",
+        "nafasi ya vijana katika dira 2050"
+      ],
 
-  content:
-    "Dira 2050 inatambua umuhimu wa vijana katika maendeleo ya kijamii na kiuchumi na inaweka msisitizo katika kuwawezesha vijana kutumia uwezo wao katika maendeleo ya taifa.",
+      content:
+        "Dira 2050 inatambua umuhimu wa vijana katika maendeleo ya kijamii na kiuchumi na inaweka msisitizo katika kuwawezesha vijana kutumia uwezo wao katika maendeleo ya taifa.",
 
-  action:
-    "Kijana anaweza kushiriki katika Dira 2050 kwa kujenga ujuzi, kutumia teknolojia na ubunifu, kuanzisha au kukuza shughuli za kiuchumi, na kushiriki katika shughuli za maendeleo ya jamii na taifa."
-},
+      action:
+        "Kijana anaweza kushiriki katika Dira 2050 kwa kujenga ujuzi, kutumia teknolojia na ubunifu, kuanzisha au kukuza shughuli za kiuchumi, na kushiriki katika shughuli za maendeleo ya jamii na taifa."
+    },
+
     {
       id: "teknolojia",
       category: "Sayansi, Teknolojia na Ubunifu",
       icon: "💡",
+
       keywords: [
         "teknolojia",
         "sayansi",
@@ -80,6 +90,14 @@ const dira2050Data = {
         "digital",
         "AI"
       ],
+
+      questions: [
+        "teknolojia ina nafasi gani",
+        "sayansi ina nafasi gani",
+        "ubunifu una nafasi gani",
+        "AI ina nafasi gani"
+      ],
+
       content:
         "Sayansi, teknolojia na ubunifu ni muhimu katika kuongeza tija, kujenga ujuzi, kutatua changamoto na kuchochea maendeleo ya Tanzania kuelekea 2050."
     },
@@ -88,12 +106,14 @@ const dira2050Data = {
       id: "afya",
       category: "Afya na Ustawi",
       icon: "🏥",
+
       keywords: [
         "afya",
         "ustawi",
         "hospitali",
         "huduma za afya"
       ],
+
       content:
         "Dira 2050 inalenga kuboresha ustawi na ubora wa maisha ya wananchi kama sehemu ya maendeleo ya watu."
     },
@@ -102,12 +122,14 @@ const dira2050Data = {
       id: "mazingira",
       category: "Mazingira",
       icon: "🌱",
+
       keywords: [
         "mazingira",
         "tabianchi",
         "mabadiliko ya tabianchi",
         "uhifadhi"
       ],
+
       content:
         "Dira 2050 inasisitiza jamii inayothamini na kuhifadhi mazingira na maendeleo endelevu kwa vizazi vya sasa na vijavyo."
     },
@@ -116,12 +138,14 @@ const dira2050Data = {
       id: "miji",
       category: "Miji na Maendeleo",
       icon: "🏙️",
+
       keywords: [
         "miji",
         "urban",
         "mipango miji",
         "vijijini"
       ],
+
       content:
         "Ukuaji wa miji unahitaji mipango madhubuti, jumuishi na shirikishi inayowiana kati ya maendeleo ya mijini na vijijini huku ikizingatia uhifadhi wa mazingira."
     },
@@ -130,6 +154,7 @@ const dira2050Data = {
       id: "usawa",
       category: "Haki na Usawa",
       icon: "⚖️",
+
       keywords: [
         "haki",
         "usawa",
@@ -137,6 +162,7 @@ const dira2050Data = {
         "ulemavu",
         "binadamu"
       ],
+
       content:
         "Dira 2050 inaweka msisitizo katika haki za binadamu, usawa wa kijinsia, kuwawezesha vijana na watu wenye ulemavu, pamoja na ustawi kwa wote."
     },
@@ -145,12 +171,14 @@ const dira2050Data = {
       id: "ujitegemezi",
       category: "Ujitegemezi",
       icon: "🇹🇿",
+
       keywords: [
         "ujitegemezi",
         "kujitegemea",
         "taifa",
         "Tanzania"
       ],
+
       content:
         "Dira 2050 inalenga kujenga Tanzania yenye uwezo wa kujitegemea, ustahimilivu na uwezo wa kukabiliana na mabadiliko ya ndani na ya kimataifa."
     }
