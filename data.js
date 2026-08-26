@@ -145,7 +145,10 @@ action:
       ],
 
       content:
-        "Sayansi, teknolojia na ubunifu ni muhimu katika kuongeza tija, kujenga ujuzi, kutatua changamoto na kuchochea maendeleo ya Tanzania kuelekea 2050."
+  "Sayansi, teknolojia na ubunifu ni muhimu katika kuongeza tija, kujenga ujuzi, kutatua changamoto na kuchochea maendeleo ya Tanzania kuelekea 2050.",
+
+action:
+  "Mtanzania anaweza kushiriki kwa kujifunza na kutumia teknolojia, kuibua mawazo mapya, kutengeneza suluhisho za kidijitali na kutumia ubunifu kutatua changamoto za jamii na kuongeza tija."
     },
 
     {
