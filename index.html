@@ -190,13 +190,62 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
     footer {
       text-align: center;
       padding: 30px 15px;
       color: #667;
       font-size: 13px;
     }
+    /* ==========================================
+   OFFICIAL DOCUMENT CARDS
+========================================== */
+
+.documents-container {
+  display: grid;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.document-card {
+  background: #ffffff;
+  border: 1px solid #dce9e2;
+  border-radius: 15px;
+  padding: 18px;
+  transition: 0.2s;
+}
+
+.document-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.document-card h3 {
+  color: #006b3c;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.document-card p {
+  color: #667;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.document-button {
+  display: inline-block;
+  background: #006b3c;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.document-button:hover {
+  background: #004d2b;
+}
   </style>
 </head>
 
@@ -468,20 +517,22 @@ const documentKeywords = [
   "pdf",
   "soma dira",
   "kusoma dira",
-  "dira document",
   "chanzo rasmi",
   "mpango elekezi",
-  "fydp",
-  "mpango wa maendeleo"
+  "fydp"
 ];
 
-const wantsDocuments = documentKeywords.some(keyword =>
-  q.includes(keyword)
-);
+const wantsDocuments =
+  documentKeywords.some(keyword =>
+    q.includes(keyword)
+  );
 
 if (wantsDocuments) {
 
-  bestMatch = {
+  showOfficialDocuments();
+  return;
+
+}
     category: "Nyaraka Rasmi za Dira 2050",
     icon: "📚",
     content: `
@@ -756,7 +807,60 @@ function setQuestion(text) {
   askAssistant();
 
 }
+function showOfficialDocuments() {
 
+  const response =
+    document.getElementById("response");
+
+  response.style.display = "block";
+
+  let html = `
+    📚 <strong>Dira2050 AI — Nyaraka Rasmi</strong>
+
+    <br><br>
+
+    <div class="documents-container">
+  `;
+
+  dira2050Data.officialDocuments.forEach(doc => {
+
+    html += `
+      <div class="document-card">
+
+        <h3>
+          ${doc.title}
+        </h3>
+
+        <p>
+          ${doc.description}
+        </p>
+
+        <a
+          href="${doc.url}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="document-button"
+        >
+          📖 Fungua Hati
+        </a>
+
+      </div>
+    `;
+
+  });
+
+  html += `
+    </div>
+
+    <br>
+
+    <small>
+      📚 Chanzo: Tume ya Taifa ya Mipango
+    </small>
+  `;
+
+  response.innerHTML = html;
+}
 </script>
 
 </body>
