@@ -399,24 +399,32 @@ if (!bestMatch) {
 
     });
 
-    // Tafuta pia kwenye maswali ya mfano ya category
-if (item.questions) {
+// Tafuta keywords zinazohusiana na swali
+item.keywords.forEach(keyword => {
 
-  item.questions.forEach(exampleQuestion => {
+  const k = keyword
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
 
-    const example = exampleQuestion
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .trim();
+  // Neno likipatikana kwenye swali
+  if (q.includes(k)) {
+    score += 10;
+  }
 
-    if (q.includes(example)) {
-      score += 30;
+  // Kama keyword ni ndefu na sehemu yake imepatikana
+  const words = k.split(" ");
+
+  words.forEach(word => {
+
+    if (word.length >= 4 && q.includes(word)) {
+      score += 3;
     }
 
   });
 
-}
+});
 
 if (score > bestScore) {
   bestScore = score;
