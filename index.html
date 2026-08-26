@@ -395,83 +395,97 @@ function askAssistant() {
   }
 
 
-  // ==========================================
-  // 2. SEARCH KNOWLEDGE BASE
-  // ==========================================
+// ==========================================
+// 2. SMART SEARCH KWENYE KNOWLEDGE BASE
+// ==========================================
 
-  if (!bestMatch) {
+if (!bestMatch) {
 
-    dira2050Data.keyGoals.forEach(item => {
+  dira2050Data.keyGoals.forEach(item => {
 
-      let score = 0;
+    let score = 0;
 
+    // ------------------------------------------
+    // A. LINGANISHA KEYWORDS
+    // ------------------------------------------
 
-      // --------------------------------------
-      // KEYWORDS
-      // --------------------------------------
+    item.keywords.forEach(keyword => {
 
-      if (item.keywords) {
+      const k = keyword
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
 
-        item.keywords.forEach(keyword => {
-
-          const k = keyword
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .trim();
-
-          if (q.includes(k)) {
-
-            score += 10;
-
-          }
-
-        });
-
+      // Keyword nzima
+      if (q.includes(k)) {
+        score += 10;
       }
 
+      // Maneno yaliyomo ndani ya keyword
+      const words = k.split(/\s+/);
 
-      // --------------------------------------
-      // SAMPLE QUESTIONS
-      // --------------------------------------
+      words.forEach(word => {
 
-      if (item.questions) {
+        if (word.length >= 4 && q.includes(word)) {
+          score += 3;
+        }
 
-        item.questions.forEach(exampleQuestion => {
-
-          const example = exampleQuestion
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/[?.,!]/g, "")
-            .trim();
-
-
-          if (q.includes(example)) {
-
-            score += 30;
-
-          }
-
-        });
-
-      }
-
-
-      // --------------------------------------
-      // CHAGUA BEST MATCH
-      // --------------------------------------
-
-      if (score > bestScore) {
-
-        bestScore = score;
-        bestMatch = item;
-
-      }
+      });
 
     });
 
-  }
+
+    // ------------------------------------------
+    // B. LINGANISHA MASWALI YA MFANO
+    // ------------------------------------------
+
+    if (item.questions) {
+
+      item.questions.forEach(exampleQuestion => {
+
+        const example = exampleQuestion
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[?.,!]/g, "")
+          .trim();
+
+        // Swali lote likifanana
+        if (q.includes(example)) {
+          score += 30;
+        }
+
+        // Linganisha maneno muhimu ya swali
+        const exampleWords = example.split(/\s+/);
+
+        exampleWords.forEach(word => {
+
+          if (word.length >= 4 && q.includes(word)) {
+            score += 2;
+          }
+
+        });
+
+      });
+
+    }
+
+
+    // ------------------------------------------
+    // C. CHAGUA MATCH BORA
+    // ------------------------------------------
+
+    if (score > bestScore) {
+
+      bestScore = score;
+      bestMatch = item;
+
+    }
+
+  });
+
+}
 
 
   console.log("BEST MATCH:", bestMatch);
