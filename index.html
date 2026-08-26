@@ -384,28 +384,37 @@ function askAssistant() {
 
       let score = 0;
 
-      item.keywords.forEach(keyword => {
+item.keywords.forEach(keyword => {
 
-        const k = keyword
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .trim();
+  const k = keyword
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
 
-        if (q.includes(k)) {
-          score += 10;
-        }
-
-      });
-
-      if (score > bestScore) {
-        bestScore = score;
-        bestMatch = item;
-      }
-
-    });
-
+  if (q.includes(k)) {
+    score += 10;
   }
+
+});
+
+if (item.questions) {
+
+  item.questions.forEach(exampleQuestion => {
+
+    const example = exampleQuestion
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+
+    if (q.includes(example)) {
+      score += 30;
+    }
+
+  });
+
+}
 
   console.log("BEST MATCH:", bestMatch);
   console.log("BEST SCORE:", bestScore);
