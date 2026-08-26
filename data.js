@@ -30,9 +30,68 @@ const dira2050Data = {
       ],
 
       content:
-        "Tanzania inalenga kuwa na uchumi jumuishi, shindani na unaostahimili misukosuko, unaoinua viwango vya maisha ya wananchi na kupunguza umasikini."
-    },
+  "Tanzania inalenga kuwa na uchumi jumuishi, shindani na unaostahimili misukosuko, unaoinua viwango vya maisha ya wananchi na kupunguza umasikini.",
 
+action:
+  "Wananchi wanaweza kushiriki kwa kujenga ujuzi wa kiuchumi, kuanzisha na kukuza biashara, kuongeza uzalishaji, kutumia teknolojia, kutafuta fursa za uwekezaji na kuchangia katika uchumi wa taifa."
+    },
+{
+  id: "viwanda",
+  category: "Viwanda",
+  icon: "🏭",
+
+  keywords: [
+    "viwanda",
+    "kiwanda",
+    "uzalishaji",
+    "manufacturing",
+    "uchakataji",
+    "malighafi"
+  ],
+
+  questions: [
+    "dira 2050 inasemaje kuhusu viwanda",
+    "viwanda vina nafasi gani",
+    "tanzania inalenga nini kwenye viwanda",
+    "uzalishaji una umuhimu gani"
+  ],
+
+  content:
+    "Dira 2050 inalenga kuimarisha uzalishaji na kuongeza thamani ya rasilimali na bidhaa za Tanzania, huku sekta ya viwanda ikichangia ukuaji wa uchumi, ajira na ushindani.",
+
+  action:
+    "Wananchi na wafanyabiashara wanaweza kushiriki kwa kuongeza uzalishaji, kuchakata malighafi ndani ya Tanzania, kutumia teknolojia, kuanzisha au kukuza viwanda na kuongeza thamani ya bidhaa za ndani."
+},
+
+{
+  id: "elimu",
+  category: "Elimu na Ujuzi",
+  icon: "🎓",
+
+  keywords: [
+    "elimu",
+    "ujuzi",
+    "maarifa",
+    "wanafunzi",
+    "skills",
+    "kusoma",
+    "mafunzo"
+  ],
+
+  questions: [
+    "elimu ina umuhimu gani",
+    "elimu na ujuzi vina umuhimu gani",
+    "dira 2050 inasemaje kuhusu elimu",
+    "ujuzi una nafasi gani",
+    "wanafunzi wanawezaje kushiriki"
+  ],
+
+  content:
+    "Dira 2050 inalenga kuwa na wananchi wenye maarifa na ujuzi unaohitajika katika karne ya 21 ili waweze kushiriki kikamilifu katika shughuli za maendeleo na uchumi wa taifa.",
+
+  action:
+    "Mwananchi anaweza kujiendeleza kwa kupata elimu na ujuzi unaohitajika, kujifunza teknolojia mpya, kuongeza ujuzi wa vitendo na kutumia maarifa katika kutatua changamoto za jamii na uchumi."
+},
     {
       id: "vijana",
       category: "Vijana",
