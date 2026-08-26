@@ -31,7 +31,7 @@ const dira2050Data = {
         "Tanzania inalenga kuwa na uchumi jumuishi, shindani na unaostahimili misukosuko, unaoinua viwango vya maisha ya wananchi na kupunguza umasikini."
     },
 
- {
+{
   id: "vijana",
   category: "Vijana",
   icon: "👥",
@@ -61,10 +61,6 @@ const dira2050Data = {
     "vijana watapata nini",
     "nafasi ya vijana katika dira 2050"
   ],
-
-  content:
-    "Dira 2050 inatambua umuhimu wa vijana katika maendeleo ya kijamii na kiuchumi na inaweka msisitizo katika kuwawezesha vijana kutumia uwezo wao katika maendeleo ya taifa."
-},
 
   content:
     "Dira 2050 inatambua umuhimu wa vijana katika maendeleo ya kijamii na kiuchumi na inaweka msisitizo katika kuwawezesha vijana kutumia uwezo wao katika maendeleo ya taifa.",
