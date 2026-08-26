@@ -454,7 +454,74 @@ console.log("INTENT:", intent);
 
 let bestMatch = null;
 let bestScore = 0;
+// ==========================================
+// 0. NYARAKA RASMI ZA DIRA 2050
+// ==========================================
 
+const documentKeywords = [
+  "nyaraka",
+  "nyaraka rasmi",
+  "hati",
+  "hati rasmi",
+  "document",
+  "documents",
+  "pdf",
+  "soma dira",
+  "kusoma dira",
+  "dira document",
+  "chanzo rasmi",
+  "mpango elekezi",
+  "fydp",
+  "mpango wa maendeleo"
+];
+
+const wantsDocuments = documentKeywords.some(keyword =>
+  q.includes(keyword)
+);
+
+if (wantsDocuments) {
+
+  bestMatch = {
+    category: "Nyaraka Rasmi za Dira 2050",
+    icon: "📚",
+    content: `
+      <strong>📚 Nyaraka rasmi zinazohusiana na Dira 2050</strong>
+
+      <br><br>
+
+      📘 <strong>Dira ya Taifa ya Maendeleo 2050</strong><br>
+      Hati kuu inayoeleza maono, mwelekeo na malengo ya Tanzania kuelekea 2050.
+      <br>
+      <a href="${dira2050Data.sourceUrl}" target="_blank">
+        🔗 Fungua Dira 2050
+      </a>
+
+      <br><br>
+
+      📗 <strong>Mpango Elekezi wa Maendeleo wa Muda Mrefu
+      2026/27–2050/51</strong><br>
+      Mpango unaoelekeza utekelezaji wa Dira 2050 kwa muda mrefu.
+
+      <br><br>
+
+      📕 <strong>Mpango wa Nne wa Maendeleo wa Miaka Mitano
+      2026/27–2030/31 (FYDP IV)</strong><br>
+      Mpango wa kwanza wa miaka mitano katika safari ya utekelezaji wa Dira 2050.
+
+      <br><br>
+
+      📙 <strong>Mpango wa Maendeleo wa Taifa 2026/27</strong><br>
+      Mpango wa mwaka unaotafsiri vipaumbele vya utekelezaji katika hatua za mwaka.
+
+      <br><br>
+
+      🌐 <strong>Chanzo rasmi:</strong><br>
+      Tume ya Taifa ya Mipango
+    `
+  };
+
+  bestScore = 100;
+}
 
   // ================================
   // 1. MASWALI YA JUMLA
