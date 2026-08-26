@@ -327,68 +327,93 @@ function askAssistant() {
     return;
   }
 
-const q = question
-  .toLowerCase()
-  .normalize("NFD")
-  .replace(/[\u0300-\u036f]/g, "")
-  .replace(/[?.,!]/g, "")
-  .trim();
+  // Safisha swali
+  const q = question
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[?.,!]/g, "")
+    .trim();
 
-let bestMatch = null;
-let bestScore = 0;
+  console.log("SWALI:", q);
+  console.log("DATA:", dira2050Data.keyGoals);
 
-console.log("SWALI:", q);
-console.log("DATA:", dira2050Data.keyGoals);
+  let bestMatch = null;
+  let bestScore = 0;
 
-dira2050Data.keyGoals.forEach(item => {
+  // ==========================================
+  // 1. MASWALI YA JUMLA KUHUSU DIRA 2050
+  // ==========================================
 
-  let score = 0;
+  const generalQuestions = [
+    "dira 2050 inalenga nini",
+    "lengo la dira 2050",
+    "malengo ya dira 2050",
+    "dira ya 2050 inalenga nini",
+    "tanzania inalenga nini 2050",
+    "tanzania inataka kufikia nini 2050",
+    "maono ya tanzania 2050",
+    "maono ya dira 2050",
+    "dira 2050 ni nini"
+  ];
 
-  item.keywords.forEach(keyword => {
+  const isGeneralQuestion =
+    generalQuestions.some(text => q.includes(text));
 
-    const k = keyword
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .trim();
-
-    if (q.includes(k)) {
-      score += 10;
-    }
-  });
-
-  if (score > bestScore) {
-    bestScore = score;
-    bestMatch = item;
-  }
-
-});
-
-console.log("BEST MATCH:", bestMatch);
-console.log("BEST SCORE:", bestScore);
-if (!bestMatch) {
-
-  if (
-    q.includes("inalenga nini") ||
-    q.includes("dira2050") ||
-    q.includes("dira 2050") ||
-    q.includes("maono") ||
-    q.includes("tanzania ya 2050")
-  ) {
+  if (isGeneralQuestion) {
 
     bestMatch = {
-      category: "Maono na Mwelekeo wa Dira 2050",
+      category: "Maono na Lengo Kuu la Dira 2050",
       icon: "🇹🇿",
       content:
-        dira2050Data.vision +
-        "<br><br>" +
-        dira2050Data.introduction
+        dira2050Data.introduction +
+        "<br><br><strong>Maono:</strong><br>" +
+        dira2050Data.vision
     };
+
+    bestScore = 100;
+  }
+
+  // ==========================================
+  // 2. SEARCH KWENYE KNOWLEDGE BASE
+  // ==========================================
+
+  if (!bestMatch) {
+
+    dira2050Data.keyGoals.forEach(item => {
+
+      let score = 0;
+
+      item.keywords.forEach(keyword => {
+
+        const k = keyword
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .trim();
+
+        if (q.includes(k)) {
+          score += 10;
+        }
+
+      });
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestMatch = item;
+      }
+
+    });
 
   }
 
-}
-  console.log("AFTER FALLBACK:", bestMatch);
+  console.log("BEST MATCH:", bestMatch);
+  console.log("BEST SCORE:", bestScore);
+
+  // ==========================================
+  // 3. ONESHA JIBU
+  // ==========================================
+
   response.style.display = "block";
 
   if (bestMatch) {
@@ -419,15 +444,16 @@ if (!bestMatch) {
 
       "Jaribu kuuliza kuhusu:<br>" +
 
-      "🎓 Elimu na ujuzi<br>" +
+      "🎯 Lengo la Dira 2050<br>" +
       "👥 Vijana<br>" +
       "💡 Teknolojia na ubunifu<br>" +
+      "🎓 Elimu na ujuzi<br>" +
       "💰 Uchumi<br>" +
       "🏭 Viwanda<br>" +
       "🏥 Afya<br>" +
       "🌱 Mazingira<br>" +
       "⚖️ Haki na usawa<br>" +
-      "🚀 Fursa";
+      "🏙️ Miji na maendeleo";
 
   }
 }
