@@ -34,7 +34,13 @@ focusAreas: [
         "biashara",
         "uwekezaji"
       ],
-
+focusAreas: [
+  "Uchumi jumuishi na shindani",
+  "Biashara na ujasiriamali",
+  "Uwekezaji",
+  "Ajira na kipato",
+  "Uzalishaji na kuongeza thamani"
+],
       content:
   "Tanzania inalenga kuwa na uchumi jumuishi, shindani na unaostahimili misukosuko, unaoinua viwango vya maisha ya wananchi na kupunguza umasikini.",
 
@@ -54,7 +60,13 @@ action:
     "uchakataji",
     "malighafi"
   ],
-
+focusAreas: [
+  "Uzalishaji wa ndani",
+  "Uchakataji wa malighafi",
+  "Kuongeza thamani ya bidhaa",
+  "Ajira na ujuzi",
+  "Teknolojia katika uzalishaji"
+],
   questions: [
     "dira 2050 inasemaje kuhusu viwanda",
     "viwanda vina nafasi gani",
@@ -83,7 +95,13 @@ action:
     "kusoma",
     "mafunzo"
   ],
-
+focusAreas: [
+  "Elimu bora",
+  "Ujuzi wa karne ya 21",
+  "Mafunzo ya vitendo",
+  "Teknolojia katika elimu",
+  "Kujifunza endelevu"
+],
   questions: [
     "elimu ina umuhimu gani",
     "elimu na ujuzi vina umuhimu gani",
@@ -121,7 +139,13 @@ focusAreas: [
         "uwezeshaji wa vijana",
         "maendeleo ya vijana"
       ],
-
+focusAreas: [
+  "Elimu na ujuzi",
+  "Ajira na ujasiriamali",
+  "Sayansi, teknolojia na ubunifu",
+  "Ushiriki wa vijana katika maendeleo",
+  "Kutumia vipaji na uwezo wa vijana"
+],
 questions: [
 
   "vijana wana nafasi gani",
@@ -191,7 +215,13 @@ focusAreas: [
         "digital",
         "AI"
       ],
-
+focusAreas: [
+  "Sayansi na teknolojia",
+  "Ubunifu",
+  "Uchumi wa kidijitali",
+  "Artificial Intelligence (AI)",
+  "Ujuzi wa kidijitali"
+],
       content:
   "Sayansi, teknolojia na ubunifu ni muhimu katika kuongeza tija, kujenga ujuzi, kutatua changamoto na kuchochea maendeleo ya Tanzania kuelekea 2050.",
 
@@ -226,7 +256,13 @@ action:
         "mabadiliko ya tabianchi",
         "uhifadhi"
       ],
-
+focusAreas: [
+  "Uhifadhi wa mazingira",
+  "Mabadiliko ya tabianchi",
+  "Maendeleo endelevu",
+  "Matumizi endelevu ya rasilimali",
+  "Mazingira kwa vizazi vijavyo"
+],
       content:
         "Dira 2050 inasisitiza jamii inayothamini na kuhifadhi mazingira na maendeleo endelevu kwa vizazi vya sasa na vijavyo."
     },
@@ -242,7 +278,13 @@ action:
         "mipango miji",
         "vijijini"
       ],
-
+focusAreas: [
+  "Mipango miji",
+  "Ukuaji endelevu wa miji",
+  "Maendeleo ya vijijini",
+  "Miundombinu",
+  "Mazingira na makazi"
+],
       content:
         "Ukuaji wa miji unahitaji mipango madhubuti, jumuishi na shirikishi inayowiana kati ya maendeleo ya mijini na vijijini huku ikizingatia uhifadhi wa mazingira."
     },
@@ -259,7 +301,13 @@ action:
         "ulemavu",
         "binadamu"
       ],
-
+focusAreas: [
+  "Haki za binadamu",
+  "Usawa wa kijinsia",
+  "Uwezeshaji wa vijana",
+  "Ushirikishwaji wa watu wenye ulemavu",
+  "Ustawi kwa wote"
+],
       content:
         "Dira 2050 inaweka msisitizo katika haki za binadamu, usawa wa kijinsia, kuwawezesha vijana na watu wenye ulemavu, pamoja na ustawi kwa wote."
     },
@@ -275,7 +323,13 @@ action:
         "taifa",
         "Tanzania"
       ],
-
+focusAreas: [
+  "Uwezo wa taifa kujitegemea",
+  "Ustahimilivu",
+  "Uzalishaji wa ndani",
+  "Usalama wa uchumi",
+  "Kukabiliana na mabadiliko ya kimataifa"
+],
       content:
         "Dira 2050 inalenga kujenga Tanzania yenye uwezo wa kujitegemea, ustahimilivu na uwezo wa kukabiliana na mabadiliko ya ndani na ya kimataifa."
     }
