@@ -390,7 +390,112 @@ function detectIntent(q) {
   ) {
     return "general";
   }
+function detectMultipleIntents(q) {
 
+  const intents = [];
+
+  const intentRules = {
+
+    vijana: [
+      "kijana",
+      "vijana",
+      "youth",
+      "ajira kwa vijana",
+      "fursa kwa vijana"
+    ],
+
+    uchumi: [
+      "uchumi",
+      "biashara",
+      "uwekezaji",
+      "kipato",
+      "ujasiriamali",
+      "entrepreneurship"
+    ],
+
+    teknolojia: [
+      "teknolojia",
+      "technology",
+      "digital",
+      "ai",
+      "artificial intelligence",
+      "sayansi",
+      "innovation",
+      "ubunifu"
+    ],
+
+    mazingira: [
+      "mazingira",
+      "tabianchi",
+      "mabadiliko ya tabianchi",
+      "uhifadhi",
+      "green",
+      "climate"
+    ],
+
+    elimu: [
+      "elimu",
+      "ujuzi",
+      "mwanafunzi",
+      "maarifa",
+      "mafunzo",
+      "skills"
+    ],
+
+    viwanda: [
+      "viwanda",
+      "uzalishaji",
+      "kiwanda",
+      "manufacturing",
+      "uchakataji",
+      "malighafi"
+    ],
+
+    afya: [
+      "afya",
+      "hospitali",
+      "huduma za afya",
+      "ustawi"
+    ],
+
+    miji: [
+      "miji",
+      "mipango miji",
+      "urban",
+      "vijijini"
+    ],
+
+    usawa: [
+      "haki",
+      "usawa",
+      "kijinsia",
+      "ulemavu",
+      "binadamu"
+    ],
+
+    ujitegemezi: [
+      "ujitegemezi",
+      "kujitegemea",
+      "ustahimilivu"
+    ]
+
+  };
+
+  Object.keys(intentRules).forEach(intent => {
+
+    const matched = intentRules[intent].some(keyword =>
+      q.includes(normalizeText(keyword))
+    );
+
+    if (matched) {
+      intents.push(intent);
+    }
+
+  });
+
+  return intents;
+
+}
   // 👥 VIJANA
   if (
     q.includes("kijana") ||
@@ -577,7 +682,9 @@ console.log("SWALI:", q);
 console.log("DATA:", dira2050Data.keyGoals);
 
 const intent = detectIntent(q);
+const multipleIntents = detectMultipleIntents(q);
 
+console.log("MULTI-INTENTS:", multipleIntents);
 console.log("INTENT:", intent);
 
 let bestMatch = null;
