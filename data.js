@@ -122,18 +122,47 @@ focusAreas: [
         "maendeleo ya vijana"
       ],
 
-      questions: [
-        "vijana wana nafasi gani",
-        "vijana wananufaika vipi",
-        "dira 2050 inawahusu vipi vijana",
-        "nifanye nini kama kijana",
-        "kijana anawezaje kushiriki",
-        "vijana wanawezaje kushiriki",
-        "fursa gani zipo kwa vijana",
-        "dira 2050 ina fursa gani kwa vijana",
-        "vijana watapata nini",
-        "nafasi ya vijana katika dira 2050"
-      ],
+questions: [
+
+  "vijana wana nafasi gani",
+
+  "vijana wananufaika vipi",
+
+  "dira 2050 inawahusu vipi vijana",
+
+  "nifanye nini kama kijana",
+
+  "kijana anawezaje kushiriki",
+
+  "vijana wanawezaje kushiriki",
+
+  "fursa gani zipo kwa vijana",
+
+  "dira 2050 ina fursa gani kwa vijana",
+
+  "vijana watapata nini",
+
+  "nafasi ya vijana katika dira 2050",
+
+  "mimi kama kijana nifanye nini",
+
+  "kijana anaweza kufanya nini",
+
+  "ninawezaje kushiriki katika dira 2050",
+
+  "ninawezaje kuchangia maendeleo ya tanzania",
+
+  "dira 2050 inanihusu vipi kama kijana",
+
+  "kijana ana nafasi gani katika maendeleo",
+
+  "vijana wanawezaje kuchangia maendeleo",
+
+  "fursa za vijana katika dira 2050",
+
+  "kijana anawezaje kuchangia tanzania ya 2050"
+
+],
 
       content:
         "Dira 2050 inatambua umuhimu wa vijana katika maendeleo ya kijamii na kiuchumi na inaweka msisitizo katika kuwawezesha vijana kutumia uwezo wao katika maendeleo ya taifa.",
