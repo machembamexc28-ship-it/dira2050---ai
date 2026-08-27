@@ -20,7 +20,13 @@ const dira2050Data = {
       id: "uchumi",
       category: "Uchumi",
       icon: "💰",
-
+focusAreas: [
+  "Uchumi jumuishi na shindani",
+  "Biashara na uwekezaji",
+  "Viwanda na uzalishaji",
+  "Kuongeza kipato na kupunguza umasikini",
+  "Matumizi ya teknolojia kuongeza tija"
+],
       keywords: [
         "uchumi",
         "kipato",
@@ -96,7 +102,13 @@ action:
       id: "vijana",
       category: "Vijana",
       icon: "👥",
-
+focusAreas: [
+  "Elimu na ujuzi",
+  "Ajira na ujasiriamali",
+  "Sayansi, teknolojia na ubunifu",
+  "Ushiriki wa vijana katika maendeleo",
+  "Kutumia vipaji na uwezo wa vijana"
+],
       keywords: [
         "vijana",
         "kijana",
@@ -134,7 +146,14 @@ action:
       id: "teknolojia",
       category: "Sayansi, Teknolojia na Ubunifu",
       icon: "💡",
-
+focusAreas: [
+  "Sayansi na teknolojia",
+  "Teknolojia za kidijitali",
+  "Ubunifu na uvumbuzi",
+  "STEM",
+  "Bayoteknolojia",
+  "Kuongeza tija na ushindani"
+],
       keywords: [
         "teknolojia",
         "sayansi",
