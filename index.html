@@ -333,7 +333,9 @@ footer {
     <button onclick="setQuestion('Tanzania inalenga uchumi wa aina gani?')">
       💰 Uchumi
     </button>
-
+<button onclick="showOfficialDocuments()">
+  📚 Nyaraka Rasmi
+</button>
   </div>
 
   <div class="chat-box">
@@ -705,15 +707,31 @@ if (item.id === intent) {
     // SOURCE
     // ------------------------------
 
-    answer +=
+answer +=
 
-      "<br><br>" +
+  "<br><br>" +
 
-      "<small>📚 Chanzo: " +
+  "<div style='padding:12px; background:#ffffff; border:1px solid #dce9e2; border-radius:12px;'>" +
 
-      dira2050Data.officialSource +
+  "📚 <strong>Chanzo rasmi</strong><br>" +
 
-      "</small>";
+  "<span style='font-size:13px;'>" +
+
+  dira2050Data.officialSource +
+
+  "</span><br><br>" +
+
+  "<a " +
+  "href='" + dira2050Data.sourceUrl + "' " +
+  "target='_blank' " +
+  "rel='noopener noreferrer' " +
+  "style='display:inline-block; background:#006b3c; color:white; text-decoration:none; padding:9px 14px; border-radius:9px; font-size:13px; font-weight:bold;'>" +
+
+  "📖 Fungua Dira 2050" +
+
+  "</a>" +
+
+  "</div>";
 
 
     response.innerHTML = answer;
