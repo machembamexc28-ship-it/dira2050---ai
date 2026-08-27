@@ -366,6 +366,17 @@ footer {
 <script>
 
 console.log("Dira2050 AI imeanza...");
+  function normalizeText(text) {
+
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[?.,!;:()"'`]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+}
 function detectIntent(q) {
 
   // 🎯 LENGO KUU
@@ -560,12 +571,7 @@ function askAssistant() {
   // SAFISHA SWALI
   // ================================
 
-  const q = question
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[?.,!]/g, "")
-    .trim();
+const q = normalizeText(question);
 
 console.log("SWALI:", q);
 console.log("DATA:", dira2050Data.keyGoals);
@@ -656,80 +662,98 @@ if (wantsDocuments) {
   // 2. SEARCH KNOWLEDGE BASE
   // ================================
 
-  if (!bestMatch) {
+// ================================
+// 2. SMART KNOWLEDGE BASE SEARCH
+// ================================
 
-    dira2050Data.keyGoals.forEach(item => {
+if (!bestMatch) {
 
-      let score = 0;
-      
-if (item.id === intent) {
-  score += 50;
-}
+  dira2050Data.keyGoals.forEach(item => {
 
-      // ------------------------------
-      // KEYWORDS
-      // ------------------------------
+    let score = 0;
+
+    // ------------------------------
+    // INTENT MATCH
+    // ------------------------------
+
+    if (item.id === intent) {
+      score += 50;
+    }
+
+    // ------------------------------
+    // KEYWORD MATCH
+    // ------------------------------
+
+    if (item.keywords) {
 
       item.keywords.forEach(keyword => {
 
-        const k = keyword
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .trim();
+        const k = normalizeText(keyword);
 
-
+        // Exact phrase
         if (q.includes(k)) {
-
-          score += 10;
-
+          score += 15;
         }
 
-      });
+        // Word-by-word match
+        const words = k.split(" ");
 
+        words.forEach(word => {
 
-      // ------------------------------
-      // SAMPLE QUESTIONS
-      // ------------------------------
-
-      if (item.questions) {
-
-        item.questions.forEach(exampleQuestion => {
-
-          const example = exampleQuestion
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/[?.,!]/g, "")
-            .trim();
-
-
-          if (q.includes(example)) {
-
-            score += 30;
-
+          if (word.length >= 3 && q.includes(word)) {
+            score += 3;
           }
 
         });
 
-      }
+      });
 
+    }
 
-      // ------------------------------
-      // CHAGUA BEST MATCH
-      // ------------------------------
+    // ------------------------------
+    // SAMPLE QUESTION MATCH
+    // ------------------------------
 
-      if (score > bestScore) {
+    if (item.questions) {
 
-        bestScore = score;
+      item.questions.forEach(exampleQuestion => {
 
-        bestMatch = item;
+        const example = normalizeText(exampleQuestion);
 
-      }
+        // Swali lote linafanana
+        if (q.includes(example) || example.includes(q)) {
+          score += 40;
+        }
 
-    });
+        // Maneno muhimu ya swali
+        const words = example.split(" ");
 
-  }
+        words.forEach(word => {
+
+          if (word.length >= 4 && q.includes(word)) {
+            score += 2;
+          }
+
+        });
+
+      });
+
+    }
+
+    // ------------------------------
+    // CHAGUA BEST MATCH
+    // ------------------------------
+
+    if (score > bestScore) {
+
+      bestScore = score;
+      bestMatch = item;
+
+    }
+
+  });
+
+}
 
 
   console.log("BEST MATCH:", bestMatch);
