@@ -1180,7 +1180,9 @@ if (bestMatch) {
   // Hatua
   // Chanzo rasmi
 
-  response.innerHTML = renderKnowledge(bestMatch);
+ response.innerHTML =
+  renderKnowledge(bestMatch) +
+  renderSuggestedQuestions(bestMatch);
 
 } else {
 
@@ -1209,7 +1211,101 @@ if (bestMatch) {
 }
 
 } // ← HII NDIYO } ILIYOKUWA IMEKOSEKANA
+// ==========================================
+// 💡 SUGGESTED QUESTIONS
+// ==========================================
 
+function renderSuggestedQuestions(item) {
+
+  const suggestions = [];
+
+  if (item.id === "vijana") {
+    suggestions.push(
+      "Vijana wanawezaje kupata fursa kupitia Dira 2050?",
+      "Dira 2050 inasemaje kuhusu ajira za vijana?",
+      "Elimu na ujuzi vinawezaje kumsaidia kijana?"
+    );
+  }
+
+  else if (item.id === "uchumi") {
+    suggestions.push(
+      "Tanzania inalenga uchumi wa aina gani?",
+      "Biashara zina nafasi gani katika Dira 2050?",
+      "Ninawezaje kuchangia uchumi wa Tanzania?"
+    );
+  }
+
+  else if (item.id === "teknolojia") {
+    suggestions.push(
+      "AI inaweza kusaidiaje Tanzania?",
+      "Ubunifu una nafasi gani katika Dira 2050?",
+      "Vijana wanawezaje kutumia teknolojia?"
+    );
+  }
+
+  else if (item.id === "elimu") {
+    suggestions.push(
+      "Dira 2050 inalenga ujuzi gani?",
+      "Elimu ina nafasi gani katika maendeleo?",
+      "Mwanafunzi anawezaje kuchangia Dira 2050?"
+    );
+  }
+
+  else if (item.id === "mazingira") {
+    suggestions.push(
+      "Dira 2050 inasemaje kuhusu mabadiliko ya tabianchi?",
+      "Tunawezaje kulinda mazingira?",
+      "Mazingira yana nafasi gani katika maendeleo?"
+    );
+  }
+
+  else {
+    suggestions.push(
+      "Vijana wana nafasi gani katika Dira 2050?",
+      "Teknolojia ina nafasi gani katika Dira 2050?",
+      "Tanzania inalenga uchumi wa aina gani?"
+    );
+  }
+
+  return `
+    <div style="
+      margin-top:20px;
+      padding-top:15px;
+      border-top:1px solid #dce9e2;
+    ">
+
+      <strong>💡 Unaweza pia kuuliza:</strong>
+
+      <div style="
+        display:grid;
+        gap:8px;
+        margin-top:10px;
+      ">
+
+        ${suggestions.map(question => `
+          <button
+            onclick="setQuestion('${question.replace(/'/g, "\\'")}')"
+            style="
+              background:#ffffff;
+              color:#006b3c;
+              border:1px solid #cfe3d8;
+              padding:10px 12px;
+              border-radius:10px;
+              cursor:pointer;
+              text-align:left;
+              font-size:13px;
+              font-weight:600;
+            "
+          >
+            ${question}
+          </button>
+        `).join("")}
+
+      </div>
+
+    </div>
+  `;
+}
 
 // ================================
 // QUICK QUESTIONS
