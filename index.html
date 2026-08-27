@@ -421,6 +421,67 @@ footer {
   }
 
 }
+    /* ==========================================
+   👤 MIMI NI NANI?
+========================================== */
+
+.profile-box {
+  margin-bottom: 18px;
+  padding: 18px;
+  background: #f7fbf9;
+  border: 1px solid #dce9e2;
+  border-radius: 15px;
+}
+
+.profile-box h3 {
+  color: #006b3c;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.profile-box p {
+  color: #667;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.profile-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.profile-options button {
+  background: #ffffff;
+  color: #006b3c;
+  border: 1px solid #cfe3d8;
+  padding: 11px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.profile-options button:hover {
+  transform: translateY(-2px);
+  background: #eaf5ef;
+}
+
+.profile-options button.active {
+  background: #006b3c;
+  color: white;
+}
+
+#profile-response {
+  margin-top: 15px;
+  padding: 14px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #dce9e2;
+  display: none;
+  line-height: 1.6;
+}
   </style>
 </head>
 
@@ -567,7 +628,62 @@ footer {
   📚 Nyaraka Rasmi
 </button>
   </div>
+<!-- ==========================================
+     👤 MIMI NI NANI?
+========================================== -->
 
+<div class="profile-box">
+
+  <h3>👤 MIMI NI NANI?</h3>
+
+  <p>
+    Chagua nafasi yako ili Dira2050 AI ikupatie
+    mwongozo unaokufaa zaidi.
+  </p>
+
+  <div class="profile-options">
+
+    <button onclick="selectProfile('mwanafunzi')">
+      👨‍🎓 Mwanafunzi
+    </button>
+
+    <button onclick="selectProfile('kijana')">
+      👥 Kijana
+    </button>
+
+    <button onclick="selectProfile('mjasiriamali')">
+      💼 Mjasiriamali
+    </button>
+
+    <button onclick="selectProfile('mkulima')">
+      🌾 Mkulima
+    </button>
+
+    <button onclick="selectProfile('innovator')">
+      💡 Innovator
+    </button>
+
+    <button onclick="selectProfile('mfanyabiashara')">
+      🏢 Mfanyabiashara
+    </button>
+
+    <button onclick="selectProfile('mwalimu')">
+      👩‍🏫 Mwalimu
+    </button>
+
+    <button onclick="selectProfile('tech')">
+      👨‍💻 Tech / Developer
+    </button>
+
+    <button onclick="selectProfile('mwananchi')">
+      🇹🇿 Mwananchi
+    </button>
+
+  </div>
+
+  <div id="profile-response"></div>
+
+</div>
   <div class="chat-box">
 
     <input
@@ -1378,7 +1494,125 @@ function showOfficialDocuments() {
 
   response.innerHTML = html;
 }
+// ==========================================
+// 👤 MIMI NI NANI?
+// ==========================================
 
+let selectedProfile = null;
+
+function selectProfile(profile) {
+
+  selectedProfile = profile;
+
+  const response =
+    document.getElementById("profile-response");
+
+  const profiles = {
+
+    mwanafunzi: {
+      icon: "👨‍🎓",
+      title: "Mwanafunzi",
+      text:
+        "Kama mwanafunzi, unaweza kuchangia Dira 2050 kwa kujenga maarifa, ujuzi, ubunifu na kutumia teknolojia kutatua changamoto za Tanzania."
+    },
+
+    kijana: {
+      icon: "👥",
+      title: "Kijana",
+      text:
+        "Kama kijana, unaweza kuwa sehemu ya utekelezaji wa Dira 2050 kupitia ujuzi, ajira, ujasiriamali, ubunifu, teknolojia na ushiriki katika maendeleo."
+    },
+
+    mjasiriamali: {
+      icon: "💼",
+      title: "Mjasiriamali",
+      text:
+        "Kama mjasiriamali, unaweza kuchangia kupitia biashara zenye tija, ubunifu, ajira, uwekezaji na kuongeza thamani ya bidhaa na huduma."
+    },
+
+    mkulima: {
+      icon: "🌾",
+      title: "Mkulima",
+      text:
+        "Kama mkulima, unaweza kuchangia Dira 2050 kupitia kilimo chenye tija, teknolojia, kuongeza thamani ya mazao na masoko."
+    },
+
+    innovator: {
+      icon: "💡",
+      title: "Innovator",
+      text:
+        "Kama innovator, unaweza kuibua suluhisho za changamoto za Tanzania kwa kutumia sayansi, teknolojia, ubunifu na maarifa."
+    },
+
+    mfanyabiashara: {
+      icon: "🏢",
+      title: "Mfanyabiashara",
+      text:
+        "Kama mfanyabiashara, unaweza kuchangia uchumi kupitia uzalishaji, biashara, uwekezaji, ajira na matumizi ya teknolojia."
+    },
+
+    mwalimu: {
+      icon: "👩‍🏫",
+      title: "Mwalimu",
+      text:
+        "Kama mwalimu, unaweza kuchangia Tanzania ya 2050 kwa kukuza maarifa, ujuzi, ubunifu na uwezo wa kizazi kijacho."
+    },
+
+    tech: {
+      icon: "👨‍💻",
+      title: "Tech / Developer",
+      text:
+        "Kama tech/developer, unaweza kujenga mifumo ya kidigitali, AI na suluhisho za kiteknolojia zinazosaidia maendeleo ya Tanzania."
+    },
+
+    mwananchi: {
+      icon: "🇹🇿",
+      title: "Mwananchi",
+      text:
+        "Kama mwananchi, unaweza kuchangia Dira 2050 kupitia elimu, kazi, ubunifu, uwajibikaji, kuhifadhi mazingira na kushiriki katika maendeleo ya jamii."
+    }
+
+  };
+
+  const selected = profiles[profile];
+
+  if (!selected) return;
+
+  response.style.display = "block";
+
+  response.innerHTML = `
+    <strong>
+      ${selected.icon} Wewe ni: ${selected.title}
+    </strong>
+
+    <br><br>
+
+    ${selected.text}
+
+    <br><br>
+
+    <strong>🤖 Sasa unaweza kuniuliza:</strong>
+
+    <br><br>
+
+    <button
+      onclick="setQuestion('Ni hatua gani ninaweza kuchukua katika Dira 2050?')"
+      style="
+        background:#006b3c;
+        color:white;
+        border:none;
+        padding:9px 12px;
+        border-radius:9px;
+        cursor:pointer;
+        font-size:12px;
+        font-weight:bold;
+      "
+    >
+      🚀 Nianzie wapi?
+    </button>
+  `;
+
+}
 </script>
 
 </body>
