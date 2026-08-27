@@ -918,6 +918,31 @@ console.log("INTENT:", intent);
 
 let bestMatch = null;
 let bestScore = 0;
+  // ==========================================
+// 🚀 SMART ACTION MODE
+// ==========================================
+
+const actionKeywords = [
+  "nifanye nini",
+  "naweza kufanya nini",
+  "nitawezaje kushiriki",
+  "ninawezaje kushiriki",
+  "ninawezaje kuchangia",
+  "naweza kusaidiaje",
+  "hatua gani",
+  "hatua zipi",
+  "nitaanzaje",
+  "naanzaje",
+  "nifanyeje",
+  "jinsi ya kushiriki",
+  "jinsi ya kuchangia"
+];
+
+const wantsAction = actionKeywords.some(keyword =>
+  q.includes(normalizeText(keyword))
+);
+
+console.log("SMART ACTION:", wantsAction);
 // ==========================================
 // 0. NYARAKA RASMI ZA DIRA 2050
 // ==========================================
@@ -1091,7 +1116,52 @@ if (!bestMatch) {
 
 }
 
+// ==========================================
+// 🚀 SMART ACTION RESPONSE
+// ==========================================
 
+if (wantsAction && bestMatch) {
+
+  response.style.display = "block";
+
+  response.innerHTML =
+    bestMatch.icon +
+    " <strong>Dira2050 AI — Smart Action Mode</strong><br><br>" +
+
+    "<strong>📖 Uelewa</strong><br>" +
+    bestMatch.content +
+
+    "<br><br>" +
+
+    "<strong>🎯 Maeneo yanayohusiana</strong><br>" +
+    (
+      bestMatch.focusAreas &&
+      bestMatch.focusAreas.length > 0
+        ? "<ul style='margin:8px 0 0 20px;'>" +
+          bestMatch.focusAreas.map(area =>
+            "<li style='margin-bottom:5px;'>" + area + "</li>"
+          ).join("") +
+          "</ul>"
+        : "Mfumo utaendelea kuhusisha swali lako na maeneo ya Dira 2050."
+    ) +
+
+    "<br><br>" +
+
+    "<strong>🚀 Hatua unaweza kuchukua</strong><br>" +
+    (
+      bestMatch.action ||
+      "Anza kwa kujifunza zaidi kuhusu eneo hili, kutambua changamoto iliyopo katika jamii yako, na kutengeneza suluhisho linaloweza kupimika."
+    ) +
+
+    "<br><br>" +
+
+    "<div style='padding:12px; background:#ffffff; border:1px solid #dce9e2; border-radius:12px;'>" +
+    "📚 <strong>Chanzo rasmi</strong><br>" +
+    dira2050Data.officialSource +
+    "</div>";
+
+  return;
+}
   console.log("BEST MATCH:", bestMatch);
   console.log("BEST SCORE:", bestScore);
 
