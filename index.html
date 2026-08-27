@@ -390,7 +390,96 @@ function detectIntent(q) {
   ) {
     return "general";
   }
-function detectMultipleIntents(q) {
+  // 👥 VIJANA
+  if (
+    q.includes("kijana") ||
+    q.includes("vijana") ||
+    q.includes("youth") ||
+    q.includes("ajira") ||
+    q.includes("nguvu kazi") ||
+    q.includes("fursa kwa vijana") ||
+    q.includes("ushiriki wa vijana") ||
+    q.includes("uwezeshaji wa vijana")
+  ) {
+    return "vijana";
+  }
+
+  // 💰 UCHUMI
+  if (
+    q.includes("uchumi") ||
+    q.includes("kipato") ||
+    q.includes("biashara") ||
+    q.includes("uwekezaji") ||
+    q.includes("umasikini")
+  ) {
+    return "uchumi";
+  }
+
+  // 💡 TEKNOLOJIA
+  if (
+    q.includes("teknolojia") ||
+    q.includes("sayansi") ||
+    q.includes("ubunifu") ||
+    q.includes("innovation") ||
+    q.includes("digital") ||
+    q.includes("ai")
+  ) {
+    return "teknolojia";
+  }
+
+  // 🏥 AFYA
+  if (
+    q.includes("afya") ||
+    q.includes("hospitali") ||
+    q.includes("huduma za afya") ||
+    q.includes("ustawi")
+  ) {
+    return "afya";
+  }
+
+  // 🌱 MAZINGIRA
+  if (
+    q.includes("mazingira") ||
+    q.includes("tabianchi") ||
+    q.includes("mabadiliko ya tabianchi") ||
+    q.includes("uhifadhi")
+  ) {
+    return "mazingira";
+  }
+
+  // 🏙️ MIJI
+  if (
+    q.includes("miji") ||
+    q.includes("mipango miji") ||
+    q.includes("urban") ||
+    q.includes("vijijini")
+  ) {
+    return "miji";
+  }
+
+  // ⚖️ HAKI NA USAWA
+  if (
+    q.includes("haki") ||
+    q.includes("usawa") ||
+    q.includes("kijinsia") ||
+    q.includes("ulemavu") ||
+    q.includes("binadamu")
+  ) {
+    return "usawa";
+  }
+
+  // 🇹🇿 UJITEGEMEZI
+  if (
+    q.includes("ujitegemezi") ||
+    q.includes("kujitegemea") ||
+    q.includes("ustahimilivu")
+  ) {
+    return "ujitegemezi";
+  }
+
+  return null;
+}
+  function detectMultipleIntents(q) {
 
   const intents = [];
 
@@ -494,96 +583,6 @@ function detectMultipleIntents(q) {
   });
 
   return intents;
-
-}
-  // 👥 VIJANA
-  if (
-    q.includes("kijana") ||
-    q.includes("vijana") ||
-    q.includes("youth") ||
-    q.includes("ajira") ||
-    q.includes("nguvu kazi") ||
-    q.includes("fursa kwa vijana") ||
-    q.includes("ushiriki wa vijana") ||
-    q.includes("uwezeshaji wa vijana")
-  ) {
-    return "vijana";
-  }
-
-  // 💰 UCHUMI
-  if (
-    q.includes("uchumi") ||
-    q.includes("kipato") ||
-    q.includes("biashara") ||
-    q.includes("uwekezaji") ||
-    q.includes("umasikini")
-  ) {
-    return "uchumi";
-  }
-
-  // 💡 TEKNOLOJIA
-  if (
-    q.includes("teknolojia") ||
-    q.includes("sayansi") ||
-    q.includes("ubunifu") ||
-    q.includes("innovation") ||
-    q.includes("digital") ||
-    q.includes("ai")
-  ) {
-    return "teknolojia";
-  }
-
-  // 🏥 AFYA
-  if (
-    q.includes("afya") ||
-    q.includes("hospitali") ||
-    q.includes("huduma za afya") ||
-    q.includes("ustawi")
-  ) {
-    return "afya";
-  }
-
-  // 🌱 MAZINGIRA
-  if (
-    q.includes("mazingira") ||
-    q.includes("tabianchi") ||
-    q.includes("mabadiliko ya tabianchi") ||
-    q.includes("uhifadhi")
-  ) {
-    return "mazingira";
-  }
-
-  // 🏙️ MIJI
-  if (
-    q.includes("miji") ||
-    q.includes("mipango miji") ||
-    q.includes("urban") ||
-    q.includes("vijijini")
-  ) {
-    return "miji";
-  }
-
-  // ⚖️ HAKI NA USAWA
-  if (
-    q.includes("haki") ||
-    q.includes("usawa") ||
-    q.includes("kijinsia") ||
-    q.includes("ulemavu") ||
-    q.includes("binadamu")
-  ) {
-    return "usawa";
-  }
-
-  // 🇹🇿 UJITEGEMEZI
-  if (
-    q.includes("ujitegemezi") ||
-    q.includes("kujitegemea") ||
-    q.includes("ustahimilivu")
-  ) {
-    return "ujitegemezi";
-  }
-
-  return null;
 }
   function renderKnowledge(item) {
 
@@ -984,72 +983,6 @@ function showOfficialDocuments() {
   response.innerHTML = html;
 }
 
-
-// ================================
-// QUICK QUESTIONS
-// ================================
-
-function setQuestion(text) {
-
-  document.getElementById("question").value = text;
-
-  askAssistant();
-
-}
-function showOfficialDocuments() {
-
-  const response =
-    document.getElementById("response");
-
-  response.style.display = "block";
-
-  let html = `
-    📚 <strong>Dira2050 AI — Nyaraka Rasmi</strong>
-
-    <br><br>
-
-    <div class="documents-container">
-  `;
-
-  dira2050Data.officialDocuments.forEach(doc => {
-
-    html += `
-      <div class="document-card">
-
-        <h3>
-          ${doc.title}
-        </h3>
-
-        <p>
-          ${doc.description}
-        </p>
-
-        <a
-          href="${doc.url}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="document-button"
-        >
-          📖 Fungua Hati
-        </a>
-
-      </div>
-    `;
-
-  });
-
-  html += `
-    </div>
-
-    <br>
-
-    <small>
-      📚 Chanzo: Tume ya Taifa ya Mipango
-    </small>
-  `;
-
-  response.innerHTML = html;
-}
 </script>
 
 </body>
