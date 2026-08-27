@@ -469,6 +469,75 @@ function detectIntent(q) {
 
   return null;
 }
+  function renderKnowledge(item) {
+
+  let html = "";
+
+  html +=
+    item.icon +
+    " <strong>Dira2050 AI — " +
+    item.category +
+    "</strong><br><br>";
+
+  // MAELEZO MAKUU
+  html +=
+    "<strong>📖 Maelezo ya kina</strong><br>" +
+    item.content;
+
+  // MAENEO MUHIMU
+  if (item.focusAreas && item.focusAreas.length > 0) {
+
+    html +=
+      "<br><br>" +
+      "<strong>🎯 Maeneo muhimu</strong><br>" +
+      "<ul style='margin:8px 0 0 20px;'>";
+
+    item.focusAreas.forEach(area => {
+
+      html +=
+        "<li style='margin-bottom:5px;'>" +
+        area +
+        "</li>";
+
+    });
+
+    html += "</ul>";
+  }
+
+  // HATUA
+  if (item.action) {
+
+    html +=
+      "<br><br>" +
+      "<strong>🚀 Hatua unaweza kuchukua</strong><br>" +
+      item.action;
+  }
+
+  // CHANZO
+  html +=
+    "<br><br>" +
+    "<div style='padding:12px; background:#ffffff; border:1px solid #dce9e2; border-radius:12px;'>" +
+
+    "📚 <strong>Chanzo rasmi</strong><br>" +
+
+    "<span style='font-size:13px;'>" +
+    dira2050Data.officialSource +
+    "</span><br><br>" +
+
+    "<a " +
+    "href='" + dira2050Data.sourceUrl + "' " +
+    "target='_blank' " +
+    "rel='noopener noreferrer' " +
+    "style='display:inline-block; background:#006b3c; color:white; text-decoration:none; padding:9px 14px; border-radius:9px; font-size:13px; font-weight:bold;'>" +
+
+    "📖 Fungua Dira 2050" +
+
+    "</a>" +
+
+    "</div>";
+
+  return html;
+}
 function askAssistant() {
 
   const question =
@@ -676,14 +745,7 @@ if (item.id === intent) {
 
   if (bestMatch) {
 
-    let answer =
-
-      bestMatch.icon +
-      " <strong>Dira2050 AI — " +
-      bestMatch.category +
-      "</strong><br><br>" +
-
-      bestMatch.content;
+let answer = renderKnowledge(bestMatch);
 
 
     // ------------------------------
