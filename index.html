@@ -745,10 +745,10 @@ response.style.display = "block";
 if (bestMatch) {
 
   // renderKnowledge tayari ina:
-  // - Maelezo
-  // - Maeneo muhimu
-  // - Hatua
-  // - Chanzo rasmi
+  // Maelezo
+  // Maeneo muhimu
+  // Hatua
+  // Chanzo rasmi
 
   response.innerHTML = renderKnowledge(bestMatch);
 
@@ -776,6 +776,81 @@ if (bestMatch) {
     "⚖️ Haki na usawa<br>" +
     "🏙️ Miji na maendeleo";
 
+}
+
+} // ← HII NDIYO } ILIYOKUWA IMEKOSEKANA
+
+
+// ================================
+// QUICK QUESTIONS
+// ================================
+
+function setQuestion(text) {
+
+  document.getElementById("question").value = text;
+
+  askAssistant();
+
+}
+
+
+// ================================
+// OFFICIAL DOCUMENTS
+// ================================
+
+function showOfficialDocuments() {
+
+  const response =
+    document.getElementById("response");
+
+  response.style.display = "block";
+
+  let html = `
+    📚 <strong>Dira2050 AI — Nyaraka Rasmi</strong>
+
+    <br><br>
+
+    <div class="documents-container">
+  `;
+
+  dira2050Data.officialDocuments.forEach(doc => {
+
+    html += `
+      <div class="document-card">
+
+        <h3>
+          ${doc.title}
+        </h3>
+
+        <p>
+          ${doc.description}
+        </p>
+
+        <a
+          href="${doc.url}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="document-button"
+        >
+          📖 Fungua Hati
+        </a>
+
+      </div>
+    `;
+
+  });
+
+  html += `
+    </div>
+
+    <br>
+
+    <small>
+      📚 Chanzo: Tume ya Taifa ya Mipango
+    </small>
+  `;
+
+  response.innerHTML = html;
 }
 
 
