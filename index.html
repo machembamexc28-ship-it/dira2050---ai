@@ -482,6 +482,67 @@ footer {
   display: none;
   line-height: 1.6;
 }
+    /* ==========================================
+   👤 MIMI NI NANI?
+========================================== */
+
+.profile-box {
+  margin-bottom: 18px;
+  padding: 18px;
+  background: #f7fbf9;
+  border: 1px solid #dce9e2;
+  border-radius: 15px;
+}
+
+.profile-box h3 {
+  color: #006b3c;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.profile-box p {
+  color: #667;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.profile-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.profile-options button {
+  background: #ffffff;
+  color: #006b3c;
+  border: 1px solid #cfe3d8;
+  padding: 11px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.profile-options button:hover {
+  transform: translateY(-2px);
+  background: #eaf5ef;
+}
+
+.profile-options button.active {
+  background: #006b3c;
+  color: white;
+}
+
+#profile-response {
+  margin-top: 15px;
+  padding: 14px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #dce9e2;
+  display: none;
+  line-height: 1.6;
+}
   </style>
 </head>
 
@@ -638,6 +699,62 @@ footer {
 
   <p>
     Chagua nafasi yako ili Dira2050 AI ikupatie
+    mwongozo unaokufaa zaidi.
+  </p>
+
+  <div class="profile-options">
+
+    <button onclick="selectProfile('mwanafunzi')">
+      👨‍🎓 Mwanafunzi
+    </button>
+
+    <button onclick="selectProfile('kijana')">
+      👥 Kijana
+    </button>
+
+    <button onclick="selectProfile('mjasiriamali')">
+      💼 Mjasiriamali
+    </button>
+
+    <button onclick="selectProfile('mkulima')">
+      🌾 Mkulima
+    </button>
+
+    <button onclick="selectProfile('innovator')">
+      💡 Innovator
+    </button>
+
+    <button onclick="selectProfile('mfanyabiashara')">
+      🏢 Mfanyabiashara
+    </button>
+
+    <button onclick="selectProfile('mwalimu')">
+      👩‍🏫 Mwalimu
+    </button>
+
+    <button onclick="selectProfile('tech')">
+      👨‍💻 Tech / Developer
+    </button>
+
+    <button onclick="selectProfile('mwananchi')">
+      🇹🇿 Mwananchi
+    </button>
+
+  </div>
+
+  <div id="profile-response"></div>
+
+</div>
+  <!-- ==========================================
+     👤 MIMI NI NANI?
+========================================== -->
+
+<div class="profile-box">
+
+  <h3>👤 MIMI NI NANI?</h3>
+
+  <p>
+    Chagua nafasi yako ili Dira2050 AI ikupe
     mwongozo unaokufaa zaidi.
   </p>
 
