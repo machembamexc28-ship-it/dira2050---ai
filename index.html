@@ -736,70 +736,45 @@ if (item.id === intent) {
   console.log("BEST SCORE:", bestScore);
 
 
-  // ================================
-  // 3. ONESHA JIBU
-  // ================================
+// ================================
+// 3. ONESHA JIBU
+// ================================
 
-  response.style.display = "block";
+response.style.display = "block";
 
+if (bestMatch) {
 
-  if (bestMatch) {
+  // renderKnowledge tayari ina:
+  // - Maelezo
+  // - Maeneo muhimu
+  // - Hatua
+  // - Chanzo rasmi
 
-let answer = renderKnowledge(bestMatch);
+  response.innerHTML = renderKnowledge(bestMatch);
 
+} else {
 
-    // ------------------------------
-    // ACTION
-    // ------------------------------
+  response.innerHTML =
 
-    if (bestMatch.action) {
+    "🤖 <strong>Dira2050 AI:</strong><br><br>" +
 
-      answer +=
+    "Sijaweza kupata taarifa inayolingana moja kwa moja " +
+    "na swali lako kwenye Knowledge Base yangu kwa sasa." +
 
-        "<br><br>" +
+    "<br><br>" +
 
-        "🚀 <strong>Hatua unaweza kuchukua:</strong><br>" +
+    "Jaribu kuuliza kuhusu:<br><br>" +
 
-        bestMatch.action;
-
-response.innerHTML = answer;
-
-
-  } else {
-
-    response.innerHTML =
-
-      "🤖 <strong>Dira2050 AI:</strong><br><br>" +
-
-      "Sijaweza kupata taarifa inayolingana moja kwa moja " +
-
-      "na swali lako kwenye Knowledge Base yangu kwa sasa." +
-
-      "<br><br>" +
-
-      "Jaribu kuuliza kuhusu:<br><br>" +
-
-      "🎯 Lengo la Dira 2050<br>" +
-
-      "👥 Vijana<br>" +
-
-      "💡 Teknolojia na ubunifu<br>" +
-
-      "🎓 Elimu na ujuzi<br>" +
-
-      "💰 Uchumi<br>" +
-
-      "🏭 Viwanda<br>" +
-
-      "🏥 Afya<br>" +
-
-      "🌱 Mazingira<br>" +
-
-      "⚖️ Haki na usawa<br>" +
-
-      "🏙️ Miji na maendeleo";
-
-  }
+    "🎯 Lengo la Dira 2050<br>" +
+    "👥 Vijana<br>" +
+    "💡 Teknolojia na ubunifu<br>" +
+    "🎓 Elimu na ujuzi<br>" +
+    "💰 Uchumi<br>" +
+    "🏭 Viwanda<br>" +
+    "🏥 Afya<br>" +
+    "🌱 Mazingira<br>" +
+    "⚖️ Haki na usawa<br>" +
+    "🏙️ Miji na maendeleo";
 
 }
 
