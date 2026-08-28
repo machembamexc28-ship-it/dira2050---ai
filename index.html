@@ -2261,6 +2261,341 @@ localStorage.setItem("dira2050Level", level);
     </div>
   `;
 } 
+  /* ================================
+   🧠 PERSONALIZED ROADMAP ENGINE
+================================ */
+
+function showPersonalizedRoadmap() {
+
+  const profile =
+    localStorage.getItem("dira2050Profile");
+
+  const goal =
+    localStorage.getItem("dira2050Goal");
+
+  const level =
+    localStorage.getItem("dira2050Level");
+
+  const response =
+    document.getElementById("action-plan-response");
+
+  if (!profile || !goal || !level) {
+    response.style.display = "block";
+
+    response.innerHTML = `
+      <div style="
+        padding:16px;
+        background:#fff8e8;
+        border:1px solid #f0dfaa;
+        border-radius:14px;
+      ">
+
+        ⚠️ <strong>Roadmap yako bado haijakamilika.</strong>
+
+        <p style="
+          margin-top:8px;
+          color:#667;
+          line-height:1.6;
+        ">
+          Tafadhali chagua:
+          <br>👤 Mimi ni Nani?
+          <br>🧭 Dira Yangu
+          <br>📊 Niko Hatua Gani?
+        </p>
+
+      </div>
+    `;
+
+    return;
+  }
+
+  const profileNames = {
+    mwanafunzi: "👨‍🎓 Mwanafunzi",
+    kijana: "👥 Kijana",
+    mjasiriamali: "💼 Mjasiriamali",
+    mkulima: "🌾 Mkulima",
+    innovator: "💡 Innovator",
+    mfanyabiashara: "🏢 Mfanyabiashara",
+    mwalimu: "👩‍🏫 Mwalimu",
+    tech: "👨‍💻 Tech / Developer",
+    mwananchi: "🇹🇿 Mwananchi"
+  };
+
+  const goalNames = {
+    ujuzi: "🎓 Kujenga Ujuzi",
+    biashara: "💼 Kuanzisha Biashara",
+    innovation: "💡 Innovation",
+    kilimo: "🌾 Kilimo",
+    teknolojia: "🤖 Teknolojia & AI",
+    mazingira: "🌱 Mazingira",
+    jamii: "👥 Kusaidia Jamii"
+  };
+
+  const levelNames = {
+    mwanzo: "🌱 Naanza kabisa",
+    imeanza: "🚀 Nimeanza tayari",
+    inaendelea: "📈 Ninaendelea"
+  };
+
+  const roadmap = {
+
+    ujuzi: {
+      mwanzo: [
+        "Tambua ujuzi mmoja unaotaka kujenga.",
+        "Chagua chanzo cha kujifunza.",
+        "Tenga muda wa kujifunza kila wiki.",
+        "Fanya project ndogo ya mazoezi."
+      ],
+      imeanza: [
+        "Endelea kuongeza kiwango cha ujuzi.",
+        "Tengeneza projects zaidi.",
+        "Jenga portfolio ya kazi zako.",
+        "Tumia ujuzi wako kwenye changamoto halisi."
+      ],
+      inaendelea: [
+        "Boresha utaalamu wako.",
+        "Jenga mentorship na networking.",
+        "Tengeneza solutions zenye impact.",
+        "Panua matumizi ya ujuzi wako."
+      ]
+    },
+
+    biashara: {
+      mwanzo: [
+        "Tambua tatizo au hitaji la soko.",
+        "Chagua bidhaa au huduma.",
+        "Fanya utafiti wa wateja.",
+        "Anza kwa kiwango kidogo."
+      ],
+      imeanza: [
+        "Boresha bidhaa au huduma.",
+        "Jenga uaminifu wa wateja.",
+        "Tumia digital tools.",
+        "Ongeza mauzo."
+      ],
+      inaendelea: [
+        "Panua biashara.",
+        "Ongeza thamani ya bidhaa au huduma.",
+        "Tafuta masoko mapya.",
+        "Jenga partnerships."
+      ]
+    },
+
+    innovation: {
+      mwanzo: [
+        "Tambua changamoto halisi.",
+        "Sikiliza watu wanaokutana na changamoto hiyo.",
+        "Tengeneza wazo la suluhisho.",
+        "Jenga prototype ndogo."
+      ],
+      imeanza: [
+        "Jaribu prototype yako.",
+        "Kusanya feedback.",
+        "Boresha solution.",
+        "Pima matokeo."
+      ],
+      inaendelea: [
+        "Panua solution yako.",
+        "Tafuta partnerships.",
+        "Pima impact.",
+        "Jenga mfumo endelevu."
+      ]
+    },
+
+    kilimo: {
+      mwanzo: [
+        "Tambua zao au fursa ya kilimo.",
+        "Jifunze mbinu bora za uzalishaji.",
+        "Tambua soko.",
+        "Anza kwa kiwango kidogo."
+      ],
+      imeanza: [
+        "Boresha uzalishaji.",
+        "Tumia teknolojia.",
+        "Punguza upotevu.",
+        "Tafuta masoko."
+      ],
+      inaendelea: [
+        "Ongeza uzalishaji.",
+        "Ongeza thamani kupitia uchakataji.",
+        "Jenga brand.",
+        "Panua masoko."
+      ]
+    },
+
+    teknolojia: {
+      mwanzo: [
+        "Tambua tatizo moja linaloweza kutatuliwa kwa teknolojia.",
+        "Jenga msingi wa digital skills.",
+        "Jifunze tool moja ya AI au teknolojia.",
+        "Tengeneza project ndogo."
+      ],
+      imeanza: [
+        "Boresha project yako.",
+        "Jifunze AI na teknolojia zaidi.",
+        "Tafuta watumiaji wa solution yako.",
+        "Kusanya feedback."
+      ],
+      inaendelea: [
+        "Panua solution yako.",
+        "Tumia data na AI.",
+        "Jenga partnerships.",
+        "Tengeneza technology yenye impact."
+      ]
+    },
+
+    mazingira: {
+      mwanzo: [
+        "Tambua changamoto ya mazingira.",
+        "Jifunze chanzo cha tatizo.",
+        "Chagua hatua moja ya kuanza.",
+        "Shirikisha jamii."
+      ],
+      imeanza: [
+        "Pima matokeo.",
+        "Shirikisha jamii zaidi.",
+        "Boresha njia unayotumia.",
+        "Panua shughuli."
+      ],
+      inaendelea: [
+        "Panua impact.",
+        "Tumia teknolojia na data.",
+        "Jenga partnerships.",
+        "Tengeneza solution endelevu."
+      ]
+    },
+
+    jamii: {
+      mwanzo: [
+        "Tambua changamoto moja ya jamii.",
+        "Sikiliza mahitaji ya wananchi.",
+        "Chagua tatizo moja la kuanzia.",
+        "Anza hatua ndogo."
+      ],
+      imeanza: [
+        "Shirikisha watu wengine.",
+        "Pima matokeo.",
+        "Boresha mpango.",
+        "Panua ushiriki."
+      ],
+      inaendelea: [
+        "Panua solution.",
+        "Jenga partnerships.",
+        "Pima impact.",
+        "Tengeneza mfumo endelevu."
+      ]
+    }
+
+  };
+
+  const selectedRoadmap =
+    roadmap[goal]?.[level];
+
+  if (!selectedRoadmap) {
+    response.style.display = "block";
+
+    response.innerHTML =
+      "⚠️ Roadmap ya uchaguzi huu bado haijaandaliwa.";
+
+    return;
+  }
+
+  response.style.display = "block";
+
+  response.innerHTML = `
+
+    <div style="
+      padding:18px;
+      background:linear-gradient(135deg,#eef8f2,#ffffff);
+      border:1px solid #dce9e2;
+      border-radius:15px;
+    ">
+
+      <div style="
+        color:#006b3c;
+        font-size:22px;
+        font-weight:700;
+        margin-bottom:15px;
+      ">
+        🧭 ROADMAP YAKO BINAFSI
+      </div>
+
+      <div style="
+        display:grid;
+        gap:8px;
+        margin-bottom:18px;
+      ">
+
+        <div style="
+          padding:11px;
+          background:#ffffff;
+          border-radius:10px;
+          border:1px solid #dce9e2;
+        ">
+          👤 <strong>Nafasi:</strong>
+          ${profileNames[profile] || profile}
+        </div>
+
+        <div style="
+          padding:11px;
+          background:#ffffff;
+          border-radius:10px;
+          border:1px solid #dce9e2;
+        ">
+          🧭 <strong>Dira:</strong>
+          ${goalNames[goal] || goal}
+        </div>
+
+        <div style="
+          padding:11px;
+          background:#ffffff;
+          border-radius:10px;
+          border:1px solid #dce9e2;
+        ">
+          📊 <strong>Hatua:</strong>
+          ${levelNames[level] || level}
+        </div>
+
+      </div>
+
+      <strong style="color:#006b3c;">
+        🚀 Hatua zako zinazofuata
+      </strong>
+
+      <ol style="
+        margin:10px 0 0 20px;
+        line-height:1.9;
+      ">
+        ${selectedRoadmap
+          .map(step => `<li>${step}</li>`)
+          .join("")}
+      </ol>
+
+      <div style="
+        margin-top:18px;
+        padding:14px;
+        background:#006b3c;
+        color:white;
+        border-radius:12px;
+      ">
+
+        <strong>
+          🇹🇿 Dira yako inaanza na hatua ya leo.
+        </strong>
+
+        <p style="
+          margin-top:7px;
+          line-height:1.5;
+        ">
+          Endelea kujifunza, kuchukua hatua na
+          kupima matokeo ya kile unachofanya.
+        </p>
+
+      </div>
+
+    </div>
+  `;
+}  
   </script>
 
 </body>
