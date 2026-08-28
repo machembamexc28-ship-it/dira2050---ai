@@ -1821,6 +1821,473 @@ function showActionPlan(goal) {
     </div>
   `;
 }
+   /* ================================
+   NIKO HATUA GANI? — JOURNEY ENGINE
+================================ */
+
+function showJourney(goal) {
+
+  const response =
+    document.getElementById("action-plan-response");
+
+  const journeys = {
+
+    ujuzi: {
+      mwanzo: [
+        "Chagua ujuzi mmoja unaotaka kujenga.",
+        "Tafuta kozi, kitabu au chanzo cha kujifunza.",
+        "Tenga muda maalum wa kujifunza kila wiki.",
+        "Fanya project ndogo kuonyesha ulichokijifunza."
+      ],
+      imeanza: [
+        "Endelea kuongeza kiwango cha ujuzi wako.",
+        "Tengeneza projects zaidi.",
+        "Jenga portfolio ya kazi zako.",
+        "Anza kutumia ujuzi huo kutatua changamoto halisi."
+      ],
+      inaendelea: [
+        "Boresha utaalamu wako.",
+        "Shirikisha wengine kupitia mentorship.",
+        "Tengeneza solutions zenye impact.",
+        "Panua matumizi ya ujuzi wako katika jamii na uchumi."
+      ]
+    },
+
+    biashara: {
+      mwanzo: [
+        "Tambua tatizo au hitaji la soko.",
+        "Chagua bidhaa au huduma ya kuanzia.",
+        "Fanya utafiti wa wateja.",
+        "Anza kwa kiwango kidogo na pima matokeo."
+      ],
+      imeanza: [
+        "Boresha bidhaa au huduma yako.",
+        "Jenga uaminifu wa wateja.",
+        "Tumia digital tools katika biashara.",
+        "Tafuta njia za kuongeza mauzo."
+      ],
+      inaendelea: [
+        "Panua biashara yako.",
+        "Ajiri au shirikisha wengine.",
+        "Ongeza thamani ya bidhaa au huduma.",
+        "Tafuta masoko mapya na partnerships."
+      ]
+    },
+
+    innovation: {
+      mwanzo: [
+        "Tambua changamoto halisi.",
+        "Zungumza na watu wanaokutana na changamoto hiyo.",
+        "Tengeneza wazo la kwanza la suluhisho.",
+        "Jenga prototype ndogo."
+      ],
+      imeanza: [
+        "Jaribu prototype yako.",
+        "Kusanya feedback kutoka kwa watumiaji.",
+        "Boresha solution yako.",
+        "Pima kama solution inatatua tatizo."
+      ],
+      inaendelea: [
+        "Panua solution yako.",
+        "Tafuta partnerships.",
+        "Tumia data kupima impact.",
+        "Jenga mfumo endelevu wa innovation."
+      ]
+    },
+
+    kilimo: {
+      mwanzo: [
+        "Tambua zao au fursa ya kilimo.",
+        "Jifunze mbinu bora za uzalishaji.",
+        "Tambua soko la bidhaa yako.",
+        "Anza kwa kiwango kinachoweza kudhibitika."
+      ],
+      imeanza: [
+        "Boresha uzalishaji.",
+        "Tumia teknolojia inapowezekana.",
+        "Punguza upotevu wa mazao.",
+        "Tafuta masoko yenye uhakika."
+      ],
+      inaendelea: [
+        "Ongeza uzalishaji.",
+        "Ongeza thamani kupitia uchakataji.",
+        "Jenga brand ya bidhaa yako.",
+        "Panua masoko na partnerships."
+      ]
+    },
+
+    teknolojia: {
+      mwanzo: [
+        "Tambua tatizo moja linaloweza kutatuliwa kwa teknolojia.",
+        "Jenga msingi wa digital skills.",
+        "Jifunze tool moja muhimu ya teknolojia au AI.",
+        "Tengeneza project ndogo."
+      ],
+      imeanza: [
+        "Boresha project yako.",
+        "Jifunze programming au AI zaidi.",
+        "Tafuta watumiaji wa solution yako.",
+        "Kusanya feedback na ufanye maboresho."
+      ],
+      inaendelea: [
+        "Panua solution yako.",
+        "Tumia data na AI kwa kiwango kikubwa zaidi.",
+        "Shirikiana na developers na taasisi nyingine.",
+        "Jenga technology yenye impact kwa Tanzania."
+      ]
+    },
+
+    mazingira: {
+      mwanzo: [
+        "Tambua changamoto ya mazingira katika eneo lako.",
+        "Jifunze chanzo cha tatizo.",
+        "Chagua hatua moja ya kuanza.",
+        "Shirikisha watu wachache katika hatua hiyo."
+      ],
+      imeanza: [
+        "Pima matokeo ya shughuli zako.",
+        "Shirikisha jamii zaidi.",
+        "Boresha njia unayotumia.",
+        "Panua shughuli zako."
+      ],
+      inaendelea: [
+        "Panua impact yako.",
+        "Tumia teknolojia na data.",
+        "Jenga partnerships.",
+        "Tengeneza suluhisho endelevu."
+      ]
+    },
+
+    jamii: {
+      mwanzo: [
+        "Tambua changamoto moja ya jamii.",
+        "Sikiliza mahitaji ya wananchi.",
+        "Chagua tatizo la kuanzia.",
+        "Anza hatua ndogo ya suluhisho."
+      ],
+      imeanza: [
+        "Shirikisha watu wengine.",
+        "Pima matokeo.",
+        "Boresha mpango wako.",
+        "Panua ushiriki wa jamii."
+      ],
+      inaendelea: [
+        "Panua solution yako.",
+        "Jenga partnerships.",
+        "Pima impact.",
+        "Tengeneza mfumo endelevu."
+      ]
+    }
+
+  };
+
+  const journey = journeys[goal];
+
+  if (!journey) {
+    response.style.display = "block";
+    response.innerHTML =
+      "⚠️ Hatua za safari hii bado hazijaandaliwa.";
+    return;
+  }
+
+  response.style.display = "block";
+
+  response.innerHTML = `
+    <div style="
+      margin-top:15px;
+      padding:18px;
+      background:#ffffff;
+      border:1px solid #dce9e2;
+      border-radius:14px;
+    ">
+
+      <div style="
+        color:#006b3c;
+        font-size:20px;
+        font-weight:700;
+        margin-bottom:8px;
+      ">
+        📊 NIKO HATUA GANI?
+      </div>
+
+      <p style="
+        color:#667;
+        line-height:1.6;
+        margin-bottom:15px;
+      ">
+        Chagua hatua uliyonayo sasa ili Dira2050 AI
+        ikutengenezee hatua zinazokufaa.
+      </p>
+
+      <div style="
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:8px;
+      ">
+
+        <button
+          onclick="showJourneySteps('${goal}','mwanzo')"
+          style="
+            background:#eef8f2;
+            color:#006b3c;
+            border:1px solid #cfe3d8;
+            padding:12px 8px;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:600;
+          "
+        >
+          🌱<br>Naanza kabisa
+        </button>
+
+        <button
+          onclick="showJourneySteps('${goal}','imeanza')"
+          style="
+            background:#eef8f2;
+            color:#006b3c;
+            border:1px solid #cfe3d8;
+            padding:12px 8px;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:600;
+          "
+        >
+          🚀<br>Nimeanza tayari
+        </button>
+
+        <button
+          onclick="showJourneySteps('${goal}','inaendelea')"
+          style="
+            background:#eef8f2;
+            color:#006b3c;
+            border:1px solid #cfe3d8;
+            padding:12px 8px;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:600;
+          "
+        >
+          📈<br>Ninaendelea
+        </button>
+
+      </div>
+
+      <div id="journey-steps"></div>
+
+    </div>
+  `;
+}
+
+
+/* ================================
+   JOURNEY STEPS
+================================ */
+
+function showJourneySteps(goal, level) {
+
+  const response =
+    document.getElementById("journey-steps");
+
+  const journeys = {
+
+    ujuzi: {
+      mwanzo: [
+        "Chagua ujuzi mmoja unaotaka kujenga.",
+        "Tafuta kozi au chanzo cha kujifunza.",
+        "Tenga muda wa kujifunza kila wiki.",
+        "Fanya project ndogo."
+      ],
+      imeanza: [
+        "Endelea kuongeza kiwango cha ujuzi.",
+        "Tengeneza projects zaidi.",
+        "Jenga portfolio.",
+        "Tumia ujuzi wako kutatua changamoto."
+      ],
+      inaendelea: [
+        "Boresha utaalamu wako.",
+        "Shirikisha wengine kupitia mentorship.",
+        "Tengeneza solutions zenye impact.",
+        "Panua matumizi ya ujuzi wako."
+      ]
+    },
+
+    biashara: {
+      mwanzo: [
+        "Tambua hitaji la soko.",
+        "Chagua bidhaa au huduma.",
+        "Fanya utafiti wa wateja.",
+        "Anza kwa kiwango kidogo."
+      ],
+      imeanza: [
+        "Boresha bidhaa au huduma.",
+        "Jenga uaminifu wa wateja.",
+        "Tumia digital tools.",
+        "Ongeza mauzo."
+      ],
+      inaendelea: [
+        "Panua biashara.",
+        "Ongeza thamani.",
+        "Tafuta masoko mapya.",
+        "Jenga partnerships."
+      ]
+    },
+
+    innovation: {
+      mwanzo: [
+        "Tambua changamoto.",
+        "Sikiliza watumiaji.",
+        "Tengeneza wazo.",
+        "Jenga prototype."
+      ],
+      imeanza: [
+        "Jaribu prototype.",
+        "Kusanya feedback.",
+        "Boresha solution.",
+        "Pima matokeo."
+      ],
+      inaendelea: [
+        "Panua solution.",
+        "Tafuta partnerships.",
+        "Pima impact.",
+        "Jenga mfumo endelevu."
+      ]
+    },
+
+    kilimo: {
+      mwanzo: [
+        "Tambua zao au fursa.",
+        "Jifunze mbinu bora.",
+        "Tambua soko.",
+        "Anza kwa kiwango kidogo."
+      ],
+      imeanza: [
+        "Boresha uzalishaji.",
+        "Tumia teknolojia.",
+        "Punguza upotevu.",
+        "Tafuta masoko."
+      ],
+      inaendelea: [
+        "Ongeza uzalishaji.",
+        "Ongeza thamani.",
+        "Jenga brand.",
+        "Panua masoko."
+      ]
+    },
+
+    teknolojia: {
+      mwanzo: [
+        "Tambua tatizo la kutatua.",
+        "Jenga digital skills.",
+        "Jifunze tool moja ya AI au teknolojia.",
+        "Tengeneza project ndogo."
+      ],
+      imeanza: [
+        "Boresha project.",
+        "Jifunze zaidi kuhusu AI.",
+        "Tafuta watumiaji.",
+        "Kusanya feedback."
+      ],
+      inaendelea: [
+        "Panua solution.",
+        "Tumia data na AI.",
+        "Jenga partnerships.",
+        "Tengeneza technology yenye impact."
+      ]
+    },
+
+    mazingira: {
+      mwanzo: [
+        "Tambua changamoto ya mazingira.",
+        "Jifunze chanzo cha tatizo.",
+        "Chagua hatua moja.",
+        "Shirikisha jamii."
+      ],
+      imeanza: [
+        "Pima matokeo.",
+        "Shirikisha jamii zaidi.",
+        "Boresha njia.",
+        "Panua shughuli."
+      ],
+      inaendelea: [
+        "Panua impact.",
+        "Tumia teknolojia.",
+        "Jenga partnerships.",
+        "Tengeneza solution endelevu."
+      ]
+    },
+
+    jamii: {
+      mwanzo: [
+        "Tambua changamoto ya jamii.",
+        "Sikiliza wananchi.",
+        "Chagua tatizo moja.",
+        "Anza hatua ndogo."
+      ],
+      imeanza: [
+        "Shirikisha wengine.",
+        "Pima matokeo.",
+        "Boresha mpango.",
+        "Panua ushiriki."
+      ],
+      inaendelea: [
+        "Panua solution.",
+        "Jenga partnerships.",
+        "Pima impact.",
+        "Tengeneza mfumo endelevu."
+      ]
+    }
+
+  };
+
+  const steps = journeys[goal]?.[level];
+
+  if (!steps) return;
+
+  const names = {
+    mwanzo: "🌱 Naanza kabisa",
+    imeanza: "🚀 Nimeanza tayari",
+    inaendelea: "📈 Ninaendelea"
+  };
+
+  response.innerHTML = `
+    <div style="
+      margin-top:16px;
+      padding:15px;
+      background:#f7fbf9;
+      border:1px solid #dce9e2;
+      border-radius:12px;
+    ">
+
+      <strong style="color:#006b3c;">
+        ${names[level]}
+      </strong>
+
+      <ol style="
+        margin:10px 0 0 20px;
+        line-height:1.8;
+      ">
+        ${steps.map(step => `<li>${step}</li>`).join("")}
+      </ol>
+
+      <button
+        onclick="showActionPlan('${goal}')"
+        style="
+          margin-top:14px;
+          background:#006b3c;
+          color:white;
+          border:none;
+          padding:10px 14px;
+          border-radius:9px;
+          cursor:pointer;
+          font-weight:bold;
+        "
+      >
+        🧭 Angalia Dira Yangu
+      </button>
+
+    </div>
+  `;
+} 
   </script>
 
 </body>
