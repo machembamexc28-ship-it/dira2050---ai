@@ -1761,13 +1761,109 @@ function showActionPlan(goal) {
 
   };
 
-  const selected = plans[goal];
+const selected = plans[goal];
 
-  if (!selected) return;
+if (!selected) return;
 
-  response.style.display = "block";
+response.style.display = "block";
 
-  response.innerHTML = `
+response.innerHTML = `
+  <div style="
+    margin-top:15px;
+    padding:16px;
+    background:#ffffff;
+    border:1px solid #dce9e2;
+    border-radius:14px;
+  ">
+
+    <div style="
+      color:#006b3c;
+      font-size:19px;
+      font-weight:700;
+      margin-bottom:8px;
+    ">
+      ${selected.icon} ${selected.title}
+    </div>
+
+    <p style="
+      color:#667;
+      line-height:1.6;
+      margin-bottom:16px;
+    ">
+      ${selected.intro}
+    </p>
+
+    <strong style="color:#006b3c;">
+      📊 Uko hatua gani?
+    </strong>
+
+    <p style="
+      color:#667;
+      font-size:13px;
+      margin:6px 0 12px;
+    ">
+      Chagua hatua uliyonayo sasa ili Dira2050 AI
+      ikupangie safari inayokufaa.
+    </p>
+
+    <div style="
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+    ">
+
+      <button
+        onclick="generateJourney('${goal}','mwanzo')"
+        style="
+          background:#f1f7f4;
+          color:#006b3c;
+          border:1px solid #cfe3d8;
+          padding:12px 8px;
+          border-radius:10px;
+          cursor:pointer;
+          font-size:12px;
+          font-weight:600;
+        "
+      >
+        🌱<br>Naanza kabisa
+      </button>
+
+      <button
+        onclick="generateJourney('${goal}','imeanza')"
+        style="
+          background:#f1f7f4;
+          color:#006b3c;
+          border:1px solid #cfe3d8;
+          padding:12px 8px;
+          border-radius:10px;
+          cursor:pointer;
+          font-size:12px;
+          font-weight:600;
+        "
+      >
+        🚀<br>Nimeanza tayari
+      </button>
+
+      <button
+        onclick="generateJourney('${goal}','inaendelea')"
+        style="
+          background:#f1f7f4;
+          color:#006b3c;
+          border:1px solid #cfe3d8;
+          padding:12px 8px;
+          border-radius:10px;
+          cursor:pointer;
+          font-size:12px;
+          font-weight:600;
+        "
+      >
+        📈<br>Ninaendelea
+      </button>
+
+    </div>
+
+  </div>
+`;
 
     <div style="
       margin-top:15px;
@@ -1850,7 +1946,246 @@ function showActionPlan(goal) {
     </div>
 
   `;
-}   
+}  
+function generateJourney(goal, level) {
+
+  const response =
+    document.getElementById("action-plan-response");
+
+  const journeys = {
+
+    ujuzi: {
+      mwanzo: [
+        "Tambua ujuzi unaotaka kujenga.",
+        "Chagua kozi au njia ya kujifunza.",
+        "Tenga muda wa kujifunza kila wiki.",
+        "Fanya project ndogo ya mazoezi."
+      ],
+      imeanza: [
+        "Endelea kuongeza kiwango cha ujuzi.",
+        "Jenga portfolio ya kazi zako.",
+        "Tafuta fursa za kutumia ujuzi huo.",
+        "Pokea feedback na boresha."
+      ],
+      inaendelea: [
+        "Panua ujuzi wako.",
+        "Jenga projects kubwa zaidi.",
+        "Shirikiana na wengine.",
+        "Tumia ujuzi wako kutatua changamoto halisi."
+      ]
+    },
+
+    biashara: {
+      mwanzo: [
+        "Tambua tatizo au hitaji la soko.",
+        "Chagua bidhaa au huduma.",
+        "Fanya utafiti wa wateja.",
+        "Anza kwa kiwango kidogo."
+      ],
+      imeanza: [
+        "Pima mauzo na mahitaji ya wateja.",
+        "Boresha bidhaa au huduma.",
+        "Tumia teknolojia kuongeza ufanisi.",
+        "Tafuta njia za kukuza biashara."
+      ],
+      inaendelea: [
+        "Panua soko.",
+        "Ongeza thamani ya bidhaa.",
+        "Jenga timu.",
+        "Tafuta fursa za uwekezaji na partnerships."
+      ]
+    },
+
+    innovation: {
+      mwanzo: [
+        "Tambua changamoto halisi.",
+        "Zungumza na watu wanaokabiliwa na changamoto hiyo.",
+        "Tengeneza wazo la suluhisho.",
+        "Jenga prototype rahisi."
+      ],
+      imeanza: [
+        "Test prototype yako.",
+        "Kusanya feedback.",
+        "Boresha solution.",
+        "Anza kutafuta watumiaji wa mwanzo."
+      ],
+      inaendelea: [
+        "Panua solution.",
+        "Pima impact yake.",
+        "Tafuta partnerships.",
+        "Jenga mfumo endelevu wa solution."
+      ]
+    },
+
+    kilimo: {
+      mwanzo: [
+        "Chagua eneo la kilimo lenye fursa.",
+        "Jifunze mbinu bora za uzalishaji.",
+        "Tambua mahitaji ya soko.",
+        "Anza kwa kiwango kinachoweza kudhibitiwa."
+      ],
+      imeanza: [
+        "Boresha uzalishaji.",
+        "Tumia teknolojia inapowezekana.",
+        "Punguza upotevu.",
+        "Tafuta masoko bora."
+      ],
+      inaendelea: [
+        "Ongeza thamani ya mazao.",
+        "Panua uzalishaji.",
+        "Jenga mtandao wa masoko.",
+        "Tumia data na teknolojia kuongeza tija."
+      ]
+    },
+
+    teknolojia: {
+      mwanzo: [
+        "Tambua changamoto unayotaka kutatua.",
+        "Jenga msingi wa digital skills.",
+        "Jifunze programming au AI.",
+        "Tengeneza prototype ndogo."
+      ],
+      imeanza: [
+        "Endelea kuboresha prototype.",
+        "Test kwa watumiaji.",
+        "Kusanya feedback.",
+        "Boresha solution."
+      ],
+      inaendelea: [
+        "Panua solution.",
+        "Boresha usalama na scalability.",
+        "Tafuta users na partnerships.",
+        "Pima impact ya teknolojia yako."
+      ]
+    },
+
+    mazingira: {
+      mwanzo: [
+        "Tambua changamoto ya mazingira.",
+        "Jifunze chanzo cha tatizo.",
+        "Tafuta suluhisho linalowezekana.",
+        "Anza hatua ndogo katika jamii yako."
+      ],
+      imeanza: [
+        "Shirikisha jamii.",
+        "Pima matokeo.",
+        "Boresha njia unayotumia.",
+        "Panua shughuli zako."
+      ],
+      inaendelea: [
+        "Panua impact.",
+        "Shirikiana na taasisi nyingine.",
+        "Tumia teknolojia na data.",
+        "Jenga suluhisho endelevu."
+      ]
+    },
+
+    jamii: {
+      mwanzo: [
+        "Tambua changamoto ya jamii.",
+        "Sikiliza mahitaji ya wananchi.",
+        "Chagua tatizo moja la kuanzia.",
+        "Tengeneza hatua ndogo ya suluhisho."
+      ],
+      imeanza: [
+        "Shirikisha watu wengine.",
+        "Pima matokeo.",
+        "Boresha mpango.",
+        "Panua ushiriki wa jamii."
+      ],
+      inaendelea: [
+        "Panua huduma au solution.",
+        "Jenga partnerships.",
+        "Pima impact.",
+        "Tengeneza mfumo endelevu."
+      ]
+    }
+
+  };
+
+  const selectedJourney =
+    journeys[goal]?.[level];
+
+  if (!selectedJourney) return;
+
+  const levelNames = {
+    mwanzo: "🌱 Naanza kabisa",
+    imeanza: "🚀 Nimeanza tayari",
+    inaendelea: "📈 Ninaendelea"
+  };
+
+  response.style.display = "block";
+
+  response.innerHTML = `
+    <div style="
+      margin-top:15px;
+      padding:18px;
+      background:#ffffff;
+      border:1px solid #dce9e2;
+      border-radius:14px;
+    ">
+
+      <div style="
+        color:#006b3c;
+        font-size:20px;
+        font-weight:700;
+        margin-bottom:6px;
+      ">
+        🧭 Safari Yako ya Dira2050
+      </div>
+
+      <div style="
+        display:inline-block;
+        margin:6px 0 15px;
+        padding:7px 10px;
+        background:#eef8f2;
+        color:#006b3c;
+        border-radius:8px;
+        font-size:12px;
+        font-weight:600;
+      ">
+        ${levelNames[level]}
+      </div>
+
+      <strong style="color:#006b3c;">
+        🚀 Hatua zako zinazofuata
+      </strong>
+
+      <ol style="
+        margin:10px 0 0 20px;
+        line-height:1.8;
+      ">
+        ${selectedJourney
+          .map(step => `<li>${step}</li>`)
+          .join("")}
+      </ol>
+
+      <div style="
+        margin-top:18px;
+        padding:13px;
+        background:#eef8f2;
+        border-radius:11px;
+      ">
+
+        <strong style="color:#006b3c;">
+          🇹🇿 Kumbuka
+        </strong>
+
+        <p style="
+          margin-top:6px;
+          color:#667;
+          font-size:13px;
+          line-height:1.6;
+        ">
+          Hatua ndogo unayoanza leo inaweza kuwa sehemu
+          ya safari kubwa kuelekea Tanzania ya 2050.
+        </p>
+
+      </div>
+
+    </div>
+  `;
+}
   </script>
 
 </body>
