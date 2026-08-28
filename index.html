@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-  <script src="data.js?v=3"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Dira2050 AI Assistant 🇹🇿</title>
+
+  <script src="data.js?v=4"></script>
 
   <style>
     * {
@@ -14,57 +14,212 @@
       padding: 0;
     }
 
+    :root {
+      --green-dark: #004d2b;
+      --green: #006b3c;
+      --green-light: #008c55;
+      --soft-green: #eef8f2;
+      --border: #dce9e2;
+      --text: #17202a;
+      --muted: #667;
+      --white: #ffffff;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background: #f4f7f9;
-      color: #17202a;
+      color: var(--text);
       min-height: 100vh;
     }
 
-    header {
-      background: linear-gradient(135deg, #006b3c, #008c55);
+    /* ================================
+       PREMIUM HERO
+    ================================= */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.15), transparent 35%),
+        linear-gradient(135deg, var(--green-dark) 0%, var(--green) 45%, var(--green-light) 100%);
       color: white;
-      padding: 35px 20px;
+      padding: 75px 20px 65px;
       text-align: center;
     }
 
-    .flag {
-      font-size: 42px;
-      margin-bottom: 10px;
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      top: -120px;
+      right: -80px;
     }
 
-    header h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      bottom: -120px;
+      left: -70px;
     }
 
-    header p {
-      font-size: 16px;
-      opacity: 0.95;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+      margin: auto;
     }
 
+    .ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      padding: 9px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      background: #62ff9b;
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(98,255,155,0.9);
+    }
+
+    .hero-flag {
+      font-size: 55px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 7vw, 68px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+    }
+
+    .hero h1 span {
+      display: block;
+      background: linear-gradient(90deg, #ffffff, #d8ffe8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 680px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-subtitle strong {
+      color: white;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .hero-button {
+      border: none;
+      padding: 14px 22px;
+      border-radius: 13px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-button.primary {
+      background: white;
+      color: var(--green);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+    }
+
+    .hero-button.secondary {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.28);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 45px;
+      margin-top: 45px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hero-stats strong {
+      font-size: 22px;
+    }
+
+    .hero-stats span {
+      font-size: 11px;
+      color: rgba(255,255,255,0.72);
+    }
+
+    /* ================================
+       MAIN LAYOUT
+    ================================= */
     .container {
       max-width: 900px;
       margin: 25px auto;
       padding: 0 18px;
     }
 
-    .welcome {
-      background: white;
+    .card {
+      background: var(--white);
       border-radius: 18px;
       padding: 25px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.08);
       margin-bottom: 20px;
     }
 
-    .welcome h2 {
-      color: #006b3c;
+    .welcome h2,
+    .assistant h2 {
+      color: var(--green);
       margin-bottom: 10px;
     }
 
+    .welcome > p,
+    .assistant > p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ================================
+       FEATURE CARDS
+    ================================= */
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 15px;
       margin-top: 20px;
     }
@@ -75,6 +230,12 @@
       padding: 20px 12px;
       text-align: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      border: 1px solid #f0f3f2;
+      transition: 0.2s;
+    }
+
+    .feature:hover {
+      transform: translateY(-3px);
     }
 
     .feature .icon {
@@ -89,27 +250,40 @@
 
     .feature p {
       font-size: 12px;
-      color: #667;
+      color: var(--muted);
+      line-height: 1.4;
     }
 
-    .assistant {
-      background: white;
-      border-radius: 18px;
-      padding: 25px;
-      margin-top: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    /* ================================
+       QUICK QUESTIONS
+    ================================= */
+    .quick-questions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px 0;
     }
 
-    .assistant h2 {
-      color: #006b3c;
-      margin-bottom: 8px;
+    .quick-questions button {
+      background: #f1f7f4;
+      color: var(--green);
+      border: 1px solid #cfe3d8;
+      padding: 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: 0.2s;
     }
 
-    .assistant p {
-      color: #667;
-      margin-bottom: 15px;
+    .quick-questions button:hover {
+      transform: translateY(-2px);
+      background: #e4f2eb;
     }
 
+    /* ================================
+       CHAT
+    ================================= */
     .chat-box {
       display: flex;
       gap: 10px;
@@ -124,8 +298,13 @@
       outline: none;
     }
 
+    .chat-box input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(0,107,60,0.08);
+    }
+
     .chat-box button {
-      background: #006b3c;
+      background: var(--green);
       color: white;
       border: none;
       padding: 14px 20px;
@@ -135,358 +314,271 @@
     }
 
     .chat-box button:hover {
-      background: #004d2b;
+      background: var(--green-dark);
     }
 
     #response {
       margin-top: 18px;
-      padding: 15px;
-      background: #eef8f2;
+      padding: 18px;
+      background: var(--soft-green);
+      border-radius: 14px;
+      display: none;
+      line-height: 1.6;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ================================
+       PROFILE — MIMI NI NANI?
+    ================================= */
+    .profile-box {
+      margin-top: 20px;
+      padding: 18px;
+      background: #f7fbf9;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .profile-box h3 {
+      color: var(--green);
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .profile-box > p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .profile-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .profile-options button {
+      background: #ffffff;
+      color: var(--green);
+      border: 1px solid #cfe3d8;
+      padding: 11px 8px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .profile-options button:hover {
+      transform: translateY(-2px);
+      background: #eaf5ef;
+    }
+
+    .profile-options button.active {
+      background: var(--green);
+      color: white;
+    }
+
+    #profile-response {
+      margin-top: 15px;
+      padding: 14px;
+      background: white;
       border-radius: 12px;
+      border: 1px solid var(--border);
       display: none;
       line-height: 1.6;
     }
-    
-.quick-questions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 10px;
-  margin: 20px 0;
-}
 
-.quick-questions button {
-  background: #f1f7f4;
-  color: #006b3c;
-  border: 1px solid #cfe3d8;
-  padding: 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  transition: 0.2s;
-}
+    /* ================================
+       OFFICIAL DOCUMENTS
+    ================================= */
+    .documents-container {
+      display: grid;
+      gap: 15px;
+      margin-top: 15px;
+    }
 
-.quick-questions button:hover {
-  transform: translateY(-2px);
-  background: #e4f2eb;
-}
+    .document-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 18px;
+      transition: 0.2s;
+    }
 
-.chat-box input:focus {
-  border-color: #006b3c;
-  box-shadow: 0 0 0 3px rgba(0, 107, 60, 0.08);
-}
+    .document-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
 
-#response {
-  animation: fadeIn 0.3s ease;
-}
+    .document-card h3 {
+      color: var(--green);
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
+    .document-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    .document-button {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: bold;
+    }
 
-footer {
-  text-align: center;
-  padding: 30px 15px;
-  color: #667;
-  font-size: 13px;
-}
-    /* ==========================================
-   OFFICIAL DOCUMENT CARDS
-========================================== */
+    .document-button:hover {
+      background: var(--green-dark);
+    }
 
-.documents-container {
-  display: grid;
-  gap: 15px;
-  margin-top: 15px;
-}
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-.document-card {
-  background: #ffffff;
-  border: 1px solid #dce9e2;
-  border-radius: 15px;
-  padding: 18px;
-  transition: 0.2s;
-}
+    @media (max-width: 700px) {
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-.document-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
+      .quick-questions,
+      .profile-options {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-.document-card h3 {
-  color: #006b3c;
-  margin-bottom: 8px;
-  font-size: 16px;
-}
+    @media (max-width: 600px) {
+      .hero {
+        padding: 55px 18px 50px;
+      }
 
-.document-card p {
-  color: #667;
-  font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 12px;
-}
+      .hero h1 {
+        font-size: 42px;
+      }
 
-.document-button {
-  display: inline-block;
-  background: #006b3c;
-  color: white;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: bold;
-}
+      .hero-subtitle {
+        font-size: 15px;
+      }
 
-.document-button:hover {
-  background: #004d2b;
-}
-    /* ==========================================
-   DIRA2050 PREMIUM HERO
-========================================== */
+      .hero-stats {
+        gap: 25px;
+      }
 
-.hero {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at top right, rgba(255,255,255,0.15), transparent 35%),
-    linear-gradient(135deg, #004d2b 0%, #006b3c 45%, #008c55 100%);
-  color: white;
-  padding: 75px 20px 65px;
-  text-align: center;
-}
+      .card {
+        padding: 18px;
+      }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 50%;
-  top: -120px;
-  right: -80px;
-}
+      .chat-box {
+        flex-direction: column;
+      }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 50%;
-  bottom: -120px;
-  left: -70px;
-}
+      .chat-box button {
+        width: 100%;
+      }
+    }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 850px;
-  margin: auto;
-}
+    @media (max-width: 420px) {
+      .features,
+      .quick-questions,
+      .profile-options {
+        grid-template-columns: 1fr;
+      }
 
-.ai-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.22);
-  padding: 9px 16px;
-  border-radius: 50px;
-  font-size: 13px;
-  margin-bottom: 22px;
-  backdrop-filter: blur(8px);
-}
-
-.status-dot {
-  width: 9px;
-  height: 9px;
-  background: #62ff9b;
-  border-radius: 50%;
-  box-shadow: 0 0 12px rgba(98,255,155,0.9);
-}
-
-.hero-flag {
-  font-size: 55px;
-  margin-bottom: 12px;
-}
-
-.hero h1 {
-  font-size: clamp(38px, 7vw, 68px);
-  line-height: 1.05;
-  margin-bottom: 20px;
-  font-weight: 800;
-  letter-spacing: -1.5px;
-}
-
-.hero h1 span {
-  display: block;
-  background: linear-gradient(90deg, #ffffff, #d8ffe8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-subtitle {
-  max-width: 680px;
-  margin: auto;
-  font-size: 18px;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.9);
-}
-
-.hero-subtitle strong {
-  color: white;
-}
-
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.hero-button {
-  border: none;
-  padding: 14px 22px;
-  border-radius: 13px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.25s ease;
-}
-
-.hero-button:hover {
-  transform: translateY(-3px);
-}
-
-.hero-button.primary {
-  background: white;
-  color: #006b3c;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.18);
-}
-
-.hero-button.secondary {
-  background: rgba(255,255,255,0.12);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.28);
-}
-
-.hero-stats {
-  display: flex;
-  justify-content: center;
-  gap: 45px;
-  margin-top: 45px;
-  flex-wrap: wrap;
-}
-
-.hero-stats div {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.hero-stats strong {
-  font-size: 22px;
-}
-
-.hero-stats span {
-  font-size: 11px;
-  color: rgba(255,255,255,0.72);
-}
-
-@media (max-width: 600px) {
-
-  .hero {
-    padding: 55px 18px 50px;
-  }
-
-  .hero h1 {
-    font-size: 42px;
-  }
-
-  .hero-subtitle {
-    font-size: 15px;
-  }
-
-  .hero-stats {
-    gap: 25px;
-  }
-
-}
-    /* ==========================================
-   👤 MIMI NI NANI?
-========================================== */
-
-
-.profile-box h3 {
-  color: #006b3c;
-  margin-bottom: 6px;
-  font-size: 16px;
-}
-
-.profile-box p {
-  color: #667;
-  font-size: 13px;
-  margin-bottom: 14px;
-}
-
-.profile-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 8px;
-}
-
-.profile-options button {
-  background: #ffffff;
-  color: #006b3c;
-  border: 1px solid #cfe3d8;
-  padding: 11px 8px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 600;
-  transition: 0.2s;
-}
-
-.profile-options button:hover {
-  transform: translateY(-2px);
-  background: #eaf5ef;
-}
-
-.profile-options button.active {
-  background: #006b3c;
-  color: white;
-}
-
-#profile-response {
-  margin-top: 15px;
-  padding: 14px;
-  background: white;
-  border-radius: 12px;
-  border: 1px solid #dce9e2;
-  display: none;
-  line-height: 1.6;
-}
-
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-<header class="hero">
+  <!-- ================================
+       HERO
+  ================================= -->
+  <header class="hero">
+    <div class="hero-content">
 
-  <div class="hero-content">
+      <div class="ai-badge">
+        <span class="status-dot"></span>
+        Dira2050 AI iko tayari
+      </div>
 
-    <div class="ai-badge">
+      <div class="hero-flag">🇹🇿</div>
 
+      <h1>
+        Dira2050
+        <span>AI Assistant</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Msaidizi wako wa akili wa kuelewa, kujifunza,
+        kushiriki na kuchukua hatua kuelekea
+        <strong>Tanzania ya 2050.</strong>
+      </p>
+
+      <div class="hero-actions">
+        <button
+          class="hero-button primary"
+          onclick="document.getElementById('question').focus()"
+        >
+          🤖 Anza Kuuliza
+        </button>
+
+        <button
+          class="hero-button secondary"
+          onclick="showOfficialDocuments()"
+        >
+          📚 Nyaraka Rasmi
+        </button>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <strong>2050</strong>
+          <span>Maono ya Taifa</span>
+        </div>
+
+        <div>
+          <strong>AI</strong>
+          <span>Msaidizi Mahiri</span>
+        </div>
+
+        <div>
+          <strong>🇹🇿</strong>
+          <span>Tanzania</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ================================
+         WELCOME
+    ================================= -->
+    <section class="card welcome">
       <h2>Karibu kwenye Dira2050 AI Assistant</h2>
 
       <p>
@@ -524,174 +616,120 @@ footer {
       </div>
     </section>
 
-<section class="assistant">
+    <!-- ================================
+         AI ASSISTANT
+    ================================= -->
+    <section class="card assistant">
 
-  <h2>🤖 Dira2050 AI Assistant</h2>
+      <h2>🤖 Dira2050 AI Assistant</h2>
 
-  <p>
-    Uliza swali kuhusu Dira 2050. Nitakusaidia kulielewa
-    kwa kutumia Knowledge Base yetu.
-  </p>
+      <p>
+        Uliza swali kuhusu Dira 2050. Nitakusaidia kulielewa
+        kwa kutumia Knowledge Base yetu.
+      </p>
 
-  <div class="quick-questions">
+      <div class="quick-questions">
 
-    <button onclick="setQuestion('Dira 2050 inalenga nini?')">
-      🎯 Dira 2050 inalenga nini?
-    </button>
+        <button onclick="setQuestion('Dira 2050 inalenga nini?')">
+          🎯 Dira 2050 inalenga nini?
+        </button>
 
-    <button onclick="setQuestion('Vijana wana nafasi gani katika Dira 2050?')">
-      👥 Vijana
-    </button>
+        <button onclick="setQuestion('Vijana wana nafasi gani katika Dira 2050?')">
+          👥 Vijana
+        </button>
 
-    <button onclick="setQuestion('Teknolojia ina nafasi gani katika Dira 2050?')">
-      💡 Teknolojia
-    </button>
+        <button onclick="setQuestion('Teknolojia ina nafasi gani katika Dira 2050?')">
+          💡 Teknolojia
+        </button>
 
-    <button onclick="setQuestion('Dira 2050 inasemaje kuhusu elimu na ujuzi?')">
-      🎓 Elimu & Ujuzi
-    </button>
+        <button onclick="setQuestion('Dira 2050 inasemaje kuhusu elimu na ujuzi?')">
+          🎓 Elimu & Ujuzi
+        </button>
 
-    <button onclick="setQuestion('Dira 2050 inasemaje kuhusu mazingira?')">
-      🌱 Mazingira
-    </button>
+        <button onclick="setQuestion('Dira 2050 inasemaje kuhusu mazingira?')">
+          🌱 Mazingira
+        </button>
 
-    <button onclick="setQuestion('Tanzania inalenga uchumi wa aina gani?')">
-      💰 Uchumi
-    </button>
-<button onclick="showOfficialDocuments()">
-  📚 Nyaraka Rasmi
-</button>
-  </div>
-<!-- ==========================================
-     👤 MIMI NI NANI?
-========================================== -->
+        <button onclick="setQuestion('Tanzania inalenga uchumi wa aina gani?')">
+          💰 Uchumi
+        </button>
 
-<div class="profile-box">
+        <button onclick="showOfficialDocuments()">
+          📚 Nyaraka Rasmi
+        </button>
 
-  <h3>👤 MIMI NI NANI?</h3>
+      </div>
 
-  <p>
-    Chagua nafasi yako ili Dira2050 AI ikupatie
-    mwongozo unaokufaa zaidi.
-  </p>
+      <!-- MIMI NI NANI: ONE COPY ONLY -->
+      <div class="profile-box">
 
-  <div class="profile-options">
+        <h3>👤 MIMI NI NANI?</h3>
 
-    <button onclick="selectProfile('mwanafunzi')">
-      👨‍🎓 Mwanafunzi
-    </button>
+        <p>
+          Chagua nafasi yako ili Dira2050 AI ikupatie
+          mwongozo unaokufaa zaidi.
+        </p>
 
-    <button onclick="selectProfile('kijana')">
-      👥 Kijana
-    </button>
+        <div class="profile-options">
 
-    <button onclick="selectProfile('mjasiriamali')">
-      💼 Mjasiriamali
-    </button>
+          <button onclick="selectProfile('mwanafunzi')">
+            👨‍🎓 Mwanafunzi
+          </button>
 
-    <button onclick="selectProfile('mkulima')">
-      🌾 Mkulima
-    </button>
+          <button onclick="selectProfile('kijana')">
+            👥 Kijana
+          </button>
 
-    <button onclick="selectProfile('innovator')">
-      💡 Innovator
-    </button>
+          <button onclick="selectProfile('mjasiriamali')">
+            💼 Mjasiriamali
+          </button>
 
-    <button onclick="selectProfile('mfanyabiashara')">
-      🏢 Mfanyabiashara
-    </button>
+          <button onclick="selectProfile('mkulima')">
+            🌾 Mkulima
+          </button>
 
-    <button onclick="selectProfile('mwalimu')">
-      👩‍🏫 Mwalimu
-    </button>
+          <button onclick="selectProfile('innovator')">
+            💡 Innovator
+          </button>
 
-    <button onclick="selectProfile('tech')">
-      👨‍💻 Tech / Developer
-    </button>
+          <button onclick="selectProfile('mfanyabiashara')">
+            🏢 Mfanyabiashara
+          </button>
 
-    <button onclick="selectProfile('mwananchi')">
-      🇹🇿 Mwananchi
-    </button>
+          <button onclick="selectProfile('mwalimu')">
+            👩‍🏫 Mwalimu
+          </button>
 
-  </div>
+          <button onclick="selectProfile('tech')">
+            👨‍💻 Tech / Developer
+          </button>
 
-  <div id="profile-response"></div>
+          <button onclick="selectProfile('mwananchi')">
+            🇹🇿 Mwananchi
+          </button>
 
-</div>
-  <!-- ==========================================
-     👤 MIMI NI NANI?
-========================================== -->
+        </div>
 
-<div class="profile-box">
+        <div id="profile-response"></div>
 
-  <h3>👤 MIMI NI NANI?</h3>
+      </div>
 
-  <p>
-    Chagua nafasi yako ili Dira2050 AI ikupe
-    mwongozo unaokufaa zaidi.
-  </p>
+      <div class="chat-box">
+        <input
+          type="text"
+          id="question"
+          placeholder="Andika swali lako hapa..."
+          onkeydown="if(event.key === 'Enter') askAssistant()"
+        >
 
-  <div class="profile-options">
+        <button onclick="askAssistant()">
+          Uliza ➤
+        </button>
+      </div>
 
-    <button onclick="selectProfile('mwanafunzi')">
-      👨‍🎓 Mwanafunzi
-    </button>
+      <div id="response"></div>
 
-    <button onclick="selectProfile('kijana')">
-      👥 Kijana
-    </button>
-
-    <button onclick="selectProfile('mjasiriamali')">
-      💼 Mjasiriamali
-    </button>
-
-    <button onclick="selectProfile('mkulima')">
-      🌾 Mkulima
-    </button>
-
-    <button onclick="selectProfile('innovator')">
-      💡 Innovator
-    </button>
-
-    <button onclick="selectProfile('mfanyabiashara')">
-      🏢 Mfanyabiashara
-    </button>
-
-    <button onclick="selectProfile('mwalimu')">
-      👩‍🏫 Mwalimu
-    </button>
-
-    <button onclick="selectProfile('tech')">
-      👨‍💻 Tech / Developer
-    </button>
-
-    <button onclick="selectProfile('mwananchi')">
-      🇹🇿 Mwananchi
-    </button>
-
-  </div>
-
-  <div id="profile-response"></div>
-
-</div>
-  <div class="chat-box">
-
-    <input
-      type="text"
-      id="question"
-      placeholder="Andika swali lako hapa..."
-      onkeydown="if(event.key === 'Enter') askAssistant()"
-    >
-
-    <button onclick="askAssistant()">
-      Uliza ➤
-    </button>
-
-  </div>
-
-  <div id="response"></div>
-
-</section>
+    </section>
 
   </main>
 
@@ -699,911 +737,640 @@ footer {
     🇹🇿 Dira2050 AI Assistant — Tanzania ya 2050 inaanza na hatua za leo.
   </footer>
 
-<script>
+  <script>
+    console.log("Dira2050 AI imeanza...");
 
-console.log("Dira2050 AI imeanza...");
-  function normalizeText(text) {
-
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[?.,!;:()"'`]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-
-}
-function detectIntent(q) {
-
-  // 🎯 LENGO KUU
-  if (
-    q.includes("inalenga nini") ||
-    q.includes("lengo la dira") ||
-    q.includes("malengo ya dira") ||
-    q.includes("maono ya dira") ||
-    q.includes("dira ni nini") ||
-    q.includes("tanzania inataka kufikia nini")
-  ) {
-    return "general";
-  }
-  // 👥 VIJANA
-  if (
-    q.includes("kijana") ||
-    q.includes("vijana") ||
-    q.includes("youth") ||
-    q.includes("ajira") ||
-    q.includes("nguvu kazi") ||
-    q.includes("fursa kwa vijana") ||
-    q.includes("ushiriki wa vijana") ||
-    q.includes("uwezeshaji wa vijana")
-  ) {
-    return "vijana";
-  }
-
-  // 💰 UCHUMI
-  if (
-    q.includes("uchumi") ||
-    q.includes("kipato") ||
-    q.includes("biashara") ||
-    q.includes("uwekezaji") ||
-    q.includes("umasikini")
-  ) {
-    return "uchumi";
-  }
-
-  // 💡 TEKNOLOJIA
-  if (
-    q.includes("teknolojia") ||
-    q.includes("sayansi") ||
-    q.includes("ubunifu") ||
-    q.includes("innovation") ||
-    q.includes("digital") ||
-    q.includes("ai")
-  ) {
-    return "teknolojia";
-  }
-
-  // 🏥 AFYA
-  if (
-    q.includes("afya") ||
-    q.includes("hospitali") ||
-    q.includes("huduma za afya") ||
-    q.includes("ustawi")
-  ) {
-    return "afya";
-  }
-
-  // 🌱 MAZINGIRA
-  if (
-    q.includes("mazingira") ||
-    q.includes("tabianchi") ||
-    q.includes("mabadiliko ya tabianchi") ||
-    q.includes("uhifadhi")
-  ) {
-    return "mazingira";
-  }
-
-  // 🏙️ MIJI
-  if (
-    q.includes("miji") ||
-    q.includes("mipango miji") ||
-    q.includes("urban") ||
-    q.includes("vijijini")
-  ) {
-    return "miji";
-  }
-
-  // ⚖️ HAKI NA USAWA
-  if (
-    q.includes("haki") ||
-    q.includes("usawa") ||
-    q.includes("kijinsia") ||
-    q.includes("ulemavu") ||
-    q.includes("binadamu")
-  ) {
-    return "usawa";
-  }
-
-  // 🇹🇿 UJITEGEMEZI
-  if (
-    q.includes("ujitegemezi") ||
-    q.includes("kujitegemea") ||
-    q.includes("ustahimilivu")
-  ) {
-    return "ujitegemezi";
-  }
-
-  return null;
-}
-  function detectMultipleIntents(q) {
-
-  const intents = [];
-
-  const intentRules = {
-
-    vijana: [
-      "kijana",
-      "vijana",
-      "youth",
-      "ajira kwa vijana",
-      "fursa kwa vijana"
-    ],
-
-    uchumi: [
-      "uchumi",
-      "biashara",
-      "uwekezaji",
-      "kipato",
-      "ujasiriamali",
-      "entrepreneurship"
-    ],
-
-    teknolojia: [
-      "teknolojia",
-      "technology",
-      "digital",
-      "ai",
-      "artificial intelligence",
-      "sayansi",
-      "innovation",
-      "ubunifu"
-    ],
-
-    mazingira: [
-      "mazingira",
-      "tabianchi",
-      "mabadiliko ya tabianchi",
-      "uhifadhi",
-      "green",
-      "climate"
-    ],
-
-    elimu: [
-      "elimu",
-      "ujuzi",
-      "mwanafunzi",
-      "maarifa",
-      "mafunzo",
-      "skills"
-    ],
-
-    viwanda: [
-      "viwanda",
-      "uzalishaji",
-      "kiwanda",
-      "manufacturing",
-      "uchakataji",
-      "malighafi"
-    ],
-
-    afya: [
-      "afya",
-      "hospitali",
-      "huduma za afya",
-      "ustawi"
-    ],
-
-    miji: [
-      "miji",
-      "mipango miji",
-      "urban",
-      "vijijini"
-    ],
-
-    usawa: [
-      "haki",
-      "usawa",
-      "kijinsia",
-      "ulemavu",
-      "binadamu"
-    ],
-
-    ujitegemezi: [
-      "ujitegemezi",
-      "kujitegemea",
-      "ustahimilivu"
-    ]
-
-  };
-
-  Object.keys(intentRules).forEach(intent => {
-
-    const matched = intentRules[intent].some(keyword =>
-      q.includes(normalizeText(keyword))
-    );
-
-    if (matched) {
-      intents.push(intent);
+    function normalizeText(text) {
+      return String(text)
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[?.,!;:()"'`]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
     }
 
-  });
+    function detectIntent(q) {
+      if (
+        q.includes("inalenga nini") ||
+        q.includes("lengo la dira") ||
+        q.includes("malengo ya dira") ||
+        q.includes("maono ya dira") ||
+        q.includes("dira ni nini") ||
+        q.includes("tanzania inataka kufikia nini")
+      ) return "general";
 
-  return intents;
-}
-  function renderKnowledge(item) {
+      if (
+        q.includes("kijana") ||
+        q.includes("vijana") ||
+        q.includes("youth") ||
+        q.includes("ajira") ||
+        q.includes("nguvu kazi") ||
+        q.includes("fursa kwa vijana") ||
+        q.includes("ushiriki wa vijana") ||
+        q.includes("uwezeshaji wa vijana")
+      ) return "vijana";
 
-  let html = "";
+      if (
+        q.includes("uchumi") ||
+        q.includes("kipato") ||
+        q.includes("biashara") ||
+        q.includes("uwekezaji") ||
+        q.includes("umasikini")
+      ) return "uchumi";
 
-  html +=
-    item.icon +
-    " <strong>Dira2050 AI — " +
-    item.category +
-    "</strong><br><br>";
+      if (
+        q.includes("teknolojia") ||
+        q.includes("sayansi") ||
+        q.includes("ubunifu") ||
+        q.includes("innovation") ||
+        q.includes("digital") ||
+        q.includes("ai")
+      ) return "teknolojia";
 
-  // MAELEZO MAKUU
-  html +=
-    "<strong>📖 Maelezo ya kina</strong><br>" +
-    item.content;
+      if (
+        q.includes("elimu") ||
+        q.includes("ujuzi") ||
+        q.includes("mwanafunzi") ||
+        q.includes("maarifa") ||
+        q.includes("mafunzo") ||
+        q.includes("skills")
+      ) return "elimu";
 
-  // MAENEO MUHIMU
-  if (item.focusAreas && item.focusAreas.length > 0) {
+      if (
+        q.includes("viwanda") ||
+        q.includes("kiwanda") ||
+        q.includes("uzalishaji") ||
+        q.includes("manufacturing") ||
+        q.includes("uchakataji") ||
+        q.includes("malighafi")
+      ) return "viwanda";
 
-    html +=
-      "<br><br>" +
-      "<strong>🎯 Maeneo muhimu</strong><br>" +
-      "<ul style='margin:8px 0 0 20px;'>";
+      if (
+        q.includes("afya") ||
+        q.includes("hospitali") ||
+        q.includes("huduma za afya") ||
+        q.includes("ustawi")
+      ) return "afya";
 
-    item.focusAreas.forEach(area => {
+      if (
+        q.includes("mazingira") ||
+        q.includes("tabianchi") ||
+        q.includes("mabadiliko ya tabianchi") ||
+        q.includes("uhifadhi")
+      ) return "mazingira";
+
+      if (
+        q.includes("miji") ||
+        q.includes("mipango miji") ||
+        q.includes("urban") ||
+        q.includes("vijijini")
+      ) return "miji";
+
+      if (
+        q.includes("haki") ||
+        q.includes("usawa") ||
+        q.includes("kijinsia") ||
+        q.includes("ulemavu") ||
+        q.includes("binadamu")
+      ) return "usawa";
+
+      if (
+        q.includes("ujitegemezi") ||
+        q.includes("kujitegemea") ||
+        q.includes("ustahimilivu")
+      ) return "ujitegemezi";
+
+      return null;
+    }
+
+    function detectMultipleIntents(q) {
+      const rules = {
+        vijana: ["kijana", "vijana", "youth", "ajira"],
+        uchumi: ["uchumi", "biashara", "uwekezaji", "ujasiriamali"],
+        teknolojia: ["teknolojia", "digital", "ai", "sayansi", "innovation", "ubunifu"],
+        elimu: ["elimu", "ujuzi", "mwanafunzi", "maarifa", "skills"],
+        viwanda: ["viwanda", "uzalishaji", "kiwanda", "manufacturing"],
+        afya: ["afya", "hospitali", "ustawi"],
+        mazingira: ["mazingira", "tabianchi", "uhifadhi"],
+        miji: ["miji", "urban", "vijijini"],
+        usawa: ["haki", "usawa", "kijinsia", "ulemavu"],
+        ujitegemezi: ["ujitegemezi", "kujitegemea", "ustahimilivu"]
+      };
+
+      return Object.keys(rules).filter(intent =>
+        rules[intent].some(keyword => q.includes(normalizeText(keyword)))
+      );
+    }
+
+    function renderKnowledge(item) {
+      let html = "";
 
       html +=
-        "<li style='margin-bottom:5px;'>" +
-        area +
-        "</li>";
+        item.icon +
+        " <strong>Dira2050 AI — " +
+        item.category +
+        "</strong><br><br>";
 
-    });
+      html +=
+        "<strong>📖 Maelezo ya kina</strong><br>" +
+        item.content;
 
-    html += "</ul>";
-  }
+      if (item.focusAreas && item.focusAreas.length) {
+        html +=
+          "<br><br><strong>🎯 Maeneo muhimu</strong>" +
+          "<ul style='margin:8px 0 0 20px;'>";
 
-  // HATUA
-  if (item.action) {
-
-    html +=
-      "<br><br>" +
-      "<strong>🚀 Hatua unaweza kuchukua</strong><br>" +
-      item.action;
-  }
-
-  // CHANZO
-  html +=
-    "<br><br>" +
-    "<div style='padding:12px; background:#ffffff; border:1px solid #dce9e2; border-radius:12px;'>" +
-
-    "📚 <strong>Chanzo rasmi</strong><br>" +
-
-    "<span style='font-size:13px;'>" +
-    dira2050Data.officialSource +
-    "</span><br><br>" +
-
-    "<a " +
-    "href='" + dira2050Data.sourceUrl + "' " +
-    "target='_blank' " +
-    "rel='noopener noreferrer' " +
-    "style='display:inline-block; background:#006b3c; color:white; text-decoration:none; padding:9px 14px; border-radius:9px; font-size:13px; font-weight:bold;'>" +
-
-    "📖 Fungua Dira 2050" +
-
-    "</a>" +
-
-    "</div>";
-
-  return html;
-}
-function askAssistant() {
-
-  const question =
-    document.getElementById("question").value.trim();
-
-  const response =
-    document.getElementById("response");
-
-  if (question === "") {
-
-    response.style.display = "block";
-
-    response.innerHTML =
-      "⚠️ Tafadhali andika swali kwanza.";
-
-    return;
-  }
-
-  // ================================
-  // SAFISHA SWALI
-  // ================================
-
-const q = normalizeText(question);
-
-console.log("SWALI:", q);
-console.log("DATA:", dira2050Data.keyGoals);
-
-const intent = detectIntent(q);
-const multipleIntents = detectMultipleIntents(q);
-
-console.log("MULTI-INTENTS:", multipleIntents);
-console.log("INTENT:", intent);
-
-let bestMatch = null;
-let bestScore = 0;
-  // ==========================================
-// 🚀 SMART ACTION MODE
-// ==========================================
-
-const actionKeywords = [
-  "nifanye nini",
-  "naweza kufanya nini",
-  "nitawezaje kushiriki",
-  "ninawezaje kushiriki",
-  "ninawezaje kuchangia",
-  "naweza kusaidiaje",
-  "hatua gani",
-  "hatua zipi",
-  "nitaanzaje",
-  "naanzaje",
-  "nifanyeje",
-  "jinsi ya kushiriki",
-  "jinsi ya kuchangia"
-];
-
-const wantsAction = actionKeywords.some(keyword =>
-  q.includes(normalizeText(keyword))
-);
-
-console.log("SMART ACTION:", wantsAction);
-// ==========================================
-// 0. NYARAKA RASMI ZA DIRA 2050
-// ==========================================
-
-const documentKeywords = [
-  "nyaraka",
-  "nyaraka rasmi",
-  "hati",
-  "hati rasmi",
-  "document",
-  "documents",
-  "pdf",
-  "soma dira",
-  "kusoma dira",
-  "chanzo rasmi",
-  "mpango elekezi",
-  "fydp"
-];
-
-const wantsDocuments =
-  documentKeywords.some(keyword =>
-    q.includes(keyword)
-  );
-
-if (wantsDocuments) {
-
-  showOfficialDocuments();
-  return;
-
-}
-
-  // ================================
-  // 1. MASWALI YA JUMLA
-  // ================================
-
-  const generalQuestions = [
-
-    "dira 2050 inalenga nini",
-    "lengo la dira 2050",
-    "malengo ya dira 2050",
-    "dira ya 2050 inalenga nini",
-    "tanzania inalenga nini 2050",
-    "tanzania inataka kufikia nini 2050",
-    "maono ya tanzania 2050",
-    "maono ya dira 2050",
-    "dira 2050 ni nini"
-
-  ];
-
-
-  const isGeneralQuestion =
-    generalQuestions.some(text =>
-      q.includes(text)
-    );
-
-
-  if (isGeneralQuestion) {
-
-    bestMatch = {
-
-      category:
-        "Maono na Lengo Kuu la Dira 2050",
-
-      icon: "🇹🇿",
-
-      content:
-        dira2050Data.introduction +
-        "<br><br><strong>Maono:</strong><br>" +
-        dira2050Data.vision
-
-    };
-
-    bestScore = 100;
-  }
-
-
-  // ================================
-  // 2. SEARCH KNOWLEDGE BASE
-  // ================================
-
-// ================================
-// 2. SMART KNOWLEDGE BASE SEARCH
-// ================================
-
-if (!bestMatch) {
-
-  dira2050Data.keyGoals.forEach(item => {
-
-    let score = 0;
-
-    // ------------------------------
-    // INTENT MATCH
-    // ------------------------------
-
-    if (item.id === intent) {
-      score += 50;
-    }
-
-    // ------------------------------
-    // KEYWORD MATCH
-    // ------------------------------
-
-    if (item.keywords) {
-
-      item.keywords.forEach(keyword => {
-
-        const k = normalizeText(keyword);
-
-        // Exact phrase
-        if (q.includes(k)) {
-          score += 15;
-        }
-
-        // Word-by-word match
-        const words = k.split(" ");
-
-        words.forEach(word => {
-
-          if (word.length >= 3 && q.includes(word)) {
-            score += 3;
-          }
-
+        item.focusAreas.forEach(area => {
+          html += "<li style='margin-bottom:5px;'>" + area + "</li>";
         });
 
-      });
+        html += "</ul>";
+      }
 
+      if (item.action) {
+        html +=
+          "<br><br>" +
+          "<strong>🚀 Hatua unaweza kuchukua</strong><br>" +
+          item.action;
+      }
+
+      html +=
+        "<br><br>" +
+        "<div style='padding:12px;background:#fff;border:1px solid #dce9e2;border-radius:12px;'>" +
+        "📚 <strong>Chanzo rasmi</strong><br>" +
+        "<span style='font-size:13px;'>" +
+        dira2050Data.officialSource +
+        "</span><br><br>" +
+        "<a href='" +
+        dira2050Data.sourceUrl +
+        "' target='_blank' rel='noopener noreferrer' " +
+        "style='display:inline-block;background:#006b3c;color:white;text-decoration:none;padding:9px 14px;border-radius:9px;font-size:13px;font-weight:bold;'>" +
+        "📖 Fungua Dira 2050</a>" +
+        "</div>";
+
+      return html;
     }
 
-    // ------------------------------
-    // SAMPLE QUESTION MATCH
-    // ------------------------------
+    function renderSuggestedQuestions(item) {
+      let suggestions = [];
 
-    if (item.questions) {
+      if (item.id === "vijana") {
+        suggestions = [
+          "Vijana wanawezaje kupata fursa kupitia Dira 2050?",
+          "Dira 2050 inasemaje kuhusu ajira za vijana?",
+          "Elimu na ujuzi vinawezaje kumsaidia kijana?"
+        ];
+      } else if (item.id === "uchumi") {
+        suggestions = [
+          "Tanzania inalenga uchumi wa aina gani?",
+          "Biashara zina nafasi gani katika Dira 2050?",
+          "Ninawezaje kuchangia uchumi wa Tanzania?"
+        ];
+      } else if (item.id === "teknolojia") {
+        suggestions = [
+          "AI inaweza kusaidiaje Tanzania?",
+          "Ubunifu una nafasi gani katika Dira 2050?",
+          "Vijana wanawezaje kutumia teknolojia?"
+        ];
+      } else if (item.id === "elimu") {
+        suggestions = [
+          "Dira 2050 inalenga ujuzi gani?",
+          "Elimu ina nafasi gani katika maendeleo?",
+          "Mwanafunzi anawezaje kuchangia Dira 2050?"
+        ];
+      } else if (item.id === "mazingira") {
+        suggestions = [
+          "Dira 2050 inasemaje kuhusu mabadiliko ya tabianchi?",
+          "Tunawezaje kulinda mazingira?",
+          "Mazingira yana nafasi gani katika maendeleo?"
+        ];
+      } else {
+        suggestions = [
+          "Vijana wana nafasi gani katika Dira 2050?",
+          "Teknolojia ina nafasi gani katika Dira 2050?",
+          "Tanzania inalenga uchumi wa aina gani?"
+        ];
+      }
 
-      item.questions.forEach(exampleQuestion => {
+      return `
+        <div style="margin-top:20px;padding-top:15px;border-top:1px solid #dce9e2;">
+          <strong>💡 Unaweza pia kuuliza:</strong>
 
-        const example = normalizeText(exampleQuestion);
+          <div style="display:grid;gap:8px;margin-top:10px;">
+            ${suggestions.map(question => `
+              <button
+                onclick="setQuestion('${question.replace(/'/g, "\\'")}')"
+                style="
+                  background:#fff;
+                  color:#006b3c;
+                  border:1px solid #cfe3d8;
+                  padding:10px 12px;
+                  border-radius:10px;
+                  cursor:pointer;
+                  text-align:left;
+                  font-size:13px;
+                  font-weight:600;
+                "
+              >${question}</button>
+            `).join("")}
+          </div>
+        </div>
+      `;
+    }
 
-        // Swali lote linafanana
-        if (q.includes(example) || example.includes(q)) {
-          score += 40;
-        }
+    function askAssistant() {
+      const question = document.getElementById("question").value.trim();
+      const response = document.getElementById("response");
 
-        // Maneno muhimu ya swali
-        const words = example.split(" ");
+      if (!question) {
+        response.style.display = "block";
+        response.innerHTML = "⚠️ Tafadhali andika swali kwanza.";
+        return;
+      }
 
-        words.forEach(word => {
+      const q = normalizeText(question);
+      const intent = detectIntent(q);
+      const multipleIntents = detectMultipleIntents(q);
 
-          if (word.length >= 4 && q.includes(word)) {
-            score += 2;
+      console.log("SWALI:", q);
+      console.log("INTENT:", intent);
+      console.log("MULTI-INTENTS:", multipleIntents);
+
+      let bestMatch = null;
+      let bestScore = 0;
+
+      /* ================================
+         SMART ACTION MODE
+      ================================= */
+      const actionKeywords = [
+        "nifanye nini",
+        "naweza kufanya nini",
+        "nitawezaje kushiriki",
+        "ninawezaje kushiriki",
+        "ninawezaje kuchangia",
+        "naweza kusaidiaje",
+        "hatua gani",
+        "hatua zipi",
+        "nitaanzaje",
+        "naanzaje",
+        "nifanyeje",
+        "jinsi ya kushiriki",
+        "jinsi ya kuchangia"
+      ];
+
+      const wantsAction = actionKeywords.some(keyword =>
+        q.includes(normalizeText(keyword))
+      );
+
+      /* ================================
+         OFFICIAL DOCUMENTS
+      ================================= */
+      const documentKeywords = [
+        "nyaraka",
+        "nyaraka rasmi",
+        "hati",
+        "hati rasmi",
+        "document",
+        "documents",
+        "pdf",
+        "soma dira",
+        "kusoma dira",
+        "chanzo rasmi",
+        "mpango elekezi",
+        "fydp"
+      ];
+
+      const wantsDocuments = documentKeywords.some(keyword =>
+        q.includes(normalizeText(keyword))
+      );
+
+      if (wantsDocuments) {
+        showOfficialDocuments();
+        return;
+      }
+
+      /* ================================
+         GENERAL QUESTIONS
+      ================================= */
+      const generalQuestions = [
+        "dira 2050 inalenga nini",
+        "lengo la dira 2050",
+        "malengo ya dira 2050",
+        "dira ya 2050 inalenga nini",
+        "tanzania inalenga nini 2050",
+        "tanzania inataka kufikia nini 2050",
+        "maono ya tanzania 2050",
+        "maono ya dira 2050",
+        "dira 2050 ni nini"
+      ];
+
+      if (generalQuestions.some(text => q.includes(text))) {
+        bestMatch = {
+          id: "general",
+          category: "Maono na Lengo Kuu la Dira 2050",
+          icon: "🇹🇿",
+          content:
+            dira2050Data.introduction +
+            "<br><br><strong>Maono:</strong><br>" +
+            dira2050Data.vision
+        };
+
+        bestScore = 100;
+      }
+
+      /* ================================
+         KNOWLEDGE BASE SEARCH
+      ================================= */
+      if (!bestMatch) {
+        dira2050Data.keyGoals.forEach(item => {
+          let score = 0;
+
+          if (item.id === intent) {
+            score += 50;
           }
 
-        });
+          if (item.keywords) {
+            item.keywords.forEach(keyword => {
+              const k = normalizeText(keyword);
 
+              if (q.includes(k)) {
+                score += 15;
+              }
+
+              k.split(" ").forEach(word => {
+                if (word.length >= 3 && q.includes(word)) {
+                  score += 3;
+                }
+              });
+            });
+          }
+
+          if (item.questions) {
+            item.questions.forEach(exampleQuestion => {
+              const example = normalizeText(exampleQuestion);
+
+              if (q.includes(example) || example.includes(q)) {
+                score += 40;
+              }
+
+              example.split(" ").forEach(word => {
+                if (word.length >= 4 && q.includes(word)) {
+                  score += 2;
+                }
+              });
+            });
+          }
+
+          if (score > bestScore) {
+            bestScore = score;
+            bestMatch = item;
+          }
+        });
+      }
+
+      console.log("SMART ACTION:", wantsAction);
+      console.log("BEST MATCH:", bestMatch);
+      console.log("BEST SCORE:", bestScore);
+
+      /* ================================
+         SMART ACTION RESPONSE
+      ================================= */
+      if (wantsAction && bestMatch) {
+        response.style.display = "block";
+
+        response.innerHTML =
+          bestMatch.icon +
+          " <strong>Dira2050 AI — Smart Action Mode</strong><br><br>" +
+
+          "<strong>📖 Uelewa</strong><br>" +
+          bestMatch.content +
+
+          "<br><br>" +
+          "<strong>🎯 Maeneo yanayohusiana</strong><br>" +
+          (
+            bestMatch.focusAreas && bestMatch.focusAreas.length
+              ? "<ul style='margin:8px 0 0 20px;'>" +
+                bestMatch.focusAreas.map(area =>
+                  "<li style='margin-bottom:5px;'>" + area + "</li>"
+                ).join("") +
+                "</ul>"
+              : "Mfumo utaendelea kuhusisha swali lako na maeneo ya Dira 2050."
+          ) +
+
+          "<br><br>" +
+          "<strong>🚀 Hatua unaweza kuchukua</strong><br>" +
+          (
+            bestMatch.action ||
+            "Anza kwa kujifunza zaidi kuhusu eneo hili, kutambua changamoto iliyopo katika jamii yako, na kutengeneza suluhisho linaloweza kupimika."
+          ) +
+
+          "<br><br>" +
+          "<div style='padding:12px;background:#fff;border:1px solid #dce9e2;border-radius:12px;'>" +
+          "📚 <strong>Chanzo rasmi</strong><br>" +
+          dira2050Data.officialSource +
+          "</div>";
+
+        return;
+      }
+
+      /* ================================
+         NORMAL RESPONSE
+      ================================= */
+      response.style.display = "block";
+
+      if (bestMatch) {
+        response.innerHTML =
+          renderKnowledge(bestMatch) +
+          renderSuggestedQuestions(bestMatch);
+      } else {
+        response.innerHTML =
+          "🤖 <strong>Dira2050 AI:</strong><br><br>" +
+          "Sijaweza kupata taarifa inayolingana moja kwa moja " +
+          "na swali lako kwenye Knowledge Base yangu kwa sasa." +
+          "<br><br>" +
+          "Jaribu kuuliza kuhusu:<br><br>" +
+          "🎯 Lengo la Dira 2050<br>" +
+          "👥 Vijana<br>" +
+          "💡 Teknolojia na ubunifu<br>" +
+          "🎓 Elimu na ujuzi<br>" +
+          "💰 Uchumi<br>" +
+          "🏭 Viwanda<br>" +
+          "🏥 Afya<br>" +
+          "🌱 Mazingira<br>" +
+          "⚖️ Haki na usawa<br>" +
+          "🏙️ Miji na maendeleo";
+      }
+    }
+
+    function setQuestion(text) {
+      document.getElementById("question").value = text;
+      askAssistant();
+    }
+
+    function showOfficialDocuments() {
+      const response = document.getElementById("response");
+
+      response.style.display = "block";
+
+      let html = `
+        📚 <strong>Dira2050 AI — Nyaraka Rasmi</strong>
+        <br><br>
+        <div class="documents-container">
+      `;
+
+      dira2050Data.officialDocuments.forEach(doc => {
+        html += `
+          <div class="document-card">
+            <h3>${doc.title}</h3>
+            <p>${doc.description}</p>
+            <a
+              href="${doc.url}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="document-button"
+            >
+              📖 Fungua Hati
+            </a>
+          </div>
+        `;
       });
 
+      html += `
+        </div>
+        <br>
+        <small>📚 Chanzo: Tume ya Taifa ya Mipango</small>
+      `;
+
+      response.innerHTML = html;
     }
 
-    // ------------------------------
-    // CHAGUA BEST MATCH
-    // ------------------------------
-
-    if (score > bestScore) {
-
-      bestScore = score;
-      bestMatch = item;
-
-    }
-
-  });
-
-}
-
-// ==========================================
-// 🚀 SMART ACTION RESPONSE
-// ==========================================
-
-if (wantsAction && bestMatch) {
-
-  response.style.display = "block";
-
-  response.innerHTML =
-    bestMatch.icon +
-    " <strong>Dira2050 AI — Smart Action Mode</strong><br><br>" +
-
-    "<strong>📖 Uelewa</strong><br>" +
-    bestMatch.content +
-
-    "<br><br>" +
-
-    "<strong>🎯 Maeneo yanayohusiana</strong><br>" +
-    (
-      bestMatch.focusAreas &&
-      bestMatch.focusAreas.length > 0
-        ? "<ul style='margin:8px 0 0 20px;'>" +
-          bestMatch.focusAreas.map(area =>
-            "<li style='margin-bottom:5px;'>" + area + "</li>"
-          ).join("") +
-          "</ul>"
-        : "Mfumo utaendelea kuhusisha swali lako na maeneo ya Dira 2050."
-    ) +
-
-    "<br><br>" +
-
-    "<strong>🚀 Hatua unaweza kuchukua</strong><br>" +
-    (
-      bestMatch.action ||
-      "Anza kwa kujifunza zaidi kuhusu eneo hili, kutambua changamoto iliyopo katika jamii yako, na kutengeneza suluhisho linaloweza kupimika."
-    ) +
-
-    "<br><br>" +
-
-    "<div style='padding:12px; background:#ffffff; border:1px solid #dce9e2; border-radius:12px;'>" +
-    "📚 <strong>Chanzo rasmi</strong><br>" +
-    dira2050Data.officialSource +
-    "</div>";
-
-  return;
-}
-  console.log("BEST MATCH:", bestMatch);
-  console.log("BEST SCORE:", bestScore);
-
-
-// ================================
-// 3. ONESHA JIBU
-// ================================
-
-response.style.display = "block";
-
-if (bestMatch) {
-
-  // renderKnowledge tayari ina:
-  // Maelezo
-  // Maeneo muhimu
-  // Hatua
-  // Chanzo rasmi
-
- response.innerHTML =
-  renderKnowledge(bestMatch) +
-  renderSuggestedQuestions(bestMatch);
-
-} else {
-
-  response.innerHTML =
-
-    "🤖 <strong>Dira2050 AI:</strong><br><br>" +
-
-    "Sijaweza kupata taarifa inayolingana moja kwa moja " +
-    "na swali lako kwenye Knowledge Base yangu kwa sasa." +
-
-    "<br><br>" +
-
-    "Jaribu kuuliza kuhusu:<br><br>" +
-
-    "🎯 Lengo la Dira 2050<br>" +
-    "👥 Vijana<br>" +
-    "💡 Teknolojia na ubunifu<br>" +
-    "🎓 Elimu na ujuzi<br>" +
-    "💰 Uchumi<br>" +
-    "🏭 Viwanda<br>" +
-    "🏥 Afya<br>" +
-    "🌱 Mazingira<br>" +
-    "⚖️ Haki na usawa<br>" +
-    "🏙️ Miji na maendeleo";
-
-}
-
-} // ← HII NDIYO } ILIYOKUWA IMEKOSEKANA
-// ==========================================
-// 💡 SUGGESTED QUESTIONS
-// ==========================================
-
-function renderSuggestedQuestions(item) {
-
-  const suggestions = [];
-
-  if (item.id === "vijana") {
-    suggestions.push(
-      "Vijana wanawezaje kupata fursa kupitia Dira 2050?",
-      "Dira 2050 inasemaje kuhusu ajira za vijana?",
-      "Elimu na ujuzi vinawezaje kumsaidia kijana?"
-    );
-  }
-
-  else if (item.id === "uchumi") {
-    suggestions.push(
-      "Tanzania inalenga uchumi wa aina gani?",
-      "Biashara zina nafasi gani katika Dira 2050?",
-      "Ninawezaje kuchangia uchumi wa Tanzania?"
-    );
-  }
-
-  else if (item.id === "teknolojia") {
-    suggestions.push(
-      "AI inaweza kusaidiaje Tanzania?",
-      "Ubunifu una nafasi gani katika Dira 2050?",
-      "Vijana wanawezaje kutumia teknolojia?"
-    );
-  }
-
-  else if (item.id === "elimu") {
-    suggestions.push(
-      "Dira 2050 inalenga ujuzi gani?",
-      "Elimu ina nafasi gani katika maendeleo?",
-      "Mwanafunzi anawezaje kuchangia Dira 2050?"
-    );
-  }
-
-  else if (item.id === "mazingira") {
-    suggestions.push(
-      "Dira 2050 inasemaje kuhusu mabadiliko ya tabianchi?",
-      "Tunawezaje kulinda mazingira?",
-      "Mazingira yana nafasi gani katika maendeleo?"
-    );
-  }
-
-  else {
-    suggestions.push(
-      "Vijana wana nafasi gani katika Dira 2050?",
-      "Teknolojia ina nafasi gani katika Dira 2050?",
-      "Tanzania inalenga uchumi wa aina gani?"
-    );
-  }
-
-  return `
-    <div style="
-      margin-top:20px;
-      padding-top:15px;
-      border-top:1px solid #dce9e2;
-    ">
-
-      <strong>💡 Unaweza pia kuuliza:</strong>
-
-      <div style="
-        display:grid;
-        gap:8px;
-        margin-top:10px;
-      ">
-
-        ${suggestions.map(question => `
-          <button
-            onclick="setQuestion('${question.replace(/'/g, "\\'")}')"
-            style="
-              background:#ffffff;
-              color:#006b3c;
-              border:1px solid #cfe3d8;
-              padding:10px 12px;
-              border-radius:10px;
-              cursor:pointer;
-              text-align:left;
-              font-size:13px;
-              font-weight:600;
-            "
-          >
-            ${question}
-          </button>
-        `).join("")}
-
-      </div>
-
-    </div>
-  `;
-}
-
-// ================================
-// QUICK QUESTIONS
-// ================================
-
-function setQuestion(text) {
-
-  document.getElementById("question").value = text;
-
-  askAssistant();
-
-}
-
-
-// ================================
-// OFFICIAL DOCUMENTS
-// ================================
-
-function showOfficialDocuments() {
-
-  const response =
-    document.getElementById("response");
-
-  response.style.display = "block";
-
-  let html = `
-    📚 <strong>Dira2050 AI — Nyaraka Rasmi</strong>
-
-    <br><br>
-
-    <div class="documents-container">
-  `;
-
-  dira2050Data.officialDocuments.forEach(doc => {
-
-    html += `
-      <div class="document-card">
-
-        <h3>
-          ${doc.title}
-        </h3>
-
-        <p>
-          ${doc.description}
-        </p>
-
-        <a
-          href="${doc.url}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="document-button"
+    /* ================================
+       MIMI NI NANI?
+       ONE FUNCTION ONLY
+    ================================= */
+    let selectedProfile = null;
+
+    function selectProfile(profile) {
+      selectedProfile = profile;
+
+      const response = document.getElementById("profile-response");
+
+      const profiles = {
+        mwanafunzi: {
+          icon: "👨‍🎓",
+          title: "Mwanafunzi",
+          text:
+            "Kama mwanafunzi, unaweza kuchangia Dira 2050 kwa kujenga maarifa, ujuzi, ubunifu na kutumia teknolojia kutatua changamoto za Tanzania."
+        },
+
+        kijana: {
+          icon: "👥",
+          title: "Kijana",
+          text:
+            "Kama kijana, unaweza kuwa sehemu ya utekelezaji wa Dira 2050 kupitia ujuzi, ajira, ujasiriamali, ubunifu, teknolojia na ushiriki katika maendeleo."
+        },
+
+        mjasiriamali: {
+          icon: "💼",
+          title: "Mjasiriamali",
+          text:
+            "Kama mjasiriamali, unaweza kuchangia kupitia biashara zenye tija, ubunifu, ajira, uwekezaji na kuongeza thamani ya bidhaa na huduma."
+        },
+
+        mkulima: {
+          icon: "🌾",
+          title: "Mkulima",
+          text:
+            "Kama mkulima, unaweza kuchangia Dira 2050 kupitia kilimo chenye tija, teknolojia, kuongeza thamani ya mazao na masoko."
+        },
+
+        innovator: {
+          icon: "💡",
+          title: "Innovator",
+          text:
+            "Kama innovator, unaweza kuibua suluhisho za changamoto za Tanzania kwa kutumia sayansi, teknolojia, ubunifu na maarifa."
+        },
+
+        mfanyabiashara: {
+          icon: "🏢",
+          title: "Mfanyabiashara",
+          text:
+            "Kama mfanyabiashara, unaweza kuchangia uchumi kupitia uzalishaji, biashara, uwekezaji, ajira na matumizi ya teknolojia."
+        },
+
+        mwalimu: {
+          icon: "👩‍🏫",
+          title: "Mwalimu",
+          text:
+            "Kama mwalimu, unaweza kuchangia Tanzania ya 2050 kwa kukuza maarifa, ujuzi, ubunifu na uwezo wa kizazi kijacho."
+        },
+
+        tech: {
+          icon: "👨‍💻",
+          title: "Tech / Developer",
+          text:
+            "Kama tech/developer, unaweza kujenga mifumo ya kidigitali, AI na suluhisho za kiteknolojia zinazosaidia maendeleo ya Tanzania."
+        },
+
+        mwananchi: {
+          icon: "🇹🇿",
+          title: "Mwananchi",
+          text:
+            "Kama mwananchi, unaweza kuchangia Dira 2050 kupitia elimu, kazi, ubunifu, uwajibikaji, kuhifadhi mazingira na kushiriki katika maendeleo ya jamii."
+        }
+      };
+
+      const selected = profiles[profile];
+
+      if (!selected) return;
+
+      document.querySelectorAll(".profile-options button").forEach(button => {
+        button.classList.remove("active");
+      });
+
+      const clickedButton = [...document.querySelectorAll(".profile-options button")]
+        .find(button => button.getAttribute("onclick") === `selectProfile('${profile}')`);
+
+      if (clickedButton) {
+        clickedButton.classList.add("active");
+      }
+
+      response.style.display = "block";
+
+      response.innerHTML = `
+        <strong>
+          ${selected.icon} Wewe ni: ${selected.title}
+        </strong>
+
+        <br><br>
+
+        ${selected.text}
+
+        <br><br>
+
+        <strong>🤖 Sasa unaweza kuniuliza:</strong>
+
+        <br><br>
+
+        <button
+          onclick="setQuestion('Ni hatua gani ninaweza kuchukua katika Dira 2050?')"
+          style="
+            background:#006b3c;
+            color:white;
+            border:none;
+            padding:9px 12px;
+            border-radius:9px;
+            cursor:pointer;
+            font-size:12px;
+            font-weight:bold;
+          "
         >
-          📖 Fungua Hati
-        </a>
-
-      </div>
-    `;
-
-  });
-
-  html += `
-    </div>
-
-    <br>
-
-    <small>
-      📚 Chanzo: Tume ya Taifa ya Mipango
-    </small>
-  `;
-
-  response.innerHTML = html;
-}
-// ==========================================
-// 👤 MIMI NI NANI?
-// ==========================================
-
-let selectedProfile = null;
-
-function selectProfile(profile) {
-
-  selectedProfile = profile;
-
-  const response =
-    document.getElementById("profile-response");
-
-  const profiles = {
-
-    mwanafunzi: {
-      icon: "👨‍🎓",
-      title: "Mwanafunzi",
-      text:
-        "Kama mwanafunzi, unaweza kuchangia Dira 2050 kwa kujenga maarifa, ujuzi, ubunifu na kutumia teknolojia kutatua changamoto za Tanzania."
-    },
-
-    kijana: {
-      icon: "👥",
-      title: "Kijana",
-      text:
-        "Kama kijana, unaweza kuwa sehemu ya utekelezaji wa Dira 2050 kupitia ujuzi, ajira, ujasiriamali, ubunifu, teknolojia na ushiriki katika maendeleo."
-    },
-
-    mjasiriamali: {
-      icon: "💼",
-      title: "Mjasiriamali",
-      text:
-        "Kama mjasiriamali, unaweza kuchangia kupitia biashara zenye tija, ubunifu, ajira, uwekezaji na kuongeza thamani ya bidhaa na huduma."
-    },
-
-    mkulima: {
-      icon: "🌾",
-      title: "Mkulima",
-      text:
-        "Kama mkulima, unaweza kuchangia Dira 2050 kupitia kilimo chenye tija, teknolojia, kuongeza thamani ya mazao na masoko."
-    },
-
-    innovator: {
-      icon: "💡",
-      title: "Innovator",
-      text:
-        "Kama innovator, unaweza kuibua suluhisho za changamoto za Tanzania kwa kutumia sayansi, teknolojia, ubunifu na maarifa."
-    },
-
-    mfanyabiashara: {
-      icon: "🏢",
-      title: "Mfanyabiashara",
-      text:
-        "Kama mfanyabiashara, unaweza kuchangia uchumi kupitia uzalishaji, biashara, uwekezaji, ajira na matumizi ya teknolojia."
-    },
-
-    mwalimu: {
-      icon: "👩‍🏫",
-      title: "Mwalimu",
-      text:
-        "Kama mwalimu, unaweza kuchangia Tanzania ya 2050 kwa kukuza maarifa, ujuzi, ubunifu na uwezo wa kizazi kijacho."
-    },
-
-    tech: {
-      icon: "👨‍💻",
-      title: "Tech / Developer",
-      text:
-        "Kama tech/developer, unaweza kujenga mifumo ya kidigitali, AI na suluhisho za kiteknolojia zinazosaidia maendeleo ya Tanzania."
-    },
-
-    mwananchi: {
-      icon: "🇹🇿",
-      title: "Mwananchi",
-      text:
-        "Kama mwananchi, unaweza kuchangia Dira 2050 kupitia elimu, kazi, ubunifu, uwajibikaji, kuhifadhi mazingira na kushiriki katika maendeleo ya jamii."
+          🚀 Nianzie wapi?
+        </button>
+      `;
     }
-
-  };
-
-  const selected = profiles[profile];
-
-  if (!selected) return;
-
-  response.style.display = "block";
-
-  response.innerHTML = `
-    <strong>
-      ${selected.icon} Wewe ni: ${selected.title}
-    </strong>
-
-    <br><br>
-
-    ${selected.text}
-
-    <br><br>
-
-    <strong>🤖 Sasa unaweza kuniuliza:</strong>
-
-    <br><br>
-
-    <button
-      onclick="setQuestion('Ni hatua gani ninaweza kuchukua katika Dira 2050?')"
-      style="
-        background:#006b3c;
-        color:white;
-        border:none;
-        padding:9px 12px;
-        border-radius:9px;
-        cursor:pointer;
-        font-size:12px;
-        font-weight:bold;
-      "
-    >
-      🚀 Nianzie wapi?
-    </button>
-  `;
-
-}
-</script>
+  </script>
 
 </body>
 </html>
