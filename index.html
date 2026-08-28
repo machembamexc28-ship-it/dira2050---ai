@@ -2776,14 +2776,32 @@ function show30DayPlan(goal, level) {
               ${week.split(":")[0]}
             </strong>
 
-            <p style="
-              margin-top:5px;
-              color:#667;
-              line-height:1.5;
-            ">
-              ${week.substring(week.indexOf(":") + 1)}
-            </p>
-          </div>
+<p style="
+  margin-top:5px;
+  color:#667;
+  line-height:1.5;
+">
+  ${week.substring(week.indexOf(":") + 1)}
+</p>
+
+<button
+  onclick="completeWeek('${goal}','${level}',${index})"
+  style="
+    margin-top:10px;
+    background:#ffffff;
+    color:#006b3c;
+    border:1px solid #cfe3d8;
+    padding:9px 13px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:bold;
+  "
+>
+  ✅ Nimekamilisha
+</button>
+
+</div>
         `).join("")}
 
       </div>
