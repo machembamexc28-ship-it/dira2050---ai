@@ -2728,7 +2728,40 @@ function show30DayPlan(goal, level) {
         display:grid;
         gap:10px;
       ">
+<div id="plan-progress-${goal}-${level}" style="
+  margin-bottom:15px;
+  padding:14px;
+  background:#eef8f2;
+  border:1px solid #dce9e2;
+  border-radius:11px;
+">
+  <strong style="color:#006b3c;">
+    📊 Progress yako
+  </strong>
 
+  <div style="
+    margin-top:8px;
+    background:#ffffff;
+    height:10px;
+    border-radius:10px;
+    overflow:hidden;
+  ">
+    <div id="progress-bar-${goal}-${level}" style="
+      width:0%;
+      height:100%;
+      background:#006b3c;
+      transition:width .3s ease;
+    "></div>
+  </div>
+
+  <p id="progress-text-${goal}-${level}" style="
+    margin-top:7px;
+    font-size:13px;
+    color:#667;
+  ">
+    0% — 0 kati ya 4 zimekamilika
+  </p>
+</div>
         ${selected.weeks.map((week, index) => `
           <div style="
             padding:14px;
