@@ -2595,6 +2595,190 @@ function showPersonalizedRoadmap() {
 
     </div>
   `;
+} 
+  /* ================================
+   MPANGO WANGU WA SIKU 30
+================================ */
+
+function show30DayPlan(goal, level) {
+
+  const response = document.getElementById("action-plan-response");
+
+  const plans30 = {
+
+    ujuzi: {
+      title: "Kujenga Ujuzi",
+      weeks: [
+        "Wiki 1: Chagua ujuzi mmoja na tengeneza ratiba ya kujifunza.",
+        "Wiki 2: Jifunze misingi na fanya mazoezi kila siku.",
+        "Wiki 3: Tengeneza project ndogo kutumia ujuzi huo.",
+        "Wiki 4: Kamilisha project na tengeneza portfolio."
+      ]
+    },
+
+    biashara: {
+      title: "Kuanzisha Biashara",
+      weeks: [
+        "Wiki 1: Tambua tatizo au hitaji la soko.",
+        "Wiki 2: Fanya utafiti wa wateja na washindani.",
+        "Wiki 3: Tengeneza bidhaa au huduma ya kuanzia.",
+        "Wiki 4: Anza kuuza na kusanya feedback."
+      ]
+    },
+
+    innovation: {
+      title: "Innovation",
+      weeks: [
+        "Wiki 1: Tambua changamoto halisi ya jamii.",
+        "Wiki 2: Chunguza tatizo na zungumza na watumiaji.",
+        "Wiki 3: Tengeneza prototype.",
+        "Wiki 4: Test prototype na kusanya feedback."
+      ]
+    },
+
+    kilimo: {
+      title: "Kilimo",
+      weeks: [
+        "Wiki 1: Chagua zao au fursa ya kilimo.",
+        "Wiki 2: Jifunze mbinu bora na tafuta taarifa za soko.",
+        "Wiki 3: Tengeneza mpango wa uzalishaji.",
+        "Wiki 4: Anza utekelezaji na fuatilia matokeo."
+      ]
+    },
+
+    teknolojia: {
+      title: "Teknolojia & AI",
+      weeks: [
+        "Wiki 1: Chagua tatizo moja la kutatua.",
+        "Wiki 2: Jifunze technology au AI tool inayohitajika.",
+        "Wiki 3: Tengeneza prototype ya solution.",
+        "Wiki 4: Test solution na kusanya feedback."
+      ]
+    },
+
+    mazingira: {
+      title: "Mazingira",
+      weeks: [
+        "Wiki 1: Tambua changamoto ya mazingira katika jamii yako.",
+        "Wiki 2: Chunguza chanzo na ukubwa wa tatizo.",
+        "Wiki 3: Anza hatua ya kwanza ya suluhisho.",
+        "Wiki 4: Pima matokeo na andaa hatua inayofuata."
+      ]
+    },
+
+    jamii: {
+      title: "Kusaidia Jamii",
+      weeks: [
+        "Wiki 1: Tambua changamoto moja ya jamii.",
+        "Wiki 2: Sikiliza mahitaji ya wananchi.",
+        "Wiki 3: Anza suluhisho dogo.",
+        "Wiki 4: Pima matokeo na shirikisha wengine."
+      ]
+    }
+
+  };
+
+  const selected = plans30[goal];
+
+  if (!selected) return;
+
+  response.style.display = "block";
+
+  response.innerHTML = `
+    <div style="
+      margin-top:16px;
+      padding:18px;
+      background:#ffffff;
+      border:1px solid #dce9e2;
+      border-radius:14px;
+    ">
+
+      <div style="
+        color:#006b3c;
+        font-size:20px;
+        font-weight:700;
+        margin-bottom:8px;
+      ">
+        📅 MPANGO WANGU WA SIKU 30
+      </div>
+
+      <p style="
+        color:#667;
+        line-height:1.6;
+        margin-bottom:18px;
+      ">
+        Lengo lako: <strong>${selected.title}</strong>
+      </p>
+
+      <div style="
+        display:grid;
+        gap:10px;
+      ">
+
+        ${selected.weeks.map((week, index) => `
+          <div style="
+            padding:14px;
+            background:#f7fbf9;
+            border:1px solid #dce9e2;
+            border-radius:11px;
+          ">
+            <strong style="color:#006b3c;">
+              ${index === 0 ? "🌱" :
+                index === 1 ? "📚" :
+                index === 2 ? "🚀" : "🏆"}
+              ${week.split(":")[0]}
+            </strong>
+
+            <p style="
+              margin-top:5px;
+              color:#667;
+              line-height:1.5;
+            ">
+              ${week.substring(week.indexOf(":") + 1)}
+            </p>
+          </div>
+        `).join("")}
+
+      </div>
+
+      <div style="
+        margin-top:18px;
+        padding:14px;
+        background:#006b3c;
+        color:white;
+        border-radius:11px;
+      ">
+
+        <strong>🎯 Lengo la siku 30</strong>
+
+        <p style="
+          margin-top:7px;
+          line-height:1.5;
+        ">
+          Kufanya hatua ndogo lakini zinazoonekana
+          kuelekea ${selected.title}.
+        </p>
+
+      </div>
+
+      <button
+        onclick="setQuestion('Nisaidie kutengeneza mpango wa kina wa ${selected.title} kwa siku 30')"
+        style="
+          margin-top:14px;
+          background:#006b3c;
+          color:white;
+          border:none;
+          padding:11px 15px;
+          border-radius:9px;
+          cursor:pointer;
+          font-weight:bold;
+        "
+      >
+        🤖 Nisaidie zaidi
+      </button>
+
+    </div>
+  `;
 }  
   </script>
 
