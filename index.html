@@ -1251,105 +1251,320 @@
     ================================= */
     let selectedProfile = null;
 
-    function selectProfile(profile) {
-      selectedProfile = profile;
+function selectProfile(profile) {
 
-      const response = document.getElementById("profile-response");
+  selectedProfile = profile;
 
-      const profiles = {
-        mwanafunzi: {
-          icon: "👨‍🎓",
-          title: "Mwanafunzi",
-          text:
-            "Kama mwanafunzi, unaweza kuchangia Dira 2050 kwa kujenga maarifa, ujuzi, ubunifu na kutumia teknolojia kutatua changamoto za Tanzania."
-        },
+  const response = document.getElementById("profile-response");
 
-        kijana: {
-          icon: "👥",
-          title: "Kijana",
-          text:
-            "Kama kijana, unaweza kuwa sehemu ya utekelezaji wa Dira 2050 kupitia ujuzi, ajira, ujasiriamali, ubunifu, teknolojia na ushiriki katika maendeleo."
-        },
+  const profiles = {
 
-        mjasiriamali: {
-          icon: "💼",
-          title: "Mjasiriamali",
-          text:
-            "Kama mjasiriamali, unaweza kuchangia kupitia biashara zenye tija, ubunifu, ajira, uwekezaji na kuongeza thamani ya bidhaa na huduma."
-        },
+    mwanafunzi: {
+      icon: "👨‍🎓",
+      title: "Mwanafunzi",
 
-        mkulima: {
-          icon: "🌾",
-          title: "Mkulima",
-          text:
-            "Kama mkulima, unaweza kuchangia Dira 2050 kupitia kilimo chenye tija, teknolojia, kuongeza thamani ya mazao na masoko."
-        },
+      text:
+        "Kama mwanafunzi, wewe ni sehemu muhimu ya Tanzania ya 2050. Dira yako inaweza kuanza kwa kujenga maarifa, ujuzi, ubunifu na uwezo wa kutumia teknolojia.",
 
-        innovator: {
-          icon: "💡",
-          title: "Innovator",
-          text:
-            "Kama innovator, unaweza kuibua suluhisho za changamoto za Tanzania kwa kutumia sayansi, teknolojia, ubunifu na maarifa."
-        },
+      skills: [
+        "💻 Digital skills",
+        "🤖 AI na teknolojia",
+        "🧠 Critical thinking",
+        "💼 Entrepreneurship",
+        "🗣️ Communication"
+      ],
 
-        mfanyabiashara: {
-          icon: "🏢",
-          title: "Mfanyabiashara",
-          text:
-            "Kama mfanyabiashara, unaweza kuchangia uchumi kupitia uzalishaji, biashara, uwekezaji, ajira na matumizi ya teknolojia."
-        },
+      ideas: [
+        "Tengeneza project inayotatua changamoto ya jamii.",
+        "Jifunze kutumia AI na teknolojia katika eneo lako.",
+        "Shiriki kwenye innovation challenges."
+      ]
+    },
 
-        mwalimu: {
-          icon: "👩‍🏫",
-          title: "Mwalimu",
-          text:
-            "Kama mwalimu, unaweza kuchangia Tanzania ya 2050 kwa kukuza maarifa, ujuzi, ubunifu na uwezo wa kizazi kijacho."
-        },
+    kijana: {
+      icon: "👥",
+      title: "Kijana",
 
-        tech: {
-          icon: "👨‍💻",
-          title: "Tech / Developer",
-          text:
-            "Kama tech/developer, unaweza kujenga mifumo ya kidigitali, AI na suluhisho za kiteknolojia zinazosaidia maendeleo ya Tanzania."
-        },
+      text:
+        "Kama kijana, una nafasi kubwa katika utekelezaji wa Dira 2050 kupitia ujuzi, ajira, ujasiriamali, ubunifu, teknolojia na ushiriki katika maendeleo.",
 
-        mwananchi: {
-          icon: "🇹🇿",
-          title: "Mwananchi",
-          text:
-            "Kama mwananchi, unaweza kuchangia Dira 2050 kupitia elimu, kazi, ubunifu, uwajibikaji, kuhifadhi mazingira na kushiriki katika maendeleo ya jamii."
-        }
-      };
+      skills: [
+        "💻 Teknolojia",
+        "💼 Ujasiriamali",
+        "🤖 AI",
+        "🧠 Problem solving",
+        "📈 Business skills"
+      ],
 
-      const selected = profiles[profile];
+      ideas: [
+        "Tambua changamoto moja katika jamii yako.",
+        "Tengeneza solution inayoweza kuwa biashara.",
+        "Jenga skill inayohitajika katika uchumi wa baadaye."
+      ]
+    },
 
-      if (!selected) return;
+    mjasiriamali: {
+      icon: "💼",
+      title: "Mjasiriamali",
 
-      document.querySelectorAll(".profile-options button").forEach(button => {
-        button.classList.remove("active");
-      });
+      text:
+        "Kama mjasiriamali, unaweza kuchangia Dira 2050 kupitia biashara zenye tija, ubunifu, ajira, uwekezaji na kuongeza thamani ya bidhaa na huduma.",
 
-      const clickedButton = [...document.querySelectorAll(".profile-options button")]
-        .find(button => button.getAttribute("onclick") === `selectProfile('${profile}')`);
+      skills: [
+        "📊 Business management",
+        "💰 Financial literacy",
+        "📱 Digital marketing",
+        "🤝 Networking",
+        "💡 Innovation"
+      ],
 
-      if (clickedButton) {
-        clickedButton.classList.add("active");
-      }
+      ideas: [
+        "Ongeza thamani kwenye bidhaa za ndani.",
+        "Tumia teknolojia kufikia masoko mapya.",
+        "Jenga biashara inayotengeneza ajira."
+      ]
+    },
 
-      response.style.display = "block";
+    mkulima: {
+      icon: "🌾",
+      title: "Mkulima",
 
-      response.innerHTML = `
-        <strong>
-          ${selected.icon} Wewe ni: ${selected.title}
-        </strong>
+      text:
+        "Kama mkulima, unaweza kuchangia Dira 2050 kupitia kilimo chenye tija, teknolojia, kuongeza thamani ya mazao na upatikanaji wa masoko.",
 
-        <br><br>
+      skills: [
+        "🌱 Modern farming",
+        "📱 Digital agriculture",
+        "📊 Market research",
+        "🏭 Value addition",
+        "💧 Climate-smart farming"
+      ],
 
+      ideas: [
+        "Tumia teknolojia kuboresha uzalishaji.",
+        "Ongeza thamani ya mazao kabla ya kuuza.",
+        "Tafuta masoko kupitia majukwaa ya kidigitali."
+      ]
+    },
+
+    innovator: {
+      icon: "💡",
+      title: "Innovator",
+
+      text:
+        "Kama innovator, unaweza kuibua suluhisho za changamoto za Tanzania kwa kutumia sayansi, teknolojia, ubunifu na maarifa.",
+
+      skills: [
+        "🧠 Design thinking",
+        "🤖 AI",
+        "💻 Technology",
+        "🔬 Research",
+        "🚀 Prototyping"
+      ],
+
+      ideas: [
+        "Chagua tatizo halisi la jamii.",
+        "Tengeneza prototype ya solution.",
+        "Pima kama solution yako inafanya kazi."
+      ]
+    },
+
+    mfanyabiashara: {
+      icon: "🏢",
+      title: "Mfanyabiashara",
+
+      text:
+        "Kama mfanyabiashara, unaweza kuchangia uchumi kupitia uzalishaji, biashara, uwekezaji, ajira na matumizi ya teknolojia.",
+
+      skills: [
+        "📊 Business management",
+        "💰 Finance",
+        "📱 Digital tools",
+        "📈 Marketing",
+        "🤝 Customer service"
+      ],
+
+      ideas: [
+        "Digitalize biashara yako.",
+        "Tafuta njia za kuongeza uzalishaji.",
+        "Panua soko kupitia teknolojia."
+      ]
+    },
+
+    mwalimu: {
+      icon: "👩‍🏫",
+      title: "Mwalimu",
+
+      text:
+        "Kama mwalimu, unaweza kuchangia Tanzania ya 2050 kwa kukuza maarifa, ujuzi, ubunifu na uwezo wa kizazi kijacho.",
+
+      skills: [
+        "📚 Modern teaching",
+        "💻 Digital education",
+        "🤖 AI in education",
+        "🧠 Critical thinking",
+        "💡 Innovation"
+      ],
+
+      ideas: [
+        "Tumia teknolojia katika ufundishaji.",
+        "Wasaidie wanafunzi kujenga practical skills.",
+        "Unda mazingira ya ubunifu shuleni."
+      ]
+    },
+
+    tech: {
+      icon: "👨‍💻",
+      title: "Tech / Developer",
+
+      text:
+        "Kama tech/developer, unaweza kujenga mifumo ya kidigitali, AI na suluhisho za kiteknolojia zinazosaidia maendeleo ya Tanzania.",
+
+      skills: [
+        "💻 Software development",
+        "🤖 Artificial Intelligence",
+        "📊 Data",
+        "🔐 Cybersecurity",
+        "☁️ Cloud technology"
+      ],
+
+      ideas: [
+        "Jenga digital solution kwa changamoto ya Tanzania.",
+        "Tumia AI kuongeza ufanisi wa huduma.",
+        "Unda technology inayoweza kutumika na jamii."
+      ]
+    },
+
+    mwananchi: {
+      icon: "🇹🇿",
+      title: "Mwananchi",
+
+      text:
+        "Kama mwananchi, unaweza kuchangia Dira 2050 kupitia elimu, kazi, ubunifu, uwajibikaji, kuhifadhi mazingira na kushiriki katika maendeleo ya jamii.",
+
+      skills: [
+        "📚 Elimu",
+        "💼 Ujuzi wa kazi",
+        "🌱 Utunzaji wa mazingira",
+        "🤝 Ushirikiano",
+        "🇹🇿 Uwajibikaji"
+      ],
+
+      ideas: [
+        "Shiriki katika maendeleo ya jamii yako.",
+        "Linda mazingira.",
+        "Tumia ujuzi wako kutatua changamoto zinazokuzunguka."
+      ]
+    }
+  };
+
+  const selected = profiles[profile];
+
+  if (!selected) return;
+
+  /* ================================
+     ACTIVE BUTTON
+  ================================= */
+
+  document
+    .querySelectorAll(".profile-options button")
+    .forEach(button => {
+      button.classList.remove("active");
+    });
+
+  const clickedButton =
+    [...document.querySelectorAll(".profile-options button")]
+      .find(button =>
+        button.getAttribute("onclick") ===
+        `selectProfile('${profile}')`
+      );
+
+  if (clickedButton) {
+    clickedButton.classList.add("active");
+  }
+
+  /* ================================
+     SHOW PERSONAL GUIDANCE
+  ================================= */
+
+  response.style.display = "block";
+
+  response.innerHTML = `
+
+    <div style="
+      padding:16px;
+      background:linear-gradient(135deg,#eef8f2,#ffffff);
+      border-radius:14px;
+      border:1px solid #dce9e2;
+    ">
+
+      <div style="
+        font-size:20px;
+        color:#006b3c;
+        font-weight:700;
+        margin-bottom:8px;
+      ">
+        ${selected.icon} Wewe ni: ${selected.title}
+      </div>
+
+      <p style="
+        color:#667;
+        line-height:1.6;
+        margin-bottom:18px;
+      ">
         ${selected.text}
+      </p>
 
-        <br><br>
+      <strong style="color:#006b3c;">
+        📚 Ujuzi wa kujenga
+      </strong>
 
-        <strong>🤖 Sasa unaweza kuniuliza:</strong>
+      <ul style="
+        margin:10px 0 18px 20px;
+        line-height:1.8;
+      ">
+        ${selected.skills
+          .map(skill => `<li>${skill}</li>`)
+          .join("")}
+      </ul>
+
+      <strong style="color:#006b3c;">
+        💡 Mawazo ya kuanza
+      </strong>
+
+      <ul style="
+        margin:10px 0 18px 20px;
+        line-height:1.8;
+      ">
+        ${selected.ideas
+          .map(idea => `<li>${idea}</li>`)
+          .join("")}
+      </ul>
+
+      <div style="
+        padding:14px;
+        background:#006b3c;
+        color:white;
+        border-radius:12px;
+        margin-top:15px;
+      ">
+
+        <strong>🚀 Hatua yako ya kwanza</strong>
+
+        <p style="
+          margin-top:7px;
+          line-height:1.5;
+        ">
+          Chagua changamoto moja inayokuzunguka,
+          jenga ujuzi unaohitajika, kisha anza kutengeneza
+          suluhisho linaloweza kuleta matokeo.
+        </p>
+
+      </div>
+
+      <div style="margin-top:18px;">
+
+        <strong>🤖 Unataka msaada zaidi?</strong>
 
         <br><br>
 
@@ -1359,7 +1574,7 @@
             background:#006b3c;
             color:white;
             border:none;
-            padding:9px 12px;
+            padding:10px 14px;
             border-radius:9px;
             cursor:pointer;
             font-size:12px;
@@ -1368,8 +1583,13 @@
         >
           🚀 Nianzie wapi?
         </button>
-      `;
-    }
+
+      </div>
+
+    </div>
+  `;
+
+}
   </script>
 
 </body>
