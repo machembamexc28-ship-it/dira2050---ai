@@ -1636,6 +1636,191 @@ function selectProfile(profile) {
   `;
 
 }
+    /* ================================
+   DIRA YANGU — ACTION PLAN
+================================ */
+
+function showActionPlan(goal) {
+
+  const response =
+    document.getElementById("action-plan-response");
+
+  const plans = {
+
+    ujuzi: {
+      icon: "🎓",
+      title: "Kujenga Ujuzi",
+      intro: "Ujuzi ni msingi muhimu wa kushiriki katika Tanzania ya 2050.",
+      steps: [
+        "Tambua ujuzi unaotaka kujenga.",
+        "Chagua kozi au njia ya kujifunza.",
+        "Tenga muda wa kujifunza kila wiki.",
+        "Fanya project ndogo ya mazoezi."
+      ]
+    },
+
+    biashara: {
+      icon: "💼",
+      title: "Kuanzisha Biashara",
+      intro: "Biashara inaweza kuongeza thamani, kuunda ajira na kuchangia uchumi.",
+      steps: [
+        "Tambua tatizo au hitaji la soko.",
+        "Chagua bidhaa au huduma.",
+        "Fanya utafiti wa wateja.",
+        "Anza kwa kiwango kidogo."
+      ]
+    },
+
+    innovation: {
+      icon: "💡",
+      title: "Innovation",
+      intro: "Ubunifu huanza kwa kutambua changamoto na kutengeneza suluhisho.",
+      steps: [
+        "Tambua changamoto halisi.",
+        "Chunguza chanzo cha tatizo.",
+        "Tengeneza wazo la suluhisho.",
+        "Jenga prototype."
+      ]
+    },
+
+    kilimo: {
+      icon: "🌾",
+      title: "Kilimo",
+      intro: "Kilimo chenye tija na kuongeza thamani kinaweza kuchangia maendeleo.",
+      steps: [
+        "Tambua zao au eneo lenye fursa.",
+        "Jifunze mbinu bora za uzalishaji.",
+        "Tumia teknolojia inapowezekana.",
+        "Tafuta masoko yenye uhakika."
+      ]
+    },
+
+    teknolojia: {
+      icon: "🤖",
+      title: "Teknolojia & AI",
+      intro: "Teknolojia inaweza kusaidia kutatua changamoto na kuongeza ufanisi.",
+      steps: [
+        "Tambua tatizo linaloweza kutatuliwa kwa teknolojia.",
+        "Jenga msingi wa digital skills.",
+        "Jifunze AI na tools zinazohusiana.",
+        "Jenga prototype ya solution."
+      ]
+    },
+
+    mazingira: {
+      icon: "🌱",
+      title: "Mazingira",
+      intro: "Uhifadhi wa mazingira ni sehemu muhimu ya maendeleo endelevu.",
+      steps: [
+        "Tambua changamoto ya mazingira.",
+        "Jifunze njia za uhifadhi.",
+        "Shiriki katika shughuli za mazingira.",
+        "Tengeneza suluhisho linaloweza kupunguza tatizo."
+      ]
+    },
+
+    jamii: {
+      icon: "👥",
+      title: "Kusaidia Jamii",
+      intro: "Maendeleo ya Tanzania yanaanzia katika jamii.",
+      steps: [
+        "Tambua changamoto inayowakabili watu.",
+        "Sikiliza mahitaji yao.",
+        "Tafuta suluhisho linalowezekana.",
+        "Shirikisha watu wengine."
+      ]
+    }
+
+  };
+
+  const selected = plans[goal];
+
+  if (!selected) return;
+
+  response.style.display = "block";
+
+  response.innerHTML = `
+    <div style="
+      margin-top:15px;
+      padding:18px;
+      background:#ffffff;
+      border:1px solid #dce9e2;
+      border-radius:14px;
+    ">
+
+      <div style="
+        color:#006b3c;
+        font-size:20px;
+        font-weight:700;
+        margin-bottom:8px;
+      ">
+        ${selected.icon} ${selected.title}
+      </div>
+
+      <p style="
+        color:#667;
+        line-height:1.6;
+        margin-bottom:16px;
+      ">
+        ${selected.intro}
+      </p>
+
+      <strong style="color:#006b3c;">
+        🚀 Action Plan yako
+      </strong>
+
+      <ol style="
+        margin:10px 0 0 20px;
+        line-height:1.8;
+      ">
+        ${selected.steps
+          .map(step => `<li>${step}</li>`)
+          .join("")}
+      </ol>
+
+      <div style="
+        margin-top:18px;
+        padding:13px;
+        background:#eef8f2;
+        border-radius:11px;
+        border:1px solid #dce9e2;
+      ">
+
+        <strong style="color:#006b3c;">
+          🤖 Endelea na Dira2050 AI
+        </strong>
+
+        <p style="
+          margin-top:6px;
+          color:#667;
+          font-size:13px;
+        ">
+          Unaweza kuniuliza jinsi ya kuanza hatua yoyote
+          kati ya hizi.
+        </p>
+
+        <button
+          onclick="setQuestion('Nianzie wapi katika ${selected.title}?')"
+          style="
+            margin-top:8px;
+            background:#006b3c;
+            color:white;
+            border:none;
+            padding:10px 14px;
+            border-radius:9px;
+            cursor:pointer;
+            font-size:12px;
+            font-weight:bold;
+          "
+        >
+          🚀 Nianzie wapi?
+        </button>
+
+      </div>
+
+    </div>
+  `;
+}
   </script>
 
 </body>
