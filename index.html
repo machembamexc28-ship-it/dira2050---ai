@@ -1644,7 +1644,7 @@ function showActionPlan(goal) {
 
   const response =
     document.getElementById("action-plan-response");
-
+localStorage.setItem("dira2050Goal", goal);
   const plans = {
 
     ujuzi: {
@@ -2057,7 +2057,7 @@ function showActionPlan(goal) {
 ================================ */
 
 function showJourneySteps(goal, level) {
-
+localStorage.setItem("dira2050Level", level);
   const response =
     document.getElementById("journey-steps");
 
