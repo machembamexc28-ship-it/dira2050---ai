@@ -2844,6 +2844,82 @@ function show30DayPlan(goal, level) {
 
     </div>
   `;
+} 
+  /* ================================
+   COMPLETE WEEK — PROGRESS TRACKER
+================================ */
+
+function completeWeek(goal, level, index) {
+
+  const storageKey = `dira2050-progress-${goal}-${level}`;
+
+  let completed = JSON.parse(
+    localStorage.getItem(storageKey) || "[]"
+  );
+
+  if (!completed.includes(index)) {
+    completed.push(index);
+  } else {
+    completed = completed.filter(i => i !== index);
+  }
+
+  localStorage.setItem(
+    storageKey,
+    JSON.stringify(completed)
+  );
+
+  const progress = Math.round(
+    (completed.length / 4) * 100
+  );
+
+  const progressBar =
+    document.getElementById(`progress-bar-${goal}-${level}`);
+
+  const progressText =
+    document.getElementById(`progress-text-${goal}-${level}`);
+
+  if (progressBar) {
+    progressBar.style.width = `${progress}%`;
+  }
+
+  if (progressText) {
+    progressText.innerHTML =
+      `${progress}% — ${completed.length} kati ya 4 zimekamilika`;
+  }
+
+  /* Badilisha button iliyobonyezwa */
+
+  const buttons =
+    document.querySelectorAll(
+      `[onclick^="completeWeek('${goal}','${level}'"]`
+    );
+
+  buttons.forEach((button, buttonIndex) => {
+
+    if (completed.includes(buttonIndex)) {
+
+      button.innerHTML = "✅ Imekamilika";
+
+      button.style.background = "#006b3c";
+      button.style.color = "white";
+
+    } else {
+
+      button.innerHTML = "✅ Nimekamilisha";
+
+      button.style.background = "#ffffff";
+      button.style.color = "#006b3c";
+    }
+
+  });
+
+  /* Ujumbe wa kumaliza mpango */
+
+  if (completed.length === 4) {
+
+    progressText.innerHTML =
+      "🎉 100% — Hongera! Umekamilisha mpango wako wa siku 30!";
+  }
 }  
   </script>
 
