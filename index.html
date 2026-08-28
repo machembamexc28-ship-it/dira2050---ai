@@ -2920,6 +2920,139 @@ function completeWeek(goal, level, index) {
     progressText.innerHTML =
       "🎉 100% — Hongera! Umekamilisha mpango wako wa siku 30!";
   }
+} 
+  /* ================================
+   🏆 MAFANIKIO YANGU
+================================ */
+
+function showAchievement(goal, level) {
+
+  const storageKey = `dira2050-progress-${goal}-${level}`;
+
+  const completed = JSON.parse(
+    localStorage.getItem(storageKey) || "[]"
+  );
+
+  const response =
+    document.getElementById("action-plan-response");
+
+  if (!response) return;
+
+  if (completed.length < 4) {
+
+    response.innerHTML = `
+      <div style="
+        margin-top:16px;
+        padding:20px;
+        background:#ffffff;
+        border:1px solid #dce9e2;
+        border-radius:14px;
+        text-align:center;
+      ">
+
+        <div style="
+          font-size:42px;
+          margin-bottom:8px;
+        ">
+          🔒
+        </div>
+
+        <h3 style="
+          color:#006b3c;
+          margin-bottom:8px;
+        ">
+          Mafanikio Bado Hayajafunguka
+        </h3>
+
+        <p style="
+          color:#667;
+          line-height:1.6;
+        ">
+          Kamilisha wiki zote 4 za Mpango wako wa Siku 30
+          ili kufungua mafanikio yako.
+        </p>
+
+        <strong style="
+          display:block;
+          margin-top:10px;
+          color:#006b3c;
+        ">
+          ${completed.length} / 4 zimekamilika
+        </strong>
+
+      </div>
+    `;
+
+    return;
+  }
+
+  response.innerHTML = `
+    <div style="
+      margin-top:16px;
+      padding:25px;
+      background:#ffffff;
+      border:1px solid #dce9e2;
+      border-radius:16px;
+      text-align:center;
+    ">
+
+      <div style="
+        font-size:60px;
+        margin-bottom:10px;
+      ">
+        🏆
+      </div>
+
+      <h2 style="
+        color:#006b3c;
+        margin-bottom:8px;
+      ">
+        HONGERA!
+      </h2>
+
+      <p style="
+        color:#667;
+        line-height:1.6;
+      ">
+        Umefanikiwa kukamilisha
+        <strong>Mpango wako wa Siku 30</strong>.
+      </p>
+
+      <div style="
+        margin:18px auto;
+        padding:15px;
+        background:#f7fbf9;
+        border:1px solid #dce9e2;
+        border-radius:12px;
+        max-width:400px;
+      ">
+
+        <strong style="
+          color:#006b3c;
+          font-size:18px;
+        ">
+          🥇 DIRA2050 ACHIEVEMENT
+        </strong>
+
+        <p style="
+          margin-top:8px;
+          color:#667;
+        ">
+          Umeonyesha nidhamu, utekelezaji
+          na kujitolea kufikia lengo lako.
+        </p>
+
+      </div>
+
+      <p style="
+        color:#006b3c;
+        font-weight:bold;
+      ">
+        🎯 Hatua inayofuata: Endelea kujenga!
+      </p>
+
+    </div>
+  `;
 }  
   </script>
 
