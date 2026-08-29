@@ -3809,6 +3809,255 @@ function getProgressBadge(progress) {
     name: "Bado hujaanza",
     message: "Anza hatua yako ya kwanza."
   };
+}
+  /* ================================
+   👤 MY JOURNEY — SAFARI YANGU
+================================ */
+
+function showMyJourney(goal, level) {
+
+  const response =
+    document.getElementById("action-plan-response");
+
+  if (!response) return;
+
+  const storageKey =
+    `dira2050-progress-${goal}-${level}`;
+
+  const completed = JSON.parse(
+    localStorage.getItem(storageKey) || "[]"
+  );
+
+  const progress =
+    Math.round((completed.length / 4) * 100);
+
+  let badge = {
+    icon: "🌱",
+    title: "Dira Starter"
+  };
+
+  if (progress >= 50) {
+    badge = {
+      icon: "📚",
+      title: "Dira Learner"
+    };
+  }
+
+  if (progress >= 75) {
+    badge = {
+      icon: "🚀",
+      title: "Dira Achiever"
+    };
+  }
+
+  if (progress === 100) {
+    badge = {
+      icon: "🏆",
+      title: "Dira Champion"
+    };
+  }
+
+  const goalNames = {
+    ujuzi: "Kujenga Ujuzi",
+    biashara: "Kuanzisha Biashara",
+    innovation: "Innovation",
+    kilimo: "Kilimo",
+    teknolojia: "Teknolojia & AI",
+    mazingira: "Mazingira",
+    jamii: "Kusaidia Jamii"
+  };
+
+  const goalTitle =
+    goalNames[goal] || goal;
+
+  response.style.display = "block";
+
+  response.innerHTML = `
+    <div style="
+      margin-top:16px;
+      padding:20px;
+      background:#ffffff;
+      border:1px solid #dce9e2;
+      border-radius:16px;
+    ">
+
+      <div style="
+        color:#006b3c;
+        font-size:22px;
+        font-weight:700;
+        margin-bottom:18px;
+      ">
+        👤 SAFARI YANGU
+      </div>
+
+      <div style="
+        padding:16px;
+        background:#f7fbf9;
+        border:1px solid #dce9e2;
+        border-radius:12px;
+        margin-bottom:12px;
+      ">
+
+        <div style="
+          color:#667;
+          font-size:13px;
+        ">
+          🎯 Lengo langu
+        </div>
+
+        <strong style="
+          display:block;
+          margin-top:5px;
+          color:#006b3c;
+          font-size:18px;
+        ">
+          ${goalTitle}
+        </strong>
+
+      </div>
+
+      <div style="
+        padding:16px;
+        background:#f7fbf9;
+        border:1px solid #dce9e2;
+        border-radius:12px;
+        margin-bottom:12px;
+      ">
+
+        <div style="
+          color:#667;
+          font-size:13px;
+        ">
+          📊 Progress yangu
+        </div>
+
+        <strong style="
+          display:block;
+          margin-top:5px;
+          color:#006b3c;
+          font-size:25px;
+        ">
+          ${progress}%
+        </strong>
+
+        <div style="
+          margin-top:10px;
+          background:#ffffff;
+          height:10px;
+          border-radius:10px;
+          overflow:hidden;
+        ">
+
+          <div style="
+            width:${progress}%;
+            height:100%;
+            background:#006b3c;
+            transition:width .4s ease;
+          "></div>
+
+        </div>
+
+        <p style="
+          margin-top:7px;
+          color:#667;
+          font-size:12px;
+        ">
+          ${completed.length} kati ya 4 wiki zimekamilika
+        </p>
+
+      </div>
+
+      <div style="
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+      ">
+
+        <div style="
+          padding:16px;
+          background:#f7fbf9;
+          border:1px solid #dce9e2;
+          border-radius:12px;
+          text-align:center;
+        ">
+
+          <div style="font-size:35px;">
+            📅
+          </div>
+
+          <strong style="color:#006b3c;">
+            ${completed.length}/4
+          </strong>
+
+          <div style="
+            color:#667;
+            font-size:12px;
+            margin-top:5px;
+          ">
+            Wiki
+          </div>
+
+        </div>
+
+        <div style="
+          padding:16px;
+          background:#f7fbf9;
+          border:1px solid #dce9e2;
+          border-radius:12px;
+          text-align:center;
+        ">
+
+          <div style="font-size:35px;">
+            ${badge.icon}
+          </div>
+
+          <strong style="
+            color:#006b3c;
+            font-size:14px;
+          ">
+            ${badge.title}
+          </strong>
+
+          <div style="
+            color:#667;
+            font-size:12px;
+            margin-top:5px;
+          ">
+            Badge yangu
+          </div>
+
+        </div>
+
+      </div>
+
+      <div style="
+        margin-top:14px;
+        padding:16px;
+        background:#eef8f2;
+        border:1px solid #dce9e2;
+        border-radius:12px;
+      ">
+
+        <strong style="color:#006b3c;">
+          🚀 Hatua yangu inayofuata
+        </strong>
+
+        <p style="
+          margin-top:7px;
+          color:#667;
+          line-height:1.5;
+        ">
+          ${
+            progress === 100
+              ? "Hongera! Sasa unaweza kuweka lengo jipya na kuanza safari nyingine."
+              : "Endelea na Wiki inayofuata ya Mpango wako wa Siku 30."
+          }
+        </p>
+
+      </div>
+
+    </div>
+  `;
 }  
   </script>
 
