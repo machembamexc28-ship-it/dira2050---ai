@@ -3010,8 +3010,7 @@ function showAchievement(goal, level) {
     localStorage.getItem(storageKey) || "[]"
   );
 
-  const response =
-    document.getElementById("action-plan-response");
+const achievement = getAchievement(progress);
 
   if (!response) return;
 
@@ -3314,13 +3313,30 @@ function showProgressDashboard(goal, level) {
           text-align:center;
         ">
 
-          <div style="font-size:25px;">
-            ${progress === 100 ? "🏆" : "🔒"}
-          </div>
+<div style="font-size:25px;">
+  ${achievement.icon}
+</div>
 
-          <strong style="color:#006b3c;">
-            ${achievement}
-          </strong>
+<strong style="color:#006b3c;">
+  ${achievement.title}
+</strong>
+
+<div style="
+  color:#667;
+  font-size:12px;
+  margin-top:4px;
+">
+  Achievement
+</div>
+
+<p style="
+  margin-top:8px;
+  color:#667;
+  font-size:12px;
+  line-height:1.4;
+">
+  ${achievement.message}
+</p>
 
           <div style="
             color:#667;
