@@ -2947,6 +2947,58 @@ function completeWeek(goal, level, index) {
   }
 } 
   /* ================================
+   🏆 ACHIEVEMENT & MILESTONE SYSTEM
+================================ */
+
+function getAchievement(progress) {
+
+  if (progress === 0) {
+    return {
+      icon: "🌱",
+      title: "Safari inaanza",
+      message: "Anza Wiki ya 1 na ujenge msingi wa lengo lako."
+    };
+  }
+
+  if (progress === 25) {
+    return {
+      icon: "🌱",
+      title: "Umeanza Safari!",
+      message: "Hongera! Umechukua hatua yako ya kwanza."
+    };
+  }
+
+  if (progress === 50) {
+    return {
+      icon: "🔥",
+      title: "Unaendelea Vizuri!",
+      message: "Umefika nusu ya mpango wako. Endelea hivyo!"
+    };
+  }
+
+  if (progress === 75) {
+    return {
+      icon: "🚀",
+      title: "Uko Karibu!",
+      message: "Umefika 75%. Usikate tamaa sasa!"
+    };
+  }
+
+  if (progress === 100) {
+    return {
+      icon: "🏆",
+      title: "Hongera Bingwa!",
+      message: "Umemaliza mpango wako wa siku 30!"
+    };
+  }
+
+  return {
+    icon: "💪",
+    title: "Endelea!",
+    message: "Kila hatua ndogo inakusogeza karibu na lengo."
+  };
+}  
+  /* ================================
    🏆 MAFANIKIO YANGU
 ================================ */
 
