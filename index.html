@@ -3657,6 +3657,50 @@ function showCertificate(goal, level) {
     </div>
   `;
 }  
+  /* ================================
+   🥇 BADGE SYSTEM — DIRA2050
+================================ */
+
+function getProgressBadge(progress) {
+
+  if (progress >= 100) {
+    return {
+      icon: "🏆",
+      name: "Dira Champion",
+      message: "Umefanikiwa kukamilisha mpango wako!"
+    };
+  }
+
+  if (progress >= 75) {
+    return {
+      icon: "🚀",
+      name: "Achiever",
+      message: "Uko karibu sana kufikia lengo!"
+    };
+  }
+
+  if (progress >= 50) {
+    return {
+      icon: "📚",
+      name: "Learner",
+      message: "Unaendelea vizuri. Endelea kujenga!"
+    };
+  }
+
+  if (progress >= 25) {
+    return {
+      icon: "🌱",
+      name: "Starter",
+      message: "Umeanza safari yako ya mafanikio!"
+    };
+  }
+
+  return {
+    icon: "🔒",
+    name: "Bado hujaanza",
+    message: "Anza hatua yako ya kwanza."
+  };
+}  
   </script>
 
 </body>
