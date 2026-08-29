@@ -3376,6 +3376,55 @@ function showProgressDashboard(goal, level) {
     </div>
   `;
 }  
+  /* ================================
+   🏆 DIRA2050 — MILESTONE BADGES
+================================ */
+
+function getMilestone(progress) {
+
+  if (progress >= 100) {
+    return {
+      icon: "🏆",
+      title: "BINGWA WA DIRA!",
+      message: "Umefikia 100% na kukamilisha mpango wako wa siku 30.",
+      next: "Anza kuweka lengo lako linalofuata."
+    };
+  }
+
+  if (progress >= 75) {
+    return {
+      icon: "🚀",
+      title: "UMEKARIBIA!",
+      message: "Umefikia 75%. Zimebaki hatua chache tu.",
+      next: "Kamilisha Wiki ya 4."
+    };
+  }
+
+  if (progress >= 50) {
+    return {
+      icon: "🔥",
+      title: "UNAENDELEA VIZURI!",
+      message: "Umefikia 50% ya mpango wako.",
+      next: "Endelea na Wiki ya 3."
+    };
+  }
+
+  if (progress >= 25) {
+    return {
+      icon: "🌱",
+      title: "UMEANZA SAFARI!",
+      message: "Umefanikiwa kukamilisha hatua yako ya kwanza.",
+      next: "Endelea na Wiki ya 2."
+    };
+  }
+
+  return {
+    icon: "🎯",
+    title: "SAFARI INAANZA",
+    message: "Bado hujakamilisha hatua yoyote.",
+    next: "Anza na Wiki ya 1."
+  };
+}  
   </script>
 
 </body>
