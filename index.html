@@ -2998,23 +2998,64 @@ function getAchievement(progress) {
     message: "Kila hatua ndogo inakusogeza karibu na lengo."
   };
 }  
-  /* ================================
-   🏆 MAFANIKIO YANGU
+/* ================================
+   🏆 MAFANIKIO — ACHIEVEMENT SYSTEM
 ================================ */
 
 function showAchievement(goal, level) {
 
-  const storageKey = `dira2050-progress-${goal}-${level}`;
+  const response =
+    document.getElementById("action-plan-response");
+
+  if (!response) return;
+
+  const storageKey =
+    `dira2050-progress-${goal}-${level}`;
 
   const completed = JSON.parse(
     localStorage.getItem(storageKey) || "[]"
   );
 
-const achievement = getAchievement(progress);
+  const progress =
+    Math.round((completed.length / 4) * 100);
 
-  if (!response) return;
+  let milestone = {
+    icon: "🌱",
+    title: "Dira Starter",
+    message: "Umeanza safari yako ya utekelezaji."
+  };
+
+  if (progress >= 50) {
+    milestone = {
+      icon: "📚",
+      title: "Dira Learner",
+      message: "Unaendelea vizuri na mpango wako."
+    };
+  }
+
+  if (progress >= 75) {
+    milestone = {
+      icon: "🚀",
+      title: "Dira Achiever",
+      message: "Umefanya maendeleo makubwa!"
+    };
+  }
+
+  if (progress === 100) {
+    milestone = {
+      icon: "🏆",
+      title: "Dira Champion",
+      message: "Umefanikiwa kukamilisha mpango wako wa siku 30!"
+    };
+  }
+
+  /* ================================
+     BADO HAJAKAMILISHA
+  ================================= */
 
   if (completed.length < 4) {
+
+    response.style.display = "block";
 
     response.innerHTML = `
       <div style="
@@ -3027,40 +3068,89 @@ const achievement = getAchievement(progress);
       ">
 
         <div style="
-          font-size:42px;
+          font-size:50px;
           margin-bottom:8px;
         ">
-          🔒
+          ${milestone.icon}
         </div>
 
         <h3 style="
           color:#006b3c;
           margin-bottom:8px;
         ">
-          Mafanikio Bado Hayajafunguka
+          ${milestone.title}
         </h3>
 
         <p style="
           color:#667;
           line-height:1.6;
         ">
-          Kamilisha wiki zote 4 za Mpango wako wa Siku 30
-          ili kufungua mafanikio yako.
+          ${milestone.message}
         </p>
 
-        <strong style="
-          display:block;
-          margin-top:10px;
-          color:#006b3c;
+        <div style="
+          margin:15px auto;
+          padding:14px;
+          background:#f7fbf9;
+          border:1px solid #dce9e2;
+          border-radius:12px;
+          max-width:300px;
         ">
-          ${completed.length} / 4 zimekamilika
-        </strong>
+
+          <strong style="
+            display:block;
+            color:#006b3c;
+            font-size:18px;
+          ">
+            📊 ${progress}%
+          </strong>
+
+          <div style="
+            margin-top:8px;
+            background:#ffffff;
+            height:10px;
+            border-radius:10px;
+            overflow:hidden;
+          ">
+
+            <div style="
+              width:${progress}%;
+              height:100%;
+              background:#006b3c;
+              transition:width .4s ease;
+            "></div>
+
+          </div>
+
+          <div style="
+            margin-top:8px;
+            color:#667;
+            font-size:12px;
+          ">
+            ${completed.length} / 4 wiki zimekamilika
+          </div>
+
+        </div>
+
+        <p style="
+          color:#667;
+          line-height:1.5;
+        ">
+          🔒 Kamilisha wiki zote 4 ili kufungua
+          <strong>Dira Champion 🏆</strong>.
+        </p>
 
       </div>
     `;
 
     return;
   }
+
+  /* ================================
+     🏆 AMEKAMILISHA 100%
+  ================================= */
+
+  response.style.display = "block";
 
   response.innerHTML = `
     <div style="
@@ -3073,7 +3163,7 @@ const achievement = getAchievement(progress);
     ">
 
       <div style="
-        font-size:60px;
+        font-size:65px;
         margin-bottom:10px;
       ">
         🏆
@@ -3096,35 +3186,53 @@ const achievement = getAchievement(progress);
 
       <div style="
         margin:18px auto;
-        padding:15px;
+        padding:18px;
         background:#f7fbf9;
         border:1px solid #dce9e2;
         border-radius:12px;
         max-width:400px;
       ">
 
-<strong style="
-  display:block;
-  color:#006b3c;
-  font-size:16px;
-">
-  ${milestone.icon} ${milestone.title}
-</strong>
-
-<div style="
-  color:#667;
-  font-size:12px;
-  margin-top:4px;
-">
-  ${milestone.message}
-</div>
+        <div style="
+          font-size:45px;
+          margin-bottom:8px;
         ">
+          ${milestone.icon}
+        </div>
+
+        <strong style="
+          display:block;
+          color:#006b3c;
+          font-size:20px;
+        ">
+          ${milestone.title}
+        </strong>
+
+        <div style="
+          color:#667;
+          font-size:13px;
+          margin-top:6px;
+        ">
+          ${milestone.message}
+        </div>
+
+      </div>
+
+      <div style="
+        margin-top:15px;
+        padding:14px;
+        background:#006b3c;
+        color:white;
+        border-radius:11px;
+      ">
+
+        <strong>
           🥇 DIRA2050 ACHIEVEMENT
         </strong>
 
         <p style="
-          margin-top:8px;
-          color:#667;
+          margin-top:7px;
+          line-height:1.5;
         ">
           Umeonyesha nidhamu, utekelezaji
           na kujitolea kufikia lengo lako.
@@ -3133,6 +3241,7 @@ const achievement = getAchievement(progress);
       </div>
 
       <p style="
+        margin-top:16px;
         color:#006b3c;
         font-weight:bold;
       ">
@@ -3141,7 +3250,7 @@ const achievement = getAchievement(progress);
 
     </div>
   `;
-} 
+}
   /* ================================
    📈 DASHBOARD YA MAENDELEO
 ================================ */
