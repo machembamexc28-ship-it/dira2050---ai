@@ -2380,13 +2380,16 @@ function showPersonalizedRoadmap() {
     </div>
   `;
 } 
-  /* ================================
-   MPANGO WANGU WA SIKU 30
+/* ================================
+   📅 MPANGO WANGU WA SIKU 30
 ================================ */
 
 function show30DayPlan(goal, level) {
 
-  const response = document.getElementById("action-plan-response");
+  const response =
+    document.getElementById("action-plan-response");
+
+  if (!response) return;
 
   const plans30 = {
 
@@ -2466,20 +2469,30 @@ function show30DayPlan(goal, level) {
 
   if (!selected) return;
 
+  const storageKey =
+    `dira2050-progress-${goal}-${level}`;
+
+  const completed = JSON.parse(
+    localStorage.getItem(storageKey) || "[]"
+  );
+
+  const progress =
+    Math.round((completed.length / 4) * 100);
+
   response.style.display = "block";
 
   response.innerHTML = `
     <div style="
       margin-top:16px;
-      padding:18px;
+      padding:20px;
       background:#ffffff;
       border:1px solid #dce9e2;
-      border-radius:14px;
+      border-radius:16px;
     ">
 
       <div style="
         color:#006b3c;
-        font-size:20px;
+        font-size:21px;
         font-weight:700;
         margin-bottom:8px;
       ">
@@ -2491,90 +2504,129 @@ function show30DayPlan(goal, level) {
         line-height:1.6;
         margin-bottom:18px;
       ">
-        Lengo lako: <strong>${selected.title}</strong>
+        Lengo lako:
+        <strong>${selected.title}</strong>
       </p>
+
+      <!-- PROGRESS -->
+
+      <div style="
+        margin-bottom:15px;
+        padding:14px;
+        background:#eef8f2;
+        border:1px solid #dce9e2;
+        border-radius:11px;
+      ">
+
+        <strong style="color:#006b3c;">
+          📊 Progress yako
+        </strong>
+
+        <div style="
+          margin-top:8px;
+          background:#ffffff;
+          height:10px;
+          border-radius:10px;
+          overflow:hidden;
+        ">
+
+          <div
+            id="progress-bar-${goal}-${level}"
+            style="
+              width:${progress}%;
+              height:100%;
+              background:#006b3c;
+              transition:width .3s ease;
+            "
+          ></div>
+
+        </div>
+
+        <p
+          id="progress-text-${goal}-${level}"
+          style="
+            margin-top:7px;
+            font-size:13px;
+            color:#667;
+          "
+        >
+          ${progress}% — ${completed.length} kati ya 4 zimekamilika
+        </p>
+
+      </div>
+
+      <!-- WIKI 1 - 4 -->
 
       <div style="
         display:grid;
         gap:10px;
       ">
-<div id="plan-progress-${goal}-${level}" style="
-  margin-bottom:15px;
-  padding:14px;
-  background:#eef8f2;
-  border:1px solid #dce9e2;
-  border-radius:11px;
-">
-  <strong style="color:#006b3c;">
-    📊 Progress yako
-  </strong>
 
-  <div style="
-    margin-top:8px;
-    background:#ffffff;
-    height:10px;
-    border-radius:10px;
-    overflow:hidden;
-  ">
-    <div id="progress-bar-${goal}-${level}" style="
-      width:0%;
-      height:100%;
-      background:#006b3c;
-      transition:width .3s ease;
-    "></div>
-  </div>
-
-  <p id="progress-text-${goal}-${level}" style="
-    margin-top:7px;
-    font-size:13px;
-    color:#667;
-  ">
-    0% — 0 kati ya 4 zimekamilika
-  </p>
-</div>
         ${selected.weeks.map((week, index) => `
+
           <div style="
             padding:14px;
             background:#f7fbf9;
             border:1px solid #dce9e2;
             border-radius:11px;
           ">
+
             <strong style="color:#006b3c;">
-              ${index === 0 ? "🌱" :
+
+              ${
+                index === 0 ? "🌱" :
                 index === 1 ? "📚" :
-                index === 2 ? "🚀" : "🏆"}
+                index === 2 ? "🚀" : "🏆"
+              }
+
               ${week.split(":")[0]}
+
             </strong>
 
-<p style="
-  margin-top:5px;
-  color:#667;
-  line-height:1.5;
-">
-  ${week.substring(week.indexOf(":") + 1)}
-</p>
+            <p style="
+              margin-top:5px;
+              color:#667;
+              line-height:1.5;
+            ">
+              ${week.substring(week.indexOf(":") + 1)}
+            </p>
 
-<button
-  onclick="completeWeek('${goal}','${level}',${index})"
-  style="
-    margin-top:10px;
-    background:#ffffff;
-    color:#006b3c;
-    border:1px solid #cfe3d8;
-    padding:9px 13px;
-    border-radius:9px;
-    cursor:pointer;
-    font-size:12px;
-    font-weight:bold;
-  "
->
-  ✅ Nimekamilisha
-</button>
+            <button
+              onclick="completeWeek('${goal}','${level}',${index})"
+              style="
+                margin-top:10px;
+                background:${
+                  completed.includes(index)
+                    ? "#006b3c"
+                    : "#ffffff"
+                };
+                color:${
+                  completed.includes(index)
+                    ? "white"
+                    : "#006b3c"
+                };
+                border:1px solid #cfe3d8;
+                padding:9px 13px;
+                border-radius:9px;
+                cursor:pointer;
+                font-size:12px;
+                font-weight:bold;
+              "
+            >
+              ${
+                completed.includes(index)
+                  ? "✅ Imekamilika"
+                  : "✅ Nimekamilisha"
+              }
+            </button>
 
-</div>
+          </div>
+
         `).join("")}
 
       </div>
+
+      <!-- LENGO -->
 
       <div style="
         margin-top:18px;
@@ -2584,7 +2636,9 @@ function show30DayPlan(goal, level) {
         border-radius:11px;
       ">
 
-        <strong>🎯 Lengo la siku 30</strong>
+        <strong>
+          🎯 Lengo la siku 30
+        </strong>
 
         <p style="
           margin-top:7px;
@@ -2596,21 +2650,8 @@ function show30DayPlan(goal, level) {
 
       </div>
 
-      <button
-        onclick="setQuestion('Nisaidie kutengeneza mpango wa kina wa ${selected.title} kwa siku 30')"
-        style="
-          margin-top:14px;
-          background:#006b3c;
-          color:white;
-          border:none;
-          padding:11px 15px;
-          border-radius:9px;
-          cursor:pointer;
-          font-weight:bold;
-        "
-      >
-        🤖 Nisaidie zaidi
-      </button>
+      <!-- MAFANIKIO -->
+
       <button
         onclick="showAchievement('${goal}','${level}')"
         style="
@@ -2627,7 +2668,10 @@ function show30DayPlan(goal, level) {
       >
         🏆 Mafanikio Yangu
       </button>
-            <button
+
+      <!-- SAFARI YANGU -->
+
+      <button
         onclick="showMyJourney('${goal}','${level}')"
         style="
           margin-top:12px;
@@ -2635,17 +2679,18 @@ function show30DayPlan(goal, level) {
           background:#006b3c;
           color:white;
           border:none;
-          padding:11px 15px;
-          border-radius:9px;
+          padding:12px 15px;
+          border-radius:10px;
           cursor:pointer;
           font-weight:bold;
         "
       >
         👤 Safari Yangu
       </button>
+
     </div>
   `;
-} 
+}
   /* ================================
    COMPLETE WEEK — PROGRESS TRACKER
 ================================ */
