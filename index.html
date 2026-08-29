@@ -3103,9 +3103,21 @@ const achievement = getAchievement(progress);
         max-width:400px;
       ">
 
-        <strong style="
-          color:#006b3c;
-          font-size:18px;
+<strong style="
+  display:block;
+  color:#006b3c;
+  font-size:16px;
+">
+  ${milestone.icon} ${milestone.title}
+</strong>
+
+<div style="
+  color:#667;
+  font-size:12px;
+  margin-top:4px;
+">
+  ${milestone.message}
+</div>
         ">
           🥇 DIRA2050 ACHIEVEMENT
         </strong>
@@ -3155,8 +3167,7 @@ function showProgressDashboard(goal, level) {
   const progress =
     Math.round((completedWeeks / totalWeeks) * 100);
 
-  const achievement =
-    progress === 100 ? "🏆 Imepatikana" : "🔒 Haijapatikana";
+const milestone = getMilestone(progress);
 
   const goalNames = {
     ujuzi: "Kujenga Ujuzi",
