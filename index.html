@@ -3383,7 +3383,25 @@ const milestone = getMilestone(progress);
         </p>
 
       </div>
-
+${progress === 100 ? `
+  <button
+    onclick="showCertificate('${goal}','${level}')"
+    style="
+      width:100%;
+      margin-top:14px;
+      background:#006b3c;
+      color:white;
+      border:none;
+      padding:13px 16px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:bold;
+      font-size:14px;
+    "
+  >
+    🏆 Fungua Cheti Changu
+  </button>
+` : ""}
     </div>
   `;
 }  
@@ -3435,6 +3453,209 @@ function getMilestone(progress) {
     message: "Bado hujakamilisha hatua yoyote.",
     next: "Anza na Wiki ya 1."
   };
+} 
+  /* ================================
+   🏆 DIRA2050 — CERTIFICATE
+================================ */
+
+function showCertificate(goal, level) {
+
+  const response =
+    document.getElementById("action-plan-response");
+
+  if (!response) return;
+
+  const storageKey =
+    `dira2050-progress-${goal}-${level}`;
+
+  const completed = JSON.parse(
+    localStorage.getItem(storageKey) || "[]"
+  );
+
+  /* Cheti kinapatikana baada ya Wiki zote 4 */
+
+  if (completed.length !== 4) {
+
+    response.style.display = "block";
+
+    response.innerHTML = `
+      <div style="
+        margin-top:16px;
+        padding:20px;
+        background:#fff8e6;
+        border:1px solid #ead9a8;
+        border-radius:16px;
+        text-align:center;
+      ">
+
+        <div style="font-size:40px;">
+          🔒
+        </div>
+
+        <h3 style="
+          color:#806600;
+          margin:10px 0;
+        ">
+          Cheti bado hakijapatikana
+        </h3>
+
+        <p style="
+          color:#667;
+          line-height:1.6;
+        ">
+          Kamilisha Wiki zote 4 za Mpango Wako wa Siku 30
+          ili kufungua cheti chako.
+        </p>
+
+        <strong style="color:#006b3c;">
+          ${completed.length}/4 zimekamilika
+        </strong>
+
+      </div>
+    `;
+
+    return;
+  }
+
+  const goalNames = {
+    ujuzi: "Kujenga Ujuzi",
+    biashara: "Kuanzisha Biashara",
+    innovation: "Innovation",
+    kilimo: "Kilimo",
+    teknolojia: "Teknolojia & AI",
+    mazingira: "Mazingira",
+    jamii: "Kusaidia Jamii"
+  };
+
+  const goalTitle =
+    goalNames[goal] || goal;
+
+  const today =
+    new Date().toLocaleDateString("sw-TZ", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+
+  const certificateId =
+    "DIRA2050-" +
+    Date.now().toString().slice(-8);
+
+  response.style.display = "block";
+
+  response.innerHTML = `
+    <div style="
+      margin-top:16px;
+      padding:30px;
+      background:#ffffff;
+      border:3px solid #006b3c;
+      border-radius:18px;
+      text-align:center;
+    ">
+
+      <div style="
+        font-size:42px;
+        margin-bottom:8px;
+      ">
+        🏆
+      </div>
+
+      <div style="
+        color:#006b3c;
+        font-size:28px;
+        font-weight:800;
+        letter-spacing:1px;
+      ">
+        DIRA2050
+      </div>
+
+      <div style="
+        margin-top:5px;
+        color:#667;
+        font-size:14px;
+        letter-spacing:2px;
+      ">
+        CERTIFICATE OF COMPLETION
+      </div>
+
+      <div style="
+        width:80px;
+        height:2px;
+        background:#006b3c;
+        margin:20px auto;
+      "></div>
+
+      <p style="
+        color:#667;
+        font-size:15px;
+      ">
+        Hiki ni cheti cha kuthibitisha kuwa
+      </p>
+
+      <h2 style="
+        color:#006b3c;
+        margin:10px 0;
+      ">
+        Mshiriki wa Dira2050
+      </h2>
+
+      <p style="
+        color:#667;
+        line-height:1.6;
+      ">
+        amekamilisha kwa mafanikio
+        <strong>${goalTitle}</strong>
+        kupitia Mpango wa Siku 30.
+      </p>
+
+      <div style="
+        margin-top:20px;
+        padding:15px;
+        background:#f7fbf9;
+        border-radius:12px;
+      ">
+
+        <strong style="color:#006b3c;">
+          🏆 100% COMPLETED
+        </strong>
+
+        <br>
+
+        <span style="
+          color:#667;
+          font-size:13px;
+        ">
+          ${today}
+        </span>
+
+      </div>
+
+      <p style="
+        margin-top:18px;
+        color:#667;
+        font-size:12px;
+      ">
+        Certificate ID: ${certificateId}
+      </p>
+
+      <button
+        onclick="window.print()"
+        style="
+          margin-top:12px;
+          background:#006b3c;
+          color:white;
+          border:none;
+          padding:12px 18px;
+          border-radius:9px;
+          cursor:pointer;
+          font-weight:bold;
+        "
+      >
+        🖨️ Print / Save as PDF
+      </button>
+
+    </div>
+  `;
 }  
   </script>
 
