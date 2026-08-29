@@ -2935,6 +2935,16 @@ function completeWeek(goal, level, index) {
     progressText.innerHTML =
       "🎉 100% — Hongera! Umekamilisha mpango wako wa siku 30!";
   }
+    /* ================================
+     UPDATE PROGRESS DASHBOARD
+  ================================= */
+
+  const dashboardButton =
+    document.getElementById("progress-dashboard-button");
+
+  if (dashboardButton) {
+    dashboardButton.click();
+  }
 } 
   /* ================================
    🏆 MAFANIKIO YANGU
