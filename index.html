@@ -688,6 +688,51 @@
         font-size: 36px;
       }
     }
+    /* =================================
+   FIX — HERO & WELCOME SPACING
+================================= */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+.hero::before,
+.hero::after {
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Sehemu inayofuata baada ya Hero */
+.hero + * {
+  position: relative;
+  z-index: 5;
+  margin-top: 0;
+}
+
+/* Welcome section */
+.welcome-section {
+  position: relative;
+  z-index: 5;
+  margin-top: 0;
+}
+
+/* Kwenye simu */
+@media (max-width: 600px) {
+  .hero {
+    min-height: 650px;
+    padding: 60px 18px 55px;
+  }
+}
   /* ================================
    🏆 CERTIFICATE PRINT MODE
 ================================ */
