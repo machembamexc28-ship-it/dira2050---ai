@@ -3935,7 +3935,327 @@ function showMyJourney(goal, level) {
       </button>
     </div>
   `;
-}  
+} 
+ /* =================================
+   🌍 DIRA2050 — IMPACT DASHBOARD
+================================= */
+
+function showImpactDashboard(goal, level) {
+
+  const response =
+    document.getElementById("action-plan-response");
+
+  if (!response) return;
+
+  const storageKey =
+    `dira2050-progress-${goal}-${level}`;
+
+  const completed = JSON.parse(
+    localStorage.getItem(storageKey) || "[]"
+  );
+
+  const completedWeeks = completed.length;
+
+  const progress =
+    Math.round((completedWeeks / 4) * 100);
+
+  const goalNames = {
+    ujuzi: "Kujenga Ujuzi",
+    biashara: "Kuanzisha Biashara",
+    innovation: "Innovation",
+    kilimo: "Kilimo",
+    teknolojia: "Teknolojia & AI",
+    mazingira: "Mazingira",
+    jamii: "Kusaidia Jamii"
+  };
+
+  const goalTitle =
+    goalNames[goal] || goal;
+
+  let status = "🌱 Safari imeanza";
+
+  if (progress >= 25) {
+    status = "📚 Unaendelea";
+  }
+
+  if (progress >= 50) {
+    status = "🚀 Maendeleo mazuri";
+  }
+
+  if (progress >= 75) {
+    status = "🔥 Karibu kumaliza";
+  }
+
+  if (progress === 100) {
+    status = "🏆 Umekamilisha";
+  }
+
+  response.style.display = "block";
+
+  response.innerHTML = `
+    <div style="
+      margin-top:16px;
+      padding:22px;
+      background:#ffffff;
+      border:1px solid #dce9e2;
+      border-radius:16px;
+    ">
+
+      <div style="
+        text-align:center;
+        margin-bottom:20px;
+      ">
+
+        <div style="font-size:42px;">
+          🌍
+        </div>
+
+        <h2 style="
+          color:#006b3c;
+          margin:6px 0;
+        ">
+          DIRA2050 IMPACT
+        </h2>
+
+        <p style="
+          color:#667;
+          margin:0;
+          line-height:1.5;
+        ">
+          Maendeleo huanza na hatua moja.
+        </p>
+
+      </div>
+
+
+      <!-- LENGO -->
+
+      <div style="
+        padding:15px;
+        background:#f7fbf9;
+        border:1px solid #dce9e2;
+        border-radius:12px;
+        margin-bottom:10px;
+      ">
+
+        <div style="
+          color:#667;
+          font-size:12px;
+        ">
+          🎯 Lengo linalofanyiwa kazi
+        </div>
+
+        <strong style="
+          display:block;
+          margin-top:5px;
+          color:#006b3c;
+          font-size:18px;
+        ">
+          ${goalTitle}
+        </strong>
+
+      </div>
+
+
+      <!-- PROGRESS -->
+
+      <div style="
+        padding:15px;
+        background:#f7fbf9;
+        border:1px solid #dce9e2;
+        border-radius:12px;
+        margin-bottom:10px;
+      ">
+
+        <div style="
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+        ">
+
+          <strong style="color:#006b3c;">
+            📊 Progress
+          </strong>
+
+          <strong style="
+            color:#006b3c;
+            font-size:20px;
+          ">
+            ${progress}%
+          </strong>
+
+        </div>
+
+        <div style="
+          margin-top:10px;
+          background:#ffffff;
+          height:10px;
+          border-radius:10px;
+          overflow:hidden;
+        ">
+
+          <div style="
+            width:${progress}%;
+            height:100%;
+            background:#006b3c;
+            transition:width .4s ease;
+          "></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- STATS -->
+
+      <div style="
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+        margin-bottom:10px;
+      ">
+
+        <div style="
+          padding:15px;
+          background:#f7fbf9;
+          border:1px solid #dce9e2;
+          border-radius:12px;
+          text-align:center;
+        ">
+
+          <div style="font-size:28px;">
+            📅
+          </div>
+
+          <strong style="
+            color:#006b3c;
+            font-size:20px;
+          ">
+            ${completedWeeks}/4
+          </strong>
+
+          <div style="
+            color:#667;
+            font-size:12px;
+          ">
+            Wiki
+          </div>
+
+        </div>
+
+
+        <div style="
+          padding:15px;
+          background:#f7fbf9;
+          border:1px solid #dce9e2;
+          border-radius:12px;
+          text-align:center;
+        ">
+
+          <div style="font-size:28px;">
+            ${progress === 100 ? "🏆" : "🚀"}
+          </div>
+
+          <strong style="
+            color:#006b3c;
+            font-size:13px;
+          ">
+            ${status}
+          </strong>
+
+          <div style="
+            color:#667;
+            font-size:12px;
+            margin-top:3px;
+          ">
+            Status
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- IMPACT MESSAGE -->
+
+      <div style="
+        padding:16px;
+        background:#eef8f2;
+        border:1px solid #cfe3d8;
+        border-radius:12px;
+        margin-top:10px;
+      ">
+
+        <strong style="color:#006b3c;">
+          🇹🇿 Hatua yako ina maana
+        </strong>
+
+        <p style="
+          margin-top:7px;
+          color:#667;
+          line-height:1.6;
+          margin-bottom:0;
+        ">
+          Kila wiki unayokamilisha ni hatua
+          inayokusaidia kubadilisha lengo lako
+          kuwa utekelezaji halisi.
+        </p>
+
+      </div>
+
+
+      <!-- NEXT ACTION -->
+
+      <div style="
+        margin-top:12px;
+        padding:16px;
+        background:#006b3c;
+        color:white;
+        border-radius:12px;
+        text-align:center;
+      ">
+
+        <strong>
+          🚀 HATUA INAYOFUATA
+        </strong>
+
+        <p style="
+          margin-top:7px;
+          line-height:1.5;
+          margin-bottom:0;
+        ">
+          ${
+            progress === 100
+              ? "Hongera! Umefanya safari hii. Weka lengo jipya."
+              : "Rudi kwenye Mpango wa Siku 30 na endelea na Wiki inayofuata."
+          }
+        </p>
+
+      </div>
+
+
+      <!-- BACK -->
+
+      <button
+        onclick="show30DayPlan('${goal}','${level}')"
+        style="
+          width:100%;
+          margin-top:14px;
+          background:#ffffff;
+          color:#006b3c;
+          border:1px solid #006b3c;
+          padding:11px 15px;
+          border-radius:10px;
+          cursor:pointer;
+          font-weight:bold;
+        "
+      >
+        📅 Rudi kwenye Mpango wa Siku 30
+      </button>
+
+    </div>
+  `;
+}   
   </script>
 <!-- ================================
      🇹🇿 KUHUSU DIRA2050 AI ASSISTANT
