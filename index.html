@@ -3596,7 +3596,13 @@ function showCertificate(goal, level) {
 
   const goalTitle =
     goalNames[goal] || goal;
+  /* ================================
+     👤 JINA LA MSHIRIKI
+  ================================= */
 
+  const participantName =
+    localStorage.getItem("dira2050ParticipantName") ||
+    "Mshiriki wa Dira2050";
   const today =
     new Date().toLocaleDateString("sw-TZ", {
       day: "numeric",
