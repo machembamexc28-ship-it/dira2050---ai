@@ -4932,7 +4932,14 @@ function showImpactDashboard(goal, level) {
     </p>
 
 <button
-  onclick="document.getElementById('question').focus();"
+  onclick="
+  document.getElementById('question').value='Nianzie wapi katika kujenga ujuzi?';
+  document.getElementById('question').scrollIntoView({
+    behavior:'smooth',
+    block:'center'
+  });
+  setTimeout(() => askAssistant(), 500);
+"
       style="
         background:#ffffff;
         color:#006b3c;
