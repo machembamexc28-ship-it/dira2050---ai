@@ -1049,21 +1049,22 @@
       /* ================================
          SMART ACTION MODE
       ================================= */
-      const actionKeywords = [
-        "nifanye nini",
-        "naweza kufanya nini",
-        "nitawezaje kushiriki",
-        "ninawezaje kushiriki",
-        "ninawezaje kuchangia",
-        "naweza kusaidiaje",
-        "hatua gani",
-        "hatua zipi",
-        "nitaanzaje",
-        "naanzaje",
-        "nifanyeje",
-        "jinsi ya kushiriki",
-        "jinsi ya kuchangia"
-      ];
+const actionKeywords = [
+  "nifanye nini",
+  "naweza kufanya nini",
+  "nitawezaje kushiriki",
+  "ninawezaje kushiriki",
+  "ninawezaje kuchangia",
+  "naweza kusaidiaje",
+  "hatua gani",
+  "hatua zipi",
+  "nitaanzaje",
+  "naanzaje",
+  "nianzie wapi",
+  "nifanyeje",
+  "jinsi ya kushiriki",
+  "jinsi ya kuchangia"
+];
 
       const wantsAction = actionKeywords.some(keyword =>
         q.includes(normalizeText(keyword))
