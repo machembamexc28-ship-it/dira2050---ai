@@ -2819,6 +2819,41 @@ console.log("SHOW30DAYPLAN INAFANYA KAZI", goal, level);
   `;
 }
   /* ================================
+   👤 HIFADHI JINA LA MSHIRIKI
+================================ */
+
+function saveParticipantName() {
+
+  const input =
+    document.getElementById("participant-name");
+
+  if (!input) return;
+
+  const name =
+    input.value.trim();
+
+  if (!name) {
+    alert("⚠️ Tafadhali andika jina lako kwanza.");
+    return;
+  }
+
+  localStorage.setItem(
+    "dira2050ParticipantName",
+    name
+  );
+
+  alert("✅ Jina limehifadhiwa kikamilifu!");
+
+  /* Onyesha Safari Yangu upya */
+
+  const goal =
+    localStorage.getItem("dira2050Goal");
+
+  if (goal) {
+    showMyJourney(goal, "beginner");
+  }
+}  
+  /* ================================
    COMPLETE WEEK — PROGRESS TRACKER
 ================================ */
 
