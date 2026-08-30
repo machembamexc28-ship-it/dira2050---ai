@@ -1524,6 +1524,342 @@ button[onclick*="askAssistant"]:hover {
   .chat-box button {
     min-height: 48px;
   }
+} 
+  /* =========================================
+   🤖 DIRA2050 PREMIUM AI WORKSPACE
+========================================= */
+
+main.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 55px 20px 70px;
+}
+
+/* AI ASSISTANT MAIN CARD */
+
+.card.assistant {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  padding: 38px;
+
+  background: rgba(255,255,255,0.96);
+
+  border: 1px solid #dce9e2;
+  border-radius: 28px;
+
+  box-shadow:
+    0 20px 60px rgba(0,70,40,0.08);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* TOP GREEN LINE */
+
+.card.assistant::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 5px;
+
+  background: linear-gradient(
+    90deg,
+    #006b3c,
+    #00a862,
+    #006b3c
+  );
+}
+
+/* TITLE */
+
+.card.assistant h2 {
+  color: #064b32;
+  font-size: clamp(25px, 4vw, 34px);
+  font-weight: 850;
+
+  margin-bottom: 10px;
+}
+
+.card.assistant > p {
+  color: #687970;
+  font-size: 15px;
+  line-height: 1.7;
+
+  margin-bottom: 28px;
+}
+
+
+/* =========================================
+   QUICK QUESTIONS
+========================================= */
+
+.quick-questions {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-bottom: 30px;
+}
+
+.quick-questions button {
+  min-height: 52px;
+
+  padding: 12px 15px;
+
+  border-radius: 13px;
+
+  border: 1px solid #cfe3d8;
+
+  background: #f7fbf9;
+
+  color: #006b3c;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all .22s ease;
+}
+
+.quick-questions button:hover {
+  transform: translateY(-3px);
+
+  background: #eaf6ef;
+
+  border-color: #9fcbb3;
+
+  box-shadow:
+    0 8px 20px rgba(0,107,60,.08);
+}
+
+
+/* =========================================
+   PROFILE + DIRA YANGU
+========================================= */
+
+.profile-box {
+  margin-top: 24px;
+
+  padding: 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fcfa,
+      #ffffff
+    );
+
+  border: 1px solid #d8e8df;
+
+  border-radius: 20px;
+}
+
+.profile-box h3 {
+  color: #006b3c;
+
+  font-size: 18px;
+
+  margin-bottom: 7px;
+}
+
+.profile-box > p {
+  color: #718078;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  margin-bottom: 17px;
+}
+
+
+/* OPTIONS */
+
+.profile-options {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+.profile-options button {
+  min-height: 48px;
+
+  padding: 11px 12px;
+
+  border-radius: 12px;
+
+  background: white;
+
+  color: #006b3c;
+
+  border: 1px solid #cfe3d8;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all .22s ease;
+}
+
+.profile-options button:hover {
+  transform: translateY(-2px);
+
+  background: #eef8f2;
+
+  border-color: #9fcbb3;
+}
+
+.profile-options button.active {
+  background: #006b3c;
+
+  color: white;
+
+  border-color: #006b3c;
+}
+
+
+/* =========================================
+   CHAT AREA
+========================================= */
+
+.chat-box {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 28px;
+
+  padding: 8px;
+
+  background: #f4faf7;
+
+  border: 1px solid #d8e8df;
+
+  border-radius: 18px;
+}
+
+.chat-box input {
+  flex: 1;
+
+  min-height: 54px;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  padding: 0 15px;
+
+  font-size: 15px;
+
+  color: #123;
+}
+
+.chat-box button {
+  min-height: 54px;
+
+  padding: 0 24px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #006b3c,
+      #008f52
+    );
+
+  color: white;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: .25s ease;
+}
+
+.chat-box button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 22px rgba(0,107,60,.20);
+}
+
+
+/* =========================================
+   ACTION PLAN RESPONSE
+========================================= */
+
+#action-plan-response,
+#profile-response {
+  margin-top: 18px;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+  main.container {
+    padding: 35px 15px 50px;
+  }
+
+  .card.assistant {
+    padding: 25px 18px;
+    border-radius: 22px;
+  }
+
+  .quick-questions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profile-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 520px) {
+
+  .quick-questions,
+  .profile-options {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-box {
+    flex-direction: column;
+    padding: 8px;
+  }
+
+  .chat-box button {
+    width: 100%;
+  }
+
 }  
   </style>
 </head>
