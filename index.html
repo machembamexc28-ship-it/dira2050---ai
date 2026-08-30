@@ -3659,12 +3659,12 @@ function showCertificate(goal, level) {
         Hiki ni cheti cha kuthibitisha kuwa
       </p>
 
-      <h2 style="
-        color:#006b3c;
-        margin:10px 0;
-      ">
-        Mshiriki wa Dira2050
-      </h2>
+<h2 style="
+  color:#006b3c;
+  margin:10px 0;
+">
+  ${participantName}
+</h2>
 
       <p style="
         color:#667;
@@ -3894,7 +3894,30 @@ function showMyJourney(goal, level) {
 
   const progress =
     Math.round((completed.length / 4) * 100);
+  /* ================================
+     👤 JINA LA MSHIRIKI
+  ================================= */
 
+  let participantName =
+    localStorage.getItem("dira2050ParticipantName");
+
+  if (!participantName) {
+
+    participantName =
+      prompt("👤 Andika jina lako kwa ajili ya Safari Yangu na Cheti:");
+
+    if (participantName) {
+      participantName = participantName.trim();
+
+      localStorage.setItem(
+        "dira2050ParticipantName",
+        participantName
+      );
+    }
+  }
+
+  participantName =
+    participantName || "Mshiriki wa Dira2050";
   let badge = {
     icon: "🌱",
     title: "Dira Starter"
