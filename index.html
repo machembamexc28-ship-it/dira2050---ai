@@ -3900,30 +3900,12 @@ function showMyJourney(goal, level) {
 
   const progress =
     Math.round((completed.length / 4) * 100);
-  /* ================================
-     👤 JINA LA MSHIRIKI
-  ================================= */
+/* ================================
+   👤 JINA LA MSHIRIKI
+================================ */
 
-  let participantName =
-    localStorage.getItem("dira2050ParticipantName");
-
-  if (!participantName) {
-
-    participantName =
-      prompt("👤 Andika jina lako kwa ajili ya Safari Yangu na Cheti:");
-
-    if (participantName) {
-      participantName = participantName.trim();
-
-      localStorage.setItem(
-        "dira2050ParticipantName",
-        participantName
-      );
-    }
-  }
-
-  participantName =
-    participantName || "Mshiriki wa Dira2050";
+const participantName =
+  localStorage.getItem("dira2050ParticipantName") || "";
   let badge = {
     icon: "🌱",
     title: "Dira Starter"
