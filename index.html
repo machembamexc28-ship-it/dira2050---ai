@@ -3706,7 +3706,8 @@ function showCertificate(goal, level) {
       </p>
 
       <button
-        onclick="window.print()"
+<button
+  onclick="printCertificate()"
         style="
           margin-top:12px;
           background:#006b3c;
@@ -3724,6 +3725,111 @@ function showCertificate(goal, level) {
     </div>
   `;
 }  
+ /* ================================
+   🖨️ PRINT CERTIFICATE ONLY
+================================ */
+
+function printCertificate() {
+
+  const certificate =
+    document.getElementById("action-plan-response");
+
+  if (!certificate) return;
+
+  const printWindow = window.open(
+    "",
+    "_blank",
+    "width=1000,height=800"
+  );
+
+  if (!printWindow) {
+    alert("⚠️ Tafadhali ruhusu popup ili kuchapisha cheti.");
+    return;
+  }
+
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+
+      <title>DIRA2050 Certificate</title>
+
+      <style>
+
+        * {
+          box-sizing: border-box;
+        }
+
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          background: white;
+          font-family: Arial, sans-serif;
+        }
+
+        body {
+          padding: 20mm;
+        }
+
+        #certificate {
+          width: 100%;
+          max-width: 900px;
+          margin: 0 auto;
+        }
+
+        button {
+          display: none !important;
+        }
+
+        @page {
+          size: A4 landscape;
+          margin: 15mm;
+        }
+
+        @media print {
+
+          body {
+            padding: 0;
+          }
+
+          #certificate {
+            width: 100%;
+            max-width: none;
+          }
+
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+
+      <div id="certificate">
+        ${certificate.innerHTML}
+      </div>
+
+      <script>
+
+        window.onload = function() {
+
+          setTimeout(function() {
+
+            window.print();
+
+          }, 500);
+
+        };
+
+      <\/script>
+
+    </body>
+    </html>
+  `);
+
+  printWindow.document.close();
+}   
   /* ================================
    🥇 BADGE SYSTEM — DIRA2050
 ================================ */
