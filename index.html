@@ -4232,9 +4232,58 @@ const participantName =
       >
         ↩️ Rudi kwenye Mpango wa Siku 30
       </button>
+            <button
+        onclick="startNewJourney('${goal}','${level}')"
+        style="
+          width:100%;
+          margin-top:10px;
+          background:#ffffff;
+          color:#006b3c;
+          border:1px solid #006b3c;
+          padding:12px 15px;
+          border-radius:10px;
+          cursor:pointer;
+          font-weight:bold;
+        "
+      >
+        🔄 Anza Safari Mpya
+      </button>
     </div>
   `;
 } 
+  /* ================================
+   🔄 ANZA SAFARI MPYA
+================================ */
+
+function startNewJourney(goal, level = "beginner") {
+
+  const storageKey =
+    `dira2050-progress-${goal}-${level}`;
+
+  const confirmReset =
+    confirm(
+      "🔄 Unataka kuanza Safari Mpya?\n\n" +
+      "Progress ya safari hii itaanza tena kutoka 0%.\n\n" +
+      "Jina lako litabaki limehifadhiwa."
+    );
+
+  if (!confirmReset) return;
+
+  /* Futa progress ya lengo hili tu */
+
+  localStorage.removeItem(storageKey);
+
+  /* Hakikisha lengo linaendelea kuhifadhiwa */
+
+  localStorage.setItem(
+    "dira2050Goal",
+    goal
+  );
+
+  /* Fungua tena Mpango wa Siku 30 */
+
+  show30DayPlan(goal, level);
+}  
  /* =================================
    🌍 DIRA2050 — IMPACT DASHBOARD
 ================================= */
