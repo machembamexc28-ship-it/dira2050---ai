@@ -1178,7 +1178,19 @@
       console.log("SMART ACTION:", wantsAction);
       console.log("BEST MATCH:", bestMatch);
       console.log("BEST SCORE:", bestScore);
+      const actionPlanGoals = {
+        elimu: "ujuzi",
+        ujuzi: "ujuzi",
+        biashara: "biashara",
+        innovation: "innovation",
+        kilimo: "kilimo",
+        teknolojia: "teknolojia",
+        mazingira: "mazingira",
+        jamii: "jamii"
+      };
 
+      const actionGoal =
+        bestMatch ? actionPlanGoals[bestMatch.id] : null;
       /* ================================
          SMART ACTION RESPONSE
       ================================= */
@@ -1216,6 +1228,53 @@
           "📚 <strong>Chanzo rasmi</strong><br>" +
           dira2050Data.officialSource +
           "</div>";
+
+        if (actionGoal) {
+
+          response.innerHTML += `
+            <div style="
+              margin-top:14px;
+              padding:14px;
+              background:#eef8f2;
+              border:1px solid #cfe3d8;
+              border-radius:12px;
+            ">
+
+              <strong style="color:#006b3c;">
+                🎯 Hatua inayofuata
+              </strong>
+
+              <p style="
+                margin:7px 0;
+                color:#667;
+                line-height:1.5;
+              ">
+                Uko tayari kugeuza taarifa hii kuwa
+                mpango wa utekelezaji.
+              </p>
+
+              <button
+                onclick="showActionPlan('${actionGoal}')"
+                style="
+                  width:100%;
+                  margin-top:8px;
+                  background:#006b3c;
+                  color:white;
+                  border:none;
+                  padding:11px 15px;
+                  border-radius:9px;
+                  cursor:pointer;
+                  font-weight:bold;
+                "
+              >
+                🚀 Tengeneza Action Plan
+              </button>
+
+            </div>
+          `;
+        }
+
+        return;
 
         return;
       }
