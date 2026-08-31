@@ -2509,6 +2509,277 @@ main.premium-main {
   }
 
 }  
+  /* =========================================
+   🎬 DIRA2050 PREMIUM LIVE DEMO
+========================================= */
+
+.premium-demo {
+  position: relative;
+
+  margin-top: 22px;
+  padding: 42px 25px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255,255,255,.12),
+      transparent 42%
+    ),
+    linear-gradient(
+      135deg,
+      #003d23 0%,
+      #006b3c 48%,
+      #008c55 100%
+    );
+
+  color: white;
+
+  border-radius: 22px;
+
+  text-align: center;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 16px 40px rgba(0,70,40,.18);
+}
+
+.premium-demo::before {
+  content: "";
+
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  top: -170px;
+  right: -100px;
+
+  border: 1px solid rgba(255,255,255,.12);
+
+  border-radius: 50%;
+}
+
+.premium-demo::after {
+  content: "";
+
+  position: absolute;
+
+  width: 200px;
+  height: 200px;
+
+  bottom: -130px;
+  left: -80px;
+
+  border: 1px solid rgba(255,255,255,.10);
+
+  border-radius: 50%;
+}
+
+.demo-icon {
+  position: relative;
+  z-index: 2;
+
+  font-size: 42px;
+
+  margin-bottom: 8px;
+}
+
+.demo-badge {
+  position: relative;
+  z-index: 2;
+
+  display: inline-block;
+
+  padding: 6px 12px;
+
+  border-radius: 50px;
+
+  background: rgba(255,255,255,.12);
+
+  border: 1px solid rgba(255,255,255,.22);
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  margin-bottom: 12px;
+}
+
+.premium-demo h3 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0 0 10px;
+
+  font-size: clamp(25px, 4vw, 34px);
+
+  font-weight: 850;
+}
+
+.premium-demo > p {
+  position: relative;
+  z-index: 2;
+
+  max-width: 650px;
+
+  margin: 0 auto;
+
+  color: rgba(255,255,255,.88);
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+.demo-stats {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 55px;
+
+  margin: 28px 0;
+}
+
+.demo-stats div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.demo-stats strong {
+  font-size: 21px;
+
+  font-weight: 850;
+}
+
+.demo-stats span {
+  font-size: 11px;
+
+  color: rgba(255,255,255,.70);
+}
+
+.premium-demo-button {
+  position: relative;
+  z-index: 2;
+
+  border: none;
+
+  padding: 14px 24px;
+
+  border-radius: 13px;
+
+  background: white;
+
+  color: #006b3c;
+
+  font-size: 13px;
+
+  font-weight: 850;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 22px rgba(0,0,0,.18);
+
+  transition: .25s ease;
+}
+
+.premium-demo-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 13px 30px rgba(0,0,0,.24);
+}
+
+
+/* =========================================
+   🇹🇿 PREMIUM FOOTER
+========================================= */
+
+.site-footer {
+  position: relative;
+
+  margin-top: 0;
+
+  padding: 48px 20px 32px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #002f1d,
+      #004d2b,
+      #006b3c
+    );
+
+  color: white;
+
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 700px;
+
+  margin: auto;
+}
+
+.footer-logo {
+  font-size: 34px;
+
+  margin-bottom: 8px;
+}
+
+.footer-inner strong {
+  display: block;
+
+  color: white;
+
+  font-size: 19px;
+
+  margin-bottom: 6px;
+}
+
+.footer-inner p {
+  margin: 0 0 10px;
+
+  color: rgba(255,255,255,.82);
+
+  font-size: 13px;
+}
+
+.footer-inner small {
+  color: rgba(255,255,255,.55);
+
+  font-size: 10px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .premium-demo {
+    padding: 35px 18px;
+  }
+
+  .demo-stats {
+    gap: 28px;
+  }
+
+  .premium-demo-button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+}  
   </style>
 </head>
 
@@ -7346,13 +7617,63 @@ function showImpactDashboard(goal, level) {
 
   <!-- DEMO -->
 
-  <div style="
-    padding:20px;
-    background:#006b3c;
-    color:white;
-    border-radius:14px;
-    text-align:center;
-  ">
+<!-- =========================================
+     🎬 PREMIUM LIVE DEMO
+========================================= -->
+
+<div class="premium-demo">
+
+  <div class="demo-icon">
+    🎬
+  </div>
+
+  <div class="demo-badge">
+    LIVE DEMO
+  </div>
+
+  <h3>
+    Experience Dira2050 AI
+  </h3>
+
+  <p>
+    Kutoka kwenye maono ya Tanzania ya 2050
+    hadi hatua unayoweza kuanza leo.
+  </p>
+
+  <div class="demo-stats">
+
+    <div>
+      <strong>2050</strong>
+      <span>Maono</span>
+    </div>
+
+    <div>
+      <strong>AI</strong>
+      <span>Msaidizi</span>
+    </div>
+
+    <div>
+      <strong>🇹🇿</strong>
+      <span>Tanzania</span>
+    </div>
+
+  </div>
+
+  <button
+    onclick="
+      document.getElementById('question').value='Nianzie wapi katika kujenga ujuzi?';
+      document.getElementById('question').scrollIntoView({
+        behavior:'smooth',
+        block:'center'
+      });
+      setTimeout(() => askAssistant(), 500);
+    "
+    class="premium-demo-button"
+  >
+    🚀 ANZA LIVE DEMO
+  </button>
+
+</div>
 
     <div style="
       font-size:32px;
