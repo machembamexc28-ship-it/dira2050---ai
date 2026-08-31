@@ -1467,7 +1467,458 @@ main.container {
   .premium-main .chat-box button {
     width: 100%;
   }
-}   
+} 
+  /* =====================================================
+   🤖 DIRA2050 — FINAL AI WORKSPACE DESIGN
+   ===================================================== */
+
+.premium-main {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 55px 20px 80px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(0,107,60,0.06),
+      transparent 28%
+    );
+}
+
+
+/* =====================================================
+   MAIN AI PANEL
+   ===================================================== */
+
+.premium-main .assistant {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+
+  padding: 36px;
+
+  background: #ffffff;
+
+  border: 1px solid #d8e8df;
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 18px 55px rgba(0,70,40,0.08);
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+/* top accent */
+
+.premium-main .assistant::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 5px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #004d2b,
+      #008c55,
+      #004d2b
+    );
+}
+
+
+/* =====================================================
+   AI HEADER
+   ===================================================== */
+
+.premium-main .assistant > h2 {
+  margin: 0 0 8px;
+
+  color: #005a32;
+
+  font-size: clamp(27px, 4vw, 37px);
+
+  font-weight: 850;
+
+  letter-spacing: -0.8px;
+}
+
+.premium-main .assistant > p {
+  margin: 0;
+
+  color: #68776f;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   💡 QUICK QUESTIONS
+   ===================================================== */
+
+.premium-main .quick-questions {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 11px;
+
+  margin: 28px 0;
+}
+
+.premium-main .quick-questions button {
+  min-height: 54px;
+
+  padding: 12px 15px;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f9fcfa,
+      #ffffff
+    );
+
+  border: 1px solid #d0e4d8;
+
+  color: #006b3c;
+
+  font-size: 13px;
+
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    background .22s ease,
+    border-color .22s ease;
+}
+
+.premium-main .quick-questions button:hover {
+  transform: translateY(-3px);
+
+  background: #eef8f2;
+
+  border-color: #9fcbb3;
+
+  box-shadow:
+    0 8px 20px rgba(0,107,60,0.09);
+}
+
+
+/* =====================================================
+   👤 MIMI NI NANI + 🧭 DIRA YANGU
+   ===================================================== */
+
+.premium-main .profile-box {
+  margin-top: 22px;
+
+  padding: 25px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f7fbf9,
+      #ffffff
+    );
+
+  border: 1px solid #d7e8df;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 28px rgba(0,70,40,0.04);
+}
+
+.premium-main .profile-box h3 {
+  margin: 0 0 7px;
+
+  color: #006b3c;
+
+  font-size: 19px;
+
+  font-weight: 850;
+}
+
+.premium-main .profile-box > p {
+  margin: 0 0 17px;
+
+  color: #6e7d76;
+
+  font-size: 13px;
+
+  line-height: 1.65;
+}
+
+
+/* =====================================================
+   PROFILE / GOAL BUTTONS
+   ===================================================== */
+
+.premium-main .profile-options {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+.premium-main .profile-options button {
+  min-height: 49px;
+
+  padding: 11px 12px;
+
+  border-radius: 12px;
+
+  border: 1px solid #cfe3d8;
+
+  background: #ffffff;
+
+  color: #006b3c;
+
+  font-size: 12px;
+
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    box-shadow .2s ease,
+    border-color .2s ease;
+}
+
+.premium-main .profile-options button:hover {
+  transform: translateY(-2px);
+
+  background: #eef8f2;
+
+  border-color: #9fcbb3;
+
+  box-shadow:
+    0 7px 18px rgba(0,107,60,0.08);
+}
+
+.premium-main .profile-options button.active {
+  background:
+    linear-gradient(
+      135deg,
+      #006b3c,
+      #008f52
+    );
+
+  color: #ffffff;
+
+  border-color: #006b3c;
+
+  box-shadow:
+    0 8px 20px rgba(0,107,60,0.20);
+}
+
+
+/* =====================================================
+   💬 CHAT INPUT
+   ===================================================== */
+
+.premium-main .chat-box {
+  display: flex;
+
+  gap: 10px;
+
+  margin-top: 25px;
+
+  padding: 8px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f3faf6,
+      #ffffff
+    );
+
+  border: 1px solid #cfe3d8;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 25px rgba(0,70,40,0.06);
+}
+
+.premium-main .chat-box input {
+  flex: 1;
+
+  min-height: 55px;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  padding: 0 16px;
+
+  color: #17202a;
+
+  font-size: 15px;
+}
+
+.premium-main .chat-box input::placeholder {
+  color: #91a098;
+}
+
+.premium-main .chat-box button {
+  min-height: 55px;
+
+  padding: 0 28px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #006b3c,
+      #008f52
+    );
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 850;
+
+  cursor: pointer;
+
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease;
+}
+
+.premium-main .chat-box button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 22px rgba(0,107,60,0.22);
+}
+
+
+/* =====================================================
+   🤖 RESPONSE
+   ===================================================== */
+
+.premium-main #response {
+  margin-top: 22px;
+
+  padding: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f5fbf7,
+      #ffffff
+    );
+
+  border: 1px solid #d8e8df;
+
+  border-radius: 18px;
+
+  line-height: 1.7;
+
+  animation: diraResponseIn .35s ease;
+}
+
+.premium-main #profile-response,
+.premium-main #action-plan-response {
+  margin-top: 18px;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+}
+
+@keyframes diraResponseIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =====================================================
+   📱 MOBILE
+   ===================================================== */
+
+@media (max-width: 800px) {
+
+  .premium-main {
+    padding: 35px 14px 60px;
+  }
+
+  .premium-main .assistant {
+    padding: 25px 18px;
+
+    border-radius: 22px;
+  }
+
+  .premium-main .quick-questions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .premium-main .profile-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+
+  .premium-main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .premium-main .assistant {
+    padding: 20px 14px;
+  }
+
+  .premium-main .quick-questions,
+  .premium-main .profile-options {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-main .chat-box {
+    flex-direction: column;
+
+    padding: 8px;
+  }
+
+  .premium-main .chat-box button {
+    width: 100%;
+  }
+
+}  
   </style>
 </head>
 
