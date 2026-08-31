@@ -2351,6 +2351,163 @@ main.container {
     width: 100%;
   }
 
+} 
+  /* =====================================================
+   🇹🇿 DIRA2050 — FINAL SITE POLISH
+===================================================== */
+
+body {
+  background:
+    linear-gradient(
+      180deg,
+      #f4f8f6 0%,
+      #ffffff 45%,
+      #f4f8f6 100%
+    );
+}
+
+
+/* =====================================================
+   ABOUT + COMPETITION SECTIONS
+   (sections zilizopo moja kwa moja ndani ya body)
+===================================================== */
+
+body > section {
+  width: calc(100% - 30px);
+  max-width: 1120px;
+
+  margin: 35px auto;
+
+  padding: 30px !important;
+
+  background: rgba(255,255,255,0.97) !important;
+
+  border: 1px solid #d8e8df !important;
+
+  border-radius: 26px !important;
+
+  box-shadow:
+    0 14px 45px rgba(0,70,40,0.07) !important;
+}
+
+
+/* FIRST SECTION AFTER MAIN */
+
+body > section:first-of-type {
+  margin-top: 45px;
+}
+
+
+/* ABOUT / COMPETITION HEADINGS */
+
+body > section h2 {
+  color: #006b3c !important;
+  font-weight: 850 !important;
+}
+
+
+/* INNER INFORMATION CARDS */
+
+body > section > div {
+  border-radius: 15px;
+}
+
+
+/* GREEN EMPHASIS */
+
+body > section strong {
+  color: #006b3c;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.site-footer {
+  margin-top: 20px;
+
+  padding: 50px 20px 35px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #004d2b,
+      #006b3c,
+      #008c55
+    );
+
+  color: white;
+
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 700px;
+  margin: auto;
+}
+
+.footer-logo {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.footer-inner strong {
+  display: block;
+
+  font-size: 18px;
+
+  margin-bottom: 6px;
+
+  color: white;
+}
+
+.footer-inner p {
+  margin: 0 0 10px;
+
+  color: rgba(255,255,255,.86);
+
+  font-size: 14px;
+}
+
+.footer-inner small {
+  color: rgba(255,255,255,.65);
+
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   GLOBAL SECTION SPACING
+===================================================== */
+
+main.premium-main {
+  margin-bottom: 0;
+}
+
+.premium-welcome {
+  margin-bottom: 0;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  body > section {
+    width: calc(100% - 20px);
+
+    padding: 20px !important;
+
+    margin: 25px auto;
+  }
+
+  .site-footer {
+    padding: 40px 18px 28px;
+  }
+
 }  
   </style>
 </head>
@@ -2753,10 +2910,6 @@ main.container {
 </section>
 
   </main>
-
-  <footer>
-    🇹🇿 Dira2050 AI Assistant — Tanzania ya 2050 inaanza na hatua za leo.
-  </footer>
 
   <script>
     console.log("Dira2050 AI imeanza...");
@@ -7247,6 +7400,23 @@ function showImpactDashboard(goal, level) {
 
   </div>
 
-</section>  
+</section> 
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      🇹🇿🤖
+    </div>
+
+    <strong>Dira2050 AI Assistant</strong>
+
+    <p>
+      Tanzania ya 2050 inaanza na hatua za leo.
+    </p>
+
+    <small>
+      Dira2050 AI • Tanzania
+    </small>
+  </div>
+</footer>
 </body>
 </html>
