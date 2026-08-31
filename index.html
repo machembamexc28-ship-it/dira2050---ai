@@ -1918,6 +1918,439 @@ main.container {
     width: 100%;
   }
 
+} 
+  /* =========================================
+   🤖 DIRA2050 PREMIUM AI WORKSPACE
+========================================= */
+
+.dira-ai-workspace {
+  max-width: 1120px;
+  margin: 0 auto;
+
+  padding: 34px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #f7fbf9 100%
+    );
+
+  border: 1px solid #d8e8df;
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 20px 60px rgba(0,70,40,.09);
+
+  overflow: hidden;
+}
+
+
+/* HEADER */
+
+.ai-workspace-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding-bottom: 25px;
+
+  border-bottom: 1px solid #e1ece6;
+
+  margin-bottom: 26px;
+}
+
+.ai-workspace-icon {
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #006b3c,
+      #008f52
+    );
+
+  color: white;
+
+  font-size: 30px;
+
+  box-shadow:
+    0 8px 22px rgba(0,107,60,.20);
+}
+
+.ai-workspace-badge {
+  display: inline-block;
+
+  color: #006b3c;
+
+  font-size: 11px;
+
+  font-weight: 850;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 4px;
+}
+
+.ai-workspace-header h2 {
+  margin: 0 0 6px;
+
+  color: #123c2b;
+
+  font-size: clamp(24px, 4vw, 34px);
+
+  line-height: 1.15;
+
+  font-weight: 850;
+}
+
+.ai-workspace-header p {
+  margin: 0;
+
+  color: #6d7b74;
+
+  font-size: 14px;
+
+  line-height: 1.65;
+}
+
+
+/* SECTION */
+
+.workspace-section {
+  margin-bottom: 25px;
+}
+
+.workspace-section-title {
+  margin-bottom: 13px;
+
+  color: #006b3c;
+
+  font-size: 15px;
+
+  font-weight: 850;
+}
+
+
+/* QUICK QUESTIONS */
+
+.dira-ai-workspace .quick-questions {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin: 0;
+}
+
+.dira-ai-workspace .quick-questions button {
+  min-height: 50px;
+
+  padding: 11px 13px;
+
+  background: #ffffff;
+
+  color: #006b3c;
+
+  border: 1px solid #d2e4da;
+
+  border-radius: 13px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .22s ease;
+}
+
+.dira-ai-workspace .quick-questions button:hover {
+  transform: translateY(-2px);
+
+  background: #eef8f2;
+
+  border-color: #9fcbb3;
+
+  box-shadow:
+    0 7px 18px rgba(0,107,60,.08);
+}
+
+
+/* TWO COLUMNS */
+
+.workspace-two-columns {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-top: 22px;
+}
+
+
+/* PANELS */
+
+.workspace-panel {
+  padding: 23px;
+
+  background: rgba(255,255,255,.82);
+
+  border: 1px solid #d8e8df;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 7px 24px rgba(0,70,40,.04);
+}
+
+.panel-title {
+  color: #006b3c;
+
+  font-size: 18px;
+
+  font-weight: 850;
+
+  margin-bottom: 7px;
+}
+
+.panel-description {
+  color: #6c7973;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  margin-bottom: 16px;
+}
+
+
+/* OPTIONS */
+
+.dira-ai-workspace .profile-options {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0,1fr));
+
+  gap: 9px;
+}
+
+.dira-ai-workspace .profile-options button {
+  min-height: 46px;
+
+  padding: 10px 11px;
+
+  background: #ffffff;
+
+  color: #006b3c;
+
+  border: 1px solid #cfe3d8;
+
+  border-radius: 11px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .22s ease;
+}
+
+.dira-ai-workspace .profile-options button:hover {
+  transform: translateY(-2px);
+
+  background: #eef8f2;
+}
+
+.dira-ai-workspace .profile-options button.active {
+  background: #006b3c;
+
+  color: white;
+
+  border-color: #006b3c;
+}
+
+
+/* ASK AI */
+
+.ask-ai-box {
+  margin-top: 22px;
+
+  padding: 20px;
+
+  border-radius: 19px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eef8f2,
+      #ffffff
+    );
+
+  border: 1px solid #cfe3d8;
+}
+
+.ask-ai-label {
+  color: #006b3c;
+
+  font-size: 16px;
+
+  font-weight: 850;
+
+  margin-bottom: 10px;
+}
+
+.dira-ai-workspace .chat-box {
+  display: flex;
+
+  gap: 10px;
+
+  margin: 0;
+
+  padding: 7px;
+
+  background: #ffffff;
+
+  border: 1px solid #cfe3d8;
+
+  border-radius: 16px;
+}
+
+.dira-ai-workspace .chat-box input {
+  flex: 1;
+
+  min-height: 52px;
+
+  border: none;
+
+  outline: none;
+
+  padding: 0 14px;
+
+  background: transparent;
+
+  color: #17202a;
+
+  font-size: 14px;
+}
+
+.dira-ai-workspace .chat-box button {
+  min-height: 52px;
+
+  padding: 0 24px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #006b3c,
+      #008f52
+    );
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 850;
+
+  cursor: pointer;
+
+  transition: .22s ease;
+}
+
+.dira-ai-workspace .chat-box button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(0,107,60,.20);
+}
+
+.ask-ai-hint {
+  margin-top: 8px;
+
+  color: #7a8881;
+
+  font-size: 11px;
+}
+
+
+/* RESPONSE */
+
+.dira-ai-workspace #response,
+.dira-ai-workspace #profile-response,
+.dira-ai-workspace #action-plan-response {
+  margin-top: 16px;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .dira-ai-workspace {
+    padding: 23px 17px;
+
+    border-radius: 22px;
+  }
+
+  .workspace-two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .dira-ai-workspace .quick-questions {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+}
+
+@media (max-width: 520px) {
+
+  .ai-workspace-header {
+    align-items: flex-start;
+  }
+
+  .ai-workspace-icon {
+    width: 54px;
+    height: 54px;
+    font-size: 25px;
+  }
+
+  .dira-ai-workspace .quick-questions,
+  .dira-ai-workspace .profile-options {
+    grid-template-columns: 1fr;
+  }
+
+  .dira-ai-workspace .chat-box {
+    flex-direction: column;
+  }
+
+  .dira-ai-workspace .chat-box button {
+    width: 100%;
+  }
+
 }  
   </style>
 </head>
@@ -2088,166 +2521,236 @@ main.container {
 <main class="container premium-main">
 
 
-    <!-- ================================
-         AI ASSISTANT
-    ================================= -->
-    <section class="card assistant">
+<!-- =========================================
+     🤖 DIRA2050 AI — PREMIUM WORKSPACE
+========================================= -->
 
-      <h2>🤖 Dira2050 AI Assistant</h2>
+<section class="card assistant dira-ai-workspace">
+
+  <!-- HEADER -->
+
+  <div class="ai-workspace-header">
+
+    <div class="ai-workspace-icon">
+      🤖
+    </div>
+
+    <div>
+      <div class="ai-workspace-badge">
+        🇹🇿 DIRA2050 AI
+      </div>
+
+      <h2>
+        Msaidizi wako wa Tanzania ya 2050
+      </h2>
 
       <p>
-        Uliza swali kuhusu Dira 2050. Nitakusaidia kulielewa
-        kwa kutumia Knowledge Base yetu.
+        Uliza swali, chagua nafasi yako, weka Dira yako
+        na geuza uelewa kuwa hatua halisi.
+      </p>
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       QUICK QUESTIONS
+  ========================================= -->
+
+  <div class="workspace-section">
+
+    <div class="workspace-section-title">
+      💡 <span>Maswali ya kuanzia</span>
+    </div>
+
+    <div class="quick-questions">
+
+      <button onclick="setQuestion('Dira 2050 inalenga nini?')">
+        🎯 Dira 2050 inalenga nini?
+      </button>
+
+      <button onclick="setQuestion('Vijana wana nafasi gani katika Dira 2050?')">
+        👥 Vijana
+      </button>
+
+      <button onclick="setQuestion('Teknolojia ina nafasi gani katika Dira 2050?')">
+        💡 Teknolojia
+      </button>
+
+      <button onclick="setQuestion('Dira 2050 inasemaje kuhusu elimu na ujuzi?')">
+        🎓 Elimu & Ujuzi
+      </button>
+
+      <button onclick="setQuestion('Dira 2050 inasemaje kuhusu mazingira?')">
+        🌱 Mazingira
+      </button>
+
+      <button onclick="setQuestion('Tanzania inalenga uchumi wa aina gani?')">
+        💰 Uchumi
+      </button>
+
+      <button onclick="showOfficialDocuments()">
+        📚 Nyaraka Rasmi
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       PROFILE + GOAL
+  ========================================= -->
+
+  <div class="workspace-two-columns">
+
+    <!-- MIMI NI NANI -->
+
+    <div class="workspace-panel">
+
+      <div class="panel-title">
+        👤 MIMI NI NANI?
+      </div>
+
+      <p class="panel-description">
+        Chagua nafasi yako ili Dira2050 AI ikupatie
+        mwongozo unaokufaa zaidi.
       </p>
 
-      <div class="quick-questions">
+      <div class="profile-options">
 
-        <button onclick="setQuestion('Dira 2050 inalenga nini?')">
-          🎯 Dira 2050 inalenga nini?
+        <button onclick="selectProfile('mwanafunzi')">
+          👨‍🎓 Mwanafunzi
         </button>
 
-        <button onclick="setQuestion('Vijana wana nafasi gani katika Dira 2050?')">
-          👥 Vijana
+        <button onclick="selectProfile('kijana')">
+          👥 Kijana
         </button>
 
-        <button onclick="setQuestion('Teknolojia ina nafasi gani katika Dira 2050?')">
-          💡 Teknolojia
+        <button onclick="selectProfile('mjasiriamali')">
+          💼 Mjasiriamali
         </button>
 
-        <button onclick="setQuestion('Dira 2050 inasemaje kuhusu elimu na ujuzi?')">
-          🎓 Elimu & Ujuzi
+        <button onclick="selectProfile('mkulima')">
+          🌾 Mkulima
         </button>
 
-        <button onclick="setQuestion('Dira 2050 inasemaje kuhusu mazingira?')">
+        <button onclick="selectProfile('innovator')">
+          💡 Innovator
+        </button>
+
+        <button onclick="selectProfile('mfanyabiashara')">
+          🏢 Mfanyabiashara
+        </button>
+
+        <button onclick="selectProfile('mwalimu')">
+          👩‍🏫 Mwalimu
+        </button>
+
+        <button onclick="selectProfile('tech')">
+          👨‍💻 Tech / Developer
+        </button>
+
+        <button onclick="selectProfile('mwananchi')">
+          🇹🇿 Mwananchi
+        </button>
+
+      </div>
+
+      <div id="profile-response"></div>
+
+    </div>
+
+
+    <!-- DIRA YANGU -->
+
+    <div class="workspace-panel">
+
+      <div class="panel-title">
+        🧭 DIRA YANGU
+      </div>
+
+      <p class="panel-description">
+        Chagua eneo unalotaka kulifanyia kazi kuelekea
+        Tanzania ya 2050.
+      </p>
+
+      <div class="profile-options">
+
+        <button onclick="showActionPlan('ujuzi')">
+          🎓 Kujenga Ujuzi
+        </button>
+
+        <button onclick="showActionPlan('biashara')">
+          💼 Kuanzisha Biashara
+        </button>
+
+        <button onclick="showActionPlan('innovation')">
+          💡 Innovation
+        </button>
+
+        <button onclick="showActionPlan('kilimo')">
+          🌾 Kilimo
+        </button>
+
+        <button onclick="showActionPlan('teknolojia')">
+          🤖 Teknolojia & AI
+        </button>
+
+        <button onclick="showActionPlan('mazingira')">
           🌱 Mazingira
         </button>
 
-        <button onclick="setQuestion('Tanzania inalenga uchumi wa aina gani?')">
-          💰 Uchumi
-        </button>
-
-        <button onclick="showOfficialDocuments()">
-          📚 Nyaraka Rasmi
+        <button onclick="showActionPlan('jamii')">
+          👥 Kusaidia Jamii
         </button>
 
       </div>
 
-      <!-- MIMI NI NANI: ONE COPY ONLY -->
-      <div class="profile-box">
+      <div id="action-plan-response"></div>
 
-        <h3>👤 MIMI NI NANI?</h3>
+    </div>
 
-        <p>
-          Chagua nafasi yako ili Dira2050 AI ikupatie
-          mwongozo unaokufaa zaidi.
-        </p>
+  </div>
 
-        <div class="profile-options">
 
-          <button onclick="selectProfile('mwanafunzi')">
-            👨‍🎓 Mwanafunzi
-          </button>
+  <!-- =========================================
+       💬 ASK AI
+  ========================================= -->
 
-          <button onclick="selectProfile('kijana')">
-            👥 Kijana
-          </button>
+  <div class="ask-ai-box">
 
-          <button onclick="selectProfile('mjasiriamali')">
-            💼 Mjasiriamali
-          </button>
+    <div class="ask-ai-label">
+      🤖 Uliza Dira2050 AI
+    </div>
 
-          <button onclick="selectProfile('mkulima')">
-            🌾 Mkulima
-          </button>
+    <div class="chat-box">
 
-          <button onclick="selectProfile('innovator')">
-            💡 Innovator
-          </button>
+      <input
+        type="text"
+        id="question"
+        placeholder="Andika swali lako hapa..."
+        onkeydown="if(event.key === 'Enter') askAssistant()"
+      >
 
-          <button onclick="selectProfile('mfanyabiashara')">
-            🏢 Mfanyabiashara
-          </button>
+      <button onclick="askAssistant()">
+        Uliza ➤
+      </button>
 
-          <button onclick="selectProfile('mwalimu')">
-            👩‍🏫 Mwalimu
-          </button>
+    </div>
 
-          <button onclick="selectProfile('tech')">
-            👨‍💻 Tech / Developer
-          </button>
+    <div class="ask-ai-hint">
+      💡 Bonyeza Enter au kitufe cha <strong>Uliza</strong> kupata jibu.
+    </div>
 
-          <button onclick="selectProfile('mwananchi')">
-            🇹🇿 Mwananchi
-          </button>
+  </div>
 
-        </div>
 
-        <div id="profile-response"></div>
+  <!-- AI RESPONSE -->
 
-      </div>
-      <!-- ================================
-           DIRA YANGU — ACTION PLAN
-      ================================= -->
-      <div class="profile-box" style="margin-top:20px;">
+  <div id="response"></div>
 
-        <h3>🧭 DIRA YANGU</h3>
-
-        <p>
-          Chagua eneo unalotaka kulifanyia kazi kuelekea
-          Tanzania ya 2050.
-        </p>
-
-        <div class="profile-options">
-
-          <button onclick="showActionPlan('ujuzi')">
-            🎓 Kujenga Ujuzi
-          </button>
-
-          <button onclick="showActionPlan('biashara')">
-            💼 Kuanzisha Biashara
-          </button>
-
-          <button onclick="showActionPlan('innovation')">
-            💡 Innovation
-          </button>
-
-          <button onclick="showActionPlan('kilimo')">
-            🌾 Kilimo
-          </button>
-
-          <button onclick="showActionPlan('teknolojia')">
-            🤖 Teknolojia & AI
-          </button>
-
-          <button onclick="showActionPlan('mazingira')">
-            🌱 Mazingira
-          </button>
-
-          <button onclick="showActionPlan('jamii')">
-            👥 Kusaidia Jamii
-          </button>
-
-        </div>
-
-        <div id="action-plan-response"></div>
-
-      </div>
-      <div class="chat-box">
-        <input
-          type="text"
-          id="question"
-          placeholder="Andika swali lako hapa..."
-          onkeydown="if(event.key === 'Enter') askAssistant()"
-        >
-
-        <button onclick="askAssistant()">
-          Uliza ➤
-        </button>
-      </div>
-
-      <div id="response"></div>
-
-    </section>
+</section>
 
   </main>
 
