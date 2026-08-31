@@ -2420,6 +2420,354 @@ main.container {
     width: 100%;
   }
 }  
+  /* =========================================
+   🤖 DIRA2050 PREMIUM MAIN WORKSPACE
+========================================= */
+
+.premium-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 55px 20px 80px;
+}
+
+/* MAIN AI PANEL */
+
+.premium-main .assistant {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+
+  padding: 34px;
+
+  background: rgba(255,255,255,0.97);
+
+  border: 1px solid #d8e8df;
+  border-radius: 26px;
+
+  box-shadow:
+    0 18px 55px rgba(0,60,35,0.08);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Green top accent */
+
+.premium-main .assistant::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 5px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #006b3c,
+      #12a866,
+      #006b3c
+    );
+}
+
+/* TITLE */
+
+.premium-main .assistant > h2 {
+  font-size: clamp(26px, 4vw, 36px);
+
+  color: #064b32;
+
+  font-weight: 850;
+
+  margin-bottom: 8px;
+}
+
+.premium-main .assistant > p {
+  color: #66756d;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  margin-bottom: 24px;
+}
+
+
+/* =========================================
+   💡 QUICK QUESTIONS
+========================================= */
+
+.premium-main .quick-questions {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0,1fr));
+
+  gap: 12px;
+
+  margin: 20px 0 25px;
+}
+
+.premium-main .quick-questions button {
+  min-height: 52px;
+
+  border: 1px solid #d3e6db;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f8fcfa,
+      #ffffff
+    );
+
+  color: #006b3c;
+
+  font-weight: 700;
+
+  font-size: 13px;
+
+  cursor: pointer;
+
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    border-color .22s ease;
+}
+
+.premium-main .quick-questions button:hover {
+  transform: translateY(-3px);
+
+  border-color: #9fcbb3;
+
+  box-shadow:
+    0 8px 20px rgba(0,107,60,.09);
+}
+
+
+/* =========================================
+   👤 PROFILE / DIRA
+========================================= */
+
+.premium-main .profile-box {
+  margin-top: 20px;
+
+  padding: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f7fbf9,
+      #ffffff
+    );
+
+  border: 1px solid #d8e8df;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 7px 24px rgba(0,70,40,.04);
+}
+
+.premium-main .profile-box h3 {
+  color: #006b3c;
+
+  font-size: 18px;
+
+  font-weight: 850;
+
+  margin-bottom: 7px;
+}
+
+.premium-main .profile-box > p {
+  color: #6b7972;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  margin-bottom: 17px;
+}
+
+
+/* PROFILE OPTIONS */
+
+.premium-main .profile-options {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0,1fr));
+
+  gap: 10px;
+}
+
+.premium-main .profile-options button {
+  min-height: 48px;
+
+  border-radius: 12px;
+
+  border: 1px solid #cfe3d8;
+
+  background: #ffffff;
+
+  color: #006b3c;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .22s ease;
+}
+
+.premium-main .profile-options button:hover {
+  transform: translateY(-2px);
+
+  background: #eef8f2;
+
+  border-color: #9fcbb3;
+}
+
+.premium-main .profile-options button.active {
+  background: #006b3c;
+
+  color: white;
+
+  border-color: #006b3c;
+
+  box-shadow:
+    0 7px 18px rgba(0,107,60,.18);
+}
+
+
+/* =========================================
+   💬 CHAT AREA
+========================================= */
+
+.premium-main .chat-box {
+  display: flex;
+
+  gap: 10px;
+
+  margin-top: 24px;
+
+  padding: 8px;
+
+  border: 1px solid #d4e5dc;
+
+  background: #f4faf7;
+
+  border-radius: 18px;
+}
+
+.premium-main .chat-box input {
+  flex: 1;
+
+  min-height: 54px;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  padding: 0 15px;
+
+  font-size: 15px;
+
+  color: #17202a;
+}
+
+.premium-main .chat-box button {
+  min-height: 54px;
+
+  padding: 0 26px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #006b3c,
+      #008f52
+    );
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: .25s ease;
+}
+
+.premium-main .chat-box button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 24px rgba(0,107,60,.20);
+}
+
+
+/* =========================================
+   📊 RESPONSE AREAS
+========================================= */
+
+.premium-main #response,
+.premium-main #profile-response,
+.premium-main #action-plan-response {
+  margin-top: 18px;
+
+  border-radius: 16px;
+}
+
+
+/* =========================================
+   📱 MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+  .premium-main {
+    padding: 40px 15px 60px;
+  }
+
+  .premium-main .assistant {
+    padding: 24px 18px;
+    border-radius: 21px;
+  }
+
+  .premium-main .quick-questions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .premium-main .profile-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+
+  .premium-main .quick-questions,
+  .premium-main .profile-options {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-main .chat-box {
+    flex-direction: column;
+  }
+
+  .premium-main .chat-box button {
+    width: 100%;
+  }
+}  
   </style>
 </head>
 
