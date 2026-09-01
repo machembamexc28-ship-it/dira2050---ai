@@ -4047,7 +4047,208 @@ const actionKeywords = [
       document.getElementById("question").value = text;
       askAssistant();
     }
+/* =====================================================
+   🇹🇿 PUBLIC INTEREST INFORMATION DESK
+===================================================== */
 
+function showPublicInterestBrief(topic) {
+
+  const response =
+    document.getElementById("public-interest-response");
+
+  if (!response) return;
+
+
+  /* GENERAL DIRA 2050 */
+
+  if (topic === "general") {
+
+    response.style.display = "block";
+
+    response.classList.add("active");
+
+    response.innerHTML = `
+
+      <h4>
+        🇹🇿 Dira 2050 kwa Mwananchi
+      </h4>
+
+      <p>
+        ${dira2050Data.introduction}
+      </p>
+
+      <div class="public-interest-meta">
+
+        <div class="public-interest-card">
+          <strong>👁️ Maono</strong>
+          <br>
+          ${dira2050Data.vision}
+        </div>
+
+        <div class="public-interest-card">
+          <strong>🎯 Kwa nini taarifa hii ni muhimu?</strong>
+          <br>
+          Inamsaidia mwananchi kuelewa mwelekeo
+          wa taifa na kutambua eneo analoweza
+          kuchukua hatua.
+        </div>
+
+      </div>
+
+      <div class="public-interest-source">
+
+        <strong>
+          📚 Chanzo rasmi
+        </strong>
+
+        <br>
+
+        <span>
+          ${dira2050Data.officialSource}
+        </span>
+
+        <br>
+
+        <a
+          href="${dira2050Data.sourceUrl}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          📖 Fungua chanzo rasmi
+        </a>
+
+      </div>
+    `;
+
+    response.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+
+    return;
+  }
+
+
+  /* KNOWLEDGE BASE TOPIC */
+
+  const item =
+    dira2050Data.keyGoals.find(
+      goal => goal.id === topic
+    );
+
+
+  if (!item) {
+
+    response.style.display = "block";
+
+    response.classList.add("active");
+
+    response.innerHTML = `
+      ⚠️ Taarifa ya eneo hili haijapatikana
+      kwenye Public Interest Information Desk.
+    `;
+
+    return;
+  }
+
+
+  response.style.display = "block";
+
+  response.classList.add("active");
+
+  response.innerHTML = `
+
+    <h4>
+      ${item.icon || "🇹🇿"} ${item.category}
+    </h4>
+
+    <p>
+      ${item.content}
+    </p>
+
+
+    ${
+      item.focusAreas && item.focusAreas.length
+      ? `
+        <div class="public-interest-meta">
+
+          <div class="public-interest-card">
+
+            <strong>
+              🎯 Maeneo muhimu
+            </strong>
+
+            <ul style="
+              margin:10px 0 0 20px;
+            ">
+
+              ${item.focusAreas
+                .map(area =>
+                  `<li>${area}</li>`
+                )
+                .join("")}
+
+            </ul>
+
+          </div>
+
+        </div>
+      `
+      : ""
+    }
+
+
+    ${
+      item.action
+      ? `
+        <div class="public-interest-card"
+          style="margin-top:12px;">
+
+          <strong>
+            🚀 Hatua inayoweza kuchukuliwa
+          </strong>
+
+          <br>
+
+          ${item.action}
+
+        </div>
+      `
+      : ""
+    }
+
+
+    <div class="public-interest-source">
+
+      <strong>
+        📚 Chanzo rasmi
+      </strong>
+
+      <br>
+
+      <span>
+        ${dira2050Data.officialSource}
+      </span>
+
+      <br>
+
+      <a
+        href="${dira2050Data.sourceUrl}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        📖 Fungua Dira 2050
+      </a>
+
+    </div>
+  `;
+
+
+  response.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+}
     function showOfficialDocuments() {
       const response = document.getElementById("response");
 
